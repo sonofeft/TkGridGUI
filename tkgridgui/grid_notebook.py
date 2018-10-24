@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import range
+from builtins import object
 """
 Notebook widget where grid geometry manager layout is defined.
 
@@ -14,19 +19,13 @@ These widgets only define locations and widget type.
 
 import sys
 
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    import tkMessageBox
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:
-    import tkinter.messagebox as tkMessageBox
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     
 from tkinter import *
+import tkinter.messagebox
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
 from tkgridgui.edit_Dialog import Edit_Properties_Dialog
 from tkgridgui.wt_select_Dialog import Wt_Select_Dialog
@@ -194,7 +193,7 @@ class NotebookGridDes( Frame ):
         # rowD and colD: index=(tab_label,row_target), value=wt
         rowD, colD = self.grid_gui.target_app.get_a_full_desc_of_weights()
         
-        for (tab_label, col_interface), label in self.colWeightsWidgetD.items():
+        for (tab_label, col_interface), label in list(self.colWeightsWidgetD.items()):
             col_target = col_interface - 1
             if (tab_label, col_target) in colD:
                 wt = colD[ (tab_label, col_target) ]
@@ -207,7 +206,7 @@ class NotebookGridDes( Frame ):
             else:
                 label["background"] = "#daa520" # goldenrod "#ff8080" # light coral
         
-        for (tab_label, row_interface), label in self.rowWeightsWidgetD.items():
+        for (tab_label, row_interface), label in list(self.rowWeightsWidgetD.items()):
             row_target = row_interface - 1
             if (tab_label, row_target) in rowD:
                 wt = rowD[ (tab_label, row_target) ]
@@ -239,7 +238,7 @@ class NotebookGridDes( Frame ):
         # save any info on rowspan and columnspan
         row_col_spanL = [] # do not place rowspan or columnspan on 1st pass. Save for 2nd pass.
         
-        for widget_name, (tab_label, row_target, col_target, widget_type, label) in self.label_obj_from_nameD.items():
+        for widget_name, (tab_label, row_target, col_target, widget_type, label) in list(self.label_obj_from_nameD.items()):
             
             row_interface = row_target + 1
             col_interface = col_target + 1
@@ -379,7 +378,7 @@ class NotebookGridDes( Frame ):
         """Return info about all of the placed widgets"""
         widgetL = []
         
-        for widget_name, (tab_label, row_target, col_target, widget_type, label) in self.label_obj_from_nameD.items():
+        for widget_name, (tab_label, row_target, col_target, widget_type, label) in list(self.label_obj_from_nameD.items()):
             widgetL.append( (widget_type, widget_name, tab_label, row_target, col_target) )
         
         return widgetL
@@ -824,7 +823,7 @@ class NotebookGridDes( Frame ):
         
         num_rows, num_cols = self.tab_num_rows_colsD[ tab_label ]
         if num_cols >= MAX_NUM_COLS:
-            tkMessageBox.showinfo("Insert Warning...",
+            tkinter.messagebox.showinfo("Insert Warning...",
                 "Can NOT have more than %i columns\n\n"%MAX_NUM_COLS\
                 +"For now, simply use Frame objects to expand the grid area.")
             return
@@ -838,12 +837,12 @@ class NotebookGridDes( Frame ):
         
         # empty out the main data
         self.defined_target_widgetD = {}   # index=(tab_label, row_target, col_target): value=placementWidgetType
-        for key in copy_defined_target_widgetD.keys():
+        for key in list(copy_defined_target_widgetD.keys()):
             self.defined_target_widgetD[key] = ''
             
         self.label_obj_from_nameD = {}     # index=widget_name: value=(tab_label, row_target, col_target, placementWidgetType, Labelobj)
         
-        for widget_name,(wtab_label, wrow_target, wcol_target, placementWidgetType, wLabelobj) in copy_label_obj_from_nameD.items():
+        for widget_name,(wtab_label, wrow_target, wcol_target, placementWidgetType, wLabelobj) in list(copy_label_obj_from_nameD.items()):
             
             placementWidgetType = copy_defined_target_widgetD[ (wtab_label, wrow_target, wcol_target) ]
             
@@ -894,7 +893,7 @@ class NotebookGridDes( Frame ):
         
         num_rows, num_cols = self.tab_num_rows_colsD[ tab_label ]
         if num_rows >= MAX_NUM_ROWS:
-            tkMessageBox.showinfo("Insert Warning...",
+            tkinter.messagebox.showinfo("Insert Warning...",
                 "Can NOT have more than %i rows\n\n"%MAX_NUM_ROWS\
                 +"For now, simply use Frame objects to expand the grid area.")
             return
@@ -910,12 +909,12 @@ class NotebookGridDes( Frame ):
         
         # empty out the main data
         self.defined_target_widgetD = {}   # index=(tab_label, row_target, col_target): value=placementWidgetType
-        for key in copy_defined_target_widgetD.keys():
+        for key in list(copy_defined_target_widgetD.keys()):
             self.defined_target_widgetD[key] = ''
         
         self.label_obj_from_nameD = {}     # index=widget_name: value=(tab_label, row_target, col_target, placementWidgetType, Labelobj)
         
-        for widget_name,(wtab_label, wrow_target, wcol_target, placementWidgetType, wLabelobj) in copy_label_obj_from_nameD.items():
+        for widget_name,(wtab_label, wrow_target, wcol_target, placementWidgetType, wLabelobj) in list(copy_label_obj_from_nameD.items()):
             
             placementWidgetType = copy_defined_target_widgetD[ (wtab_label, wrow_target, wcol_target) ]
             
@@ -1300,10 +1299,10 @@ class NotebookGridDes( Frame ):
                 
                 target_comp = self.grid_gui.target_app.compObjD[ widget_name ]
                 dialogOptionsD = {}
-                for key,val in target_comp.default_tkOptionD.items():
+                for key,val in list(target_comp.default_tkOptionD.items()):
                     dialogOptionsD[key] = (val, "def.")
                     
-                for key,val in target_comp.user_tkOptionD.items(): # user_tkOptionD holds tk options set by user. (i.e. not same as default_tkOptionD)
+                for key,val in list(target_comp.user_tkOptionD.items()): # user_tkOptionD holds tk options set by user. (i.e. not same as default_tkOptionD)
                     dialogOptionsD[key] = (val, "USER VALUE")
             
                 dialogOptionsD['child_widget_list'] = self.grid_gui.target_app.get_names_of_containers_widgets( widget_name )
@@ -1390,7 +1389,7 @@ class NotebookGridDes( Frame ):
             self.set_status_msg("Can NOT delete Containeer Widget "+placementWidgetType+\
                                 " at (%s,%i,%i)"%(tab_label, row_target, col_target), also_print=True)
                                     
-            tkMessageBox.showinfo("Delete Warning...",
+            tkinter.messagebox.showinfo("Delete Warning...",
                 "Can NOT delete Containeer Widget "+placementWidgetType+'\n\n'+\
                 " at (%s,%i,%i)"%(tab_label, row_target, col_target))
                                     

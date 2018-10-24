@@ -59,7 +59,7 @@ setup(
 
     classifiers = [
         # Common status values are: "2 - Pre-Alpha", "3 - Alpha", "4 - Beta", "5 - Production/Stable"
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
 
         "Operating System :: OS Independent",
         'Intended Audience :: Developers',

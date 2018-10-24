@@ -1,5 +1,15 @@
 
+*) double check how to insure requirements.txt modules are installed.
+
+*) Save after Open does not go to Open directory
+
 *) Linux "pip install configparser"
+
+*) remove tkMessageBox, tkColorChooser, tkFileDialog from generated source code.
+
+    make tkinter.ttk outside of sys.version (i.e. remove sys.version)
+
+*) str vs. unicode using key=str.lower in sorted.
 
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)

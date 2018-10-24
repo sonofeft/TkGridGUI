@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import str
 import sys
 
 import copy
@@ -52,7 +54,7 @@ def legalWidgetName(name, ctype):
 def makeOptionString( opDict, startComma=1 ):
     if opDict:
         sL = []
-        for k,v in opDict.items():
+        for k,v in list(opDict.items()):
             # precede any quotes in the value with a backslash
             val = legalQuotedString(v)
             sL.append( '%s="%s"'%(k,val) )
@@ -239,7 +241,7 @@ def createWidgetwName(wName, widget_type, guiType, parent_frame, opDict=None):
         myOpDict = copy.deepcopy( opDict )
     
     def remove_option( op_name ):
-        if myOpDict.has_key( op_name ):
+        if op_name in myOpDict:
             del( myOpDict[op_name] )
     
     remove_option("docstring")
@@ -253,12 +255,12 @@ def createWidgetwName(wName, widget_type, guiType, parent_frame, opDict=None):
 
     doscroll = 0
     if myOpDict:
-        if myOpDict.has_key('scrolly'):
+        if 'scrolly' in myOpDict:
             if myOpDict['scrolly'].lower()=='yes':
                 doscroll += 1
         remove_option('scrolly')
 
-        if myOpDict.has_key('scrollx'):
+        if 'scrollx' in myOpDict:
             if myOpDict['scrollx'].lower()=='yes':
                 doscroll += 2
         remove_option('scrollx')
@@ -291,7 +293,7 @@ def createWidget(wName, widget_type, guiType, parent_frame, opDict=None):
         myOpDict = copy.deepcopy( opDict )
     
     def remove_option( op_name ):
-        if myOpDict.has_key( op_name ):
+        if op_name in myOpDict:
             del( myOpDict[op_name] )
 
     remove_option("docstring")
@@ -319,7 +321,7 @@ def createWidget(wName, widget_type, guiType, parent_frame, opDict=None):
         remove_option('col_weights')
 
     # sticky option belongs in .grid statement
-    if myOpDict.has_key('sticky'):
+    if 'sticky' in myOpDict:
         del(myOpDict['sticky'])  # delete from copy of original dictionary
 
     #print("widget_type =",widget_type)
@@ -330,10 +332,10 @@ def createWidget(wName, widget_type, guiType, parent_frame, opDict=None):
 
     doscroll = 0
     if myOpDict:
-        if myOpDict.has_key('scrolly'):
+        if 'scrolly' in myOpDict:
             if (myOpDict['scrolly'].lower()=='yes'):
                 doscroll = 1
-        if myOpDict.has_key('scrollx'):
+        if 'scrollx' in myOpDict:
             if (myOpDict['scrollx'].lower()=='yes'):
                 doscroll = 1
         #remove_option('scrolly')
@@ -441,27 +443,27 @@ def getDialogStatusBarSource():
 sMessageDialogs = '''
     # standard message dialogs... showinfo, showwarning, showerror
     def ShowInfo(self, title='Title', message='your message here.'):
-        tkMessageBox.showinfo( title, message )
+        tkinter.messagebox.showinfo( title, message )
         return
     def ShowWarning(self, title='Title', message='your message here.'):
-        tkMessageBox.showwarning( title, message )
+        tkinter.messagebox.showwarning( title, message )
         return
     def ShowError(self, title='Title', message='your message here.'):
-        tkMessageBox.showerror( title, message )
+        tkinter.messagebox.showerror( title, message )
         return
         
     # standard question dialogs... askquestion, askokcancel, askyesno, or askretrycancel
     # return True for OK, Yes, Retry, False for Cancel or No
     def AskYesNo(self, title='Title', message='your question here.'):
-        return tkMessageBox.askyesno( title, message )
+        return tkinter.messagebox.askyesno( title, message )
     def AskOK_Cancel(self, title='Title', message='your question here.'):
-        return tkMessageBox.askokcancel( title, message )
+        return tkinter.messagebox.askokcancel( title, message )
     def AskRetryCancel(self, title='Title', message='your question here.'):
-        return tkMessageBox.askretrycancel( title, message )
+        return tkinter.messagebox.askretrycancel( title, message )
         
     # return "yes" for Yes, "no" for No
     def AskQuestion(self, title='Title', message='your question here.'):
-        return tkMessageBox.askquestion( title, message )
+        return tkinter.messagebox.askquestion( title, message )
     # END of standard message dialogs
 '''
 def getStandardMessageDialogs():
@@ -471,7 +473,7 @@ sFileDialogs = '''    # standard file dialogs... askdirectory, askopenfile, asks
 
     # return a string containing directory name
     def AskDirectory(self, title='Choose Directory', initialdir="."):
-        dirname = tkFileDialog.askdirectory(parent=%s,initialdir=initialdir,title=title)
+        dirname = tkinter.filedialog.askdirectory(parent=%s,initialdir=initialdir,title=title)
         return dirname # <-- string
         
     # return an OPEN file type object OR None (opened using mode, 'r','rb','w','wb')
@@ -483,7 +485,7 @@ sFileDialogs = '''    # standard file dialogs... askdirectory, askopenfile, asks
                 ('Data File','*.dat'),
                 ('Output File','*.out'),
                 ('Any File','*.*')]
-        fileobj = tkFileDialog.askopenfile(parent=%s,mode=mode,title=title,
+        fileobj = tkinter.filedialog.askopenfile(parent=%s,mode=mode,title=title,
             initialdir=initialdir, filetypes=filetypes)
         
         # if opened, then fileobj.name contains the name string
@@ -498,7 +500,7 @@ sFileDialogs = '''    # standard file dialogs... askdirectory, askopenfile, asks
                 ('Output File','*.out'),
                 ('Any File','*.*')]
 
-        fileName = tkFileDialog.asksaveasfilename(parent=%s,filetypes=filetypes, initialfile=initialfile ,title=title)
+        fileName = tkinter.filedialog.asksaveasfilename(parent=%s,filetypes=filetypes, initialfile=initialfile ,title=title)
         return fileName # <-- string
         
     # END of standard file dialogs
@@ -514,7 +516,7 @@ def getStandardFileDialogs(guiType='main'):
 sColorDialog='''
     # returns a color tuple and a string representation of the selected color
     def AskForColor(self,title='Pick Color'): 
-        ctuple,cstr = tkColorChooser.askcolor(title=title)
+        ctuple,cstr = tkinter.colorchooser.askcolor(title=title)
         return ctuple,cstr
 '''
 def getStandardColorDialog():
@@ -532,43 +534,51 @@ def getStandardAlarmDialog():
     return sAlarmDialog
 #----------------------------------------------------------------
 sTopImports='''
-import sys
 
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()%s
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:%s
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import range
+from builtins import object
+
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook%s
 
 from tkinter import *
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu
+import tkinter.filedialog
 from tkinter import _setit as set_command
 
 '''
+
+sDialogImport = '''try:
+    from tkSimpleDialog import Dialog
+except:
+    from tkinter.simpledialog import Dialog
+'''
 def get_top_imports( incMsgBox, incDialog, incColorCh):
-    py2L = []
+    #py2L = []
     py3L = []
     if incMsgBox:
-        py2L.append('    import tkMessageBox')
-        py3L.append('    import tkinter.messagebox as tkMessageBox')
+        #py2L.append('    import tkMessageBox')
+        py3L.append('import tkinter.messagebox')
     if incDialog:
-        py2L.append('    from tkSimpleDialog import Dialog')
-        py3L.append('    from tkinter.simpledialog import Dialog')
+        #py2L.append('    from tkSimpleDialog import Dialog')
+        py3L.append( sDialogImport )
     if incColorCh:
-        py2L.append('    import tkColorChooser')
-        py3L.append('    import tkinter.colorchooser as tkColorChooser')
+        #py2L.append('    import tkColorChooser')
+        py3L.append('import tkinter.colorchooser')
     
-    if py2L:
-        spy2 = '\n' + '\n'.join(py2L)
+    if py3L:
+        #spy2 = '\n' + '\n'.join(py2L)
         spy3 = '\n' + '\n'.join(py3L)
     else:
-        spy2 = ''
+        #spy2 = ''
         spy3 = ''
     
-    return sTopImports%(spy2, spy3)
+    return sTopImports%( spy3 )
 
 #----------------------------------------------------------------
 

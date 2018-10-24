@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import object
 from tkgridgui.src_templates import createWidget, gridWidget, makeStringVar, \
                           makeOptionString, traceStringVar, bindWidget
 

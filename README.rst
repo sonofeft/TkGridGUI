@@ -19,7 +19,7 @@ TkGridGUI Builds A Python Tkinter Gui Graphic User Interface Using The Grid Geom
 
 See the Code at: `<https://github.com/sonofeft/TkGridGUI>`_
 
-See the Docs at: `<http://tkgridgui.readthedocs.org/en/latest/>`_
+See the Docs at: `<https://sonofefttkgridgui.readthedocs.io/en/latest/>`_
 
 See PyPI page at:`<https://pypi.python.org/pypi/tkgridgui>`_
 

@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import str
+from builtins import object
 """Generates a list of Component objects in order of tab_label dependence."""
 
 class CNode( object ):
@@ -97,10 +100,10 @@ if __name__ == "__main__":
 
     ct.add_node( CNode('Button_5', 'Frame_3', 'Button_5_Component') )
     
-    print('ct.containerD.keys() =',ct.containerD.keys())
+    print('ct.containerD.keys() =',list(ct.containerD.keys()))
     print('-'*55)
     
-    for key,valL in  ct.containerD.items():
+    for key,valL in  list(ct.containerD.items()):
         print(key, [str(val) for val in valL])
     print('-'*55)
     

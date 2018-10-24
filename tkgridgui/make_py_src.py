@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import object
 from tkgridgui.src_templates import *
 import tkgridgui.SourceCode as SourceCode
 import tkgridgui.make_menu_src as make_menu_src
@@ -76,7 +78,7 @@ class FormSource( object ):
         # sort widgets into parent dependency and alphabetical order
         
         ct = ComponentTree()
-        for widget_name, c in self.target_app.compObjD.items():
+        for widget_name, c in list(self.target_app.compObjD.items()):
             ct.add_node( CNode(widget_name, c.tab_label, c) )
                 
         cnodeL = ct.get_ordered_components()
@@ -106,7 +108,7 @@ class FormSource( object ):
                 c.svar_name = gName + '_StringVar'
                 
                 # only create one callback routine for all of the radio buttons in the group
-                if not radio_group_D.has_key( gName ):
+                if gName not in radio_group_D:
                     radio_group_D[ gName ] = comp.widget_name.split('_')[-1] # set to 1st encountered
                     
                     rg_svarL.append( '        self.%s_StringVar = StringVar()\n'%gName )
@@ -126,11 +128,11 @@ class FormSource( object ):
         # add any columnconfigure(col, weight=wt) or rowconfigure(row, weight=wt)
         wts_rowD, wts_colD = self.target_app.get_a_full_desc_of_weights()
         
-        for (tab_label, row_target), wt in wts_rowD.items():
+        for (tab_label, row_target), wt in list(wts_rowD.items()):
             #print('Need to Row configure ',(tab_label, row_target),' to ',wt)
             self.classInitL.append( createWeightStatement(guiType, tab_label, True, row_target, wt) )
         
-        for (tab_label, col_target), wt in wts_colD.items():
+        for (tab_label, col_target), wt in list(wts_colD.items()):
             #print('Need to Column configure ',(tab_label, col_target),' to ',wt)
             self.classInitL.append( createWeightStatement(guiType, tab_label, False, col_target, wt) )
         
@@ -162,7 +164,7 @@ class FormSource( object ):
         # place top_of_init sections of code
         
         # any RadioGroup StringVar should be set
-        for gName,gValue in radio_group_D.items():
+        for gName,gValue in list(radio_group_D.items()):
             self.classInitL.append( '        self.%s.set("%s")\n'%(gName+ '_StringVar', gValue) )
             
             self.classInitL.append( '        self.%s_StringVar_traceName = self.%s_StringVar.trace_variable("w", self.%s_StringVar_Callback)\n'%\
@@ -211,7 +213,7 @@ class FormSource( object ):
                                                 defaultUserCodeL=c.get_user_part_of_trace_def() )
 
         # any RadioGroup StringVar need Callback method
-        for gName,gValue in radio_group_D.items():
+        for gName,gValue in list(radio_group_D.items()):
             mock_radio = CompSrcGen(gName, 'Radiobutton', guiType, 
                                     "Main",       1,  1,     {},     target_app=self.target_app)
         #                           widget_name, widget_type, guiType,  
@@ -366,6 +368,6 @@ if __name__ == '__main__':
     sf = FormSource( target_app, MockMainWin(), MockGridGUI() )
     sf.saveToFile()
     
-    print
+    print()
     #print( sf.topCode )
     #print( sf.endCode )

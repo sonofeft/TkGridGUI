@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
 # tk_happy generated code. DO NOT EDIT THE FOLLOWING. section top
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 import sys
 
 if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
     from tkSimpleDialog import Dialog
 else:
     from tkinter.simpledialog import Dialog
@@ -109,7 +111,7 @@ class Menumaker(_Dialog):
         #print( 'apply called in menu_maker_Dialog' )
         pass
 
-class _Testdialog:
+class _Testdialog(object):
     def __init__(self, master):
         frame = Frame(master, width=300, height=300)
         frame.pack()

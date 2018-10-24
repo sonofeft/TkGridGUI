@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
+from builtins import range
+from builtins import object
 import sys
 import os, stat
 
@@ -105,7 +108,7 @@ class SourceFile(object):
     def saveToFile(self, fOut=None):
         
         if fOut is None:
-            fOut = file( self.pathopen, 'w')
+            fOut = open( self.pathopen, 'w')
         
         # put shebang line for Linux and future line for python 2
         fOut.write('#!/usr/bin/env python\n# -*- coding: ascii -*-\nfrom __future__ import print_function\n\n')
@@ -118,7 +121,7 @@ class SourceFile(object):
         if fOut != sys.stdout:
             print( 'Saving python source to:',os.path.split(self.pathopen)[-1] )
         #print( 'SAVING to DEBUG file test_out.py' )
-        #fOut = file( 'test_out.py', 'w')
+        #fOut = open( 'test_out.py', 'w')
         for sectName in self.sectionNameList:
             self.sectionSrcD[sectName].saveToFile(fOut)
             
@@ -146,7 +149,7 @@ class SourceFile(object):
         
         # if source file already exists, read it an fill source sections
         if os.path.isfile( self.pathopen ): # if file exists, read it
-            fIn = file( self.pathopen,'r')
+            fIn = open( self.pathopen,'r')
             self.oldLines = fIn.readlines() # will still have \n line endings
             fIn.close()
         else:
@@ -180,7 +183,7 @@ class SourceFile(object):
                         activeSection.addGenCode( line )
 
     def clearGenCode(self):
-        for section, scode in self.sectionSrcD.items():
+        for section, scode in list(self.sectionSrcD.items()):
             scode.genCodeL = []
     
     def getCleanList(self, myList):
@@ -201,7 +204,7 @@ class SourceFile(object):
         
         #print('defaultUserCodeL = ',defaultUserCodeL)
         
-        if not self.sectionSrcD.has_key(sectionName):
+        if sectionName not in self.sectionSrcD:
             self.sectionSrcD[sectionName] = SourceSection( sectionName )
             
         if not allowUserCode:
@@ -231,7 +234,7 @@ if __name__ == '__main__':
     
     sf = SourceFile( os.path.normpath('./NewForm.py') )
     
-    for key,sect in sf.sectionSrcD.items():
+    for key,sect in list(sf.sectionSrcD.items()):
         sect.printSummary()
         print( sect.getUserCode() )
     

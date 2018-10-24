@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import range
+from builtins import object
 from tkgridgui.src_templates import legalPythonIdentifier, letters, digits
 sampleMenuStr='''
 File
@@ -271,7 +274,7 @@ Edit
         print(line, end='')
     print( '======================================================' )
     
-    #fOut = file('test.py','w')
+    #fOut = open('test.py','w')
     print( '''
 from Tkinter import *
 

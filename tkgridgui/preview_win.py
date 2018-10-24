@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
 """
 Provide a Toplevel window to display widgets as they will look 
 in the target application.
@@ -10,20 +13,13 @@ Apply any new attributes that come from an EditWin.
 """
 
 import sys
-
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    import tkMessageBox
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:
-    import tkinter.messagebox as tkMessageBox
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     
 from tkinter import *
+import tkinter.messagebox
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
 class PreviewWin( Toplevel ):
 
@@ -89,7 +85,7 @@ class PreviewWin( Toplevel ):
         """
         # should be the same as self.prevFrame.winfo_children()
 
-        for ij, child in self.widget_ijD.items():
+        for ij, child in list(self.widget_ijD.items()):
             child.destroy()
             
         for child in self.prevFrame.winfo_children():
@@ -234,7 +230,7 @@ class PreviewWin( Toplevel ):
         print( 'To Exit Applicaton, Use Main Window.' )
         self.MainWin.statusMessage.set('To Exit Applicaton, Use Main Window.')
     
-        tkMessageBox.showinfo(
+        tkinter.messagebox.showinfo(
             "Use Main Window to Exit",
             "\n\n"+\
             "Please Use Main Window to Exit\n")

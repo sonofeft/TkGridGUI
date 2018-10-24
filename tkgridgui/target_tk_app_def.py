@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import range
+from builtins import object
+from builtins import str
 """
 Define the target TK Application
 
@@ -16,19 +22,13 @@ import os
 import sys
 import binascii
 
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    import tkMessageBox
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:
-    import tkinter.messagebox as tkMessageBox
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     
 from tkinter import *
+import tkinter.messagebox
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
     
 from tkgridgui.edit_options import get_properties_dict, set_attribute_if_possible
 from tkgridgui.edit_Dialog import Edit_Properties_Dialog
@@ -72,7 +72,7 @@ def add_entry_to_weight_str( rc_inp, wt_inp, current_str):
         
     currentD[rc_inp] = wt_inp # may overwrite an existing value with 0
     
-    full_str = ' '.join( ['%s:%s'%(rc,wt) for rc,wt in currentD.items() if wt>0 ] )
+    full_str = ' '.join( ['%s:%s'%(rc,wt) for rc,wt in list(currentD.items()) if wt>0 ] )
     
     return full_str
 
@@ -230,9 +230,9 @@ class Component( object ):
             return '%12s: '%self.widget_type + values + ' :' + loc_str
         
         # ---------------------
-        from_ = self.user_tkOptionD.get('from_', '')
+        from_ = '%s'%self.user_tkOptionD.get('from_', '')
         if from_:
-            return '%12s: '%self.widget_type + from_ + ' to ' + self.user_tkOptionD.get('to', '') + ' :' + loc_str
+            return '%12s: '%self.widget_type + from_ + ' to ' + '%s'%self.user_tkOptionD.get('to', '') + ' :' + loc_str
 
         # ---------------------
         return '%12s: '%self.widget_type + loc_str
@@ -321,10 +321,10 @@ class Component( object ):
         
         # put all pw_widget properties into dialogOptionsD for editing
         dialogOptionsD = {}
-        for key,val in self.default_tkOptionD.items():
+        for key,val in list(self.default_tkOptionD.items()):
             dialogOptionsD[key] = (val, "def.")
             
-        for key,val in self.user_tkOptionD.items(): # user_tkOptionD holds tk options set by user. (i.e. not same as default_tkOptionD)
+        for key,val in list(self.user_tkOptionD.items()): # user_tkOptionD holds tk options set by user. (i.e. not same as default_tkOptionD)
             dialogOptionsD[key] = (val, "USER VALUE")
 
         dialogOptionsD['child_widget_list'] = self.target_app.get_names_of_containers_widgets( self.widget_name )
@@ -480,8 +480,8 @@ class TargetTkAppDef( object ):
         """Use a calculated cylic redundancy check (CRC) to detect changes to model."""
         sL = [] # will concatenate a list of strings for final calc.
         
-        for key in sorted(dir(self), key=str.lower):
-            if key.startswith('__') or key in ('PreviewWin','grid_notebook'):
+        for key in sorted(dir(self), key=lambda s: s.lower()):
+            if key.startswith('__') or key in ('PreviewWin','grid_notebook','crc_reference'):
                 pass
             else:
                 val = getattr(self, key)
@@ -489,10 +489,10 @@ class TargetTkAppDef( object ):
                     #print(key,'self crc')
                     sL.append( repr(val) )
                 
-        for widget_name in sorted(self.compObjD.keys(), key=str.lower):
+        for widget_name in sorted(list(self.compObjD.keys()), key=lambda s: s.lower()):
             c = self.compObjD[ widget_name ]
             
-            for key in sorted(dir(c), key=str.lower):
+            for key in sorted(dir(c), key=lambda s: s.lower()):
                 if key.startswith('__') or key in ('PreviewWin','grid_notebook'):
                     pass
                 else:
@@ -502,10 +502,10 @@ class TargetTkAppDef( object ):
                         sL.append( repr(val) )
         # create a single string 
         s = ''.join(sL)
-        if sys.version_info < (3,):
-            return binascii.crc32( s ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
-        else:
-            return binascii.crc32( binascii.a2b_qp(s) ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
+        #if sys.version_info < (3,):
+        return binascii.crc32( binascii.a2b_qp(s) ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
+        #else:
+        #    return binascii.crc32( binascii.a2b_qp(s) ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
     
     def change_notebook_tab_label(self, tab_name_inp,  tab_label_inp):
         notebook_name = self.tab_ownerD[ tab_name_inp ]
@@ -590,23 +590,23 @@ class TargetTkAppDef( object ):
         full_colD = {} # index=(tab_label,col_target), value=wt
         # first add Main entries
         rowD = make_weights_dict_from_str( self.app_attrD['row_weights'] )
-        for row,wt in rowD.items():
+        for row,wt in list(rowD.items()):
             full_rowD[ ("Main", row) ] = wt
         
         colD = make_weights_dict_from_str( self.app_attrD['col_weights'] )
-        for col,wt in colD.items():
+        for col,wt in list(colD.items()):
             full_colD[ ("Main", col) ] = wt
         
         #print("...NOTICE...Need to iterate container widgets and add weights")
-        for widget_name, c in self.compObjD.items():
+        for widget_name, c in list(self.compObjD.items()):
             if c.widget_type in ContainerControlsL:
                 
                 rowD = make_weights_dict_from_str( c.user_tkOptionD['row_weights'] )
-                for row,wt in rowD.items():
+                for row,wt in list(rowD.items()):
                     full_rowD[ (c.widget_name, row) ] = wt
                 
                 colD = make_weights_dict_from_str( c.user_tkOptionD['col_weights'] )
-                for col,wt in colD.items():
+                for col,wt in list(colD.items()):
                     full_colD[ (c.widget_name, col) ] = wt
         
         #print('full_rowD = ',full_rowD)
@@ -647,7 +647,7 @@ class TargetTkAppDef( object ):
             return
             
         ct = ComponentTree()
-        for widget_name, c in self.compObjD.items():
+        for widget_name, c in list(self.compObjD.items()):
             ct.add_node( CNode(widget_name, c.tab_label, c) )
         
         containerD = {"Main":self.PreviewWin.prevFrame} # index=tab_label: value=tk parent object
@@ -699,13 +699,13 @@ class TargetTkAppDef( object ):
             # rowD and colD: index=(tab_label,row_target), value=wt
             rowD, colD = self.get_a_full_desc_of_weights()
             
-            for (tab_label, row_target),wt in rowD.items():
+            for (tab_label, row_target),wt in list(rowD.items()):
                 parent = containerD.get( tab_label, None )
                 if parent is not None:
                     parent.rowconfigure(row_target, weight=wt)
         
             
-            for (tab_label, col_target),wt in colD.items():
+            for (tab_label, col_target),wt in list(colD.items()):
                 parent = containerD.get( tab_label, None )
                 if parent is not None:
                     parent.columnconfigure(col_target, weight=wt)
@@ -730,13 +730,13 @@ class TargetTkAppDef( object ):
     
     def destroy_all_preview_widgets(self):
         """destroy pw_widget if present"""
-        for c in self.compObjD.values():
+        for c in list(self.compObjD.values()):
             if c.pw_widget is not None:
                 c.destroy_preview_widget()
         #print( 'Destroyed all preview widgets' )
     
     def del_all_components(self):
-        for c in self.compObjD.values():
+        for c in list(self.compObjD.values()):
             c.destroy_preview_widget()
         self.compObjD = {}
         #print( 'Deleted all preview widgets' )
@@ -770,7 +770,7 @@ class TargetTkAppDef( object ):
                 if self.grid_notebook.dup_source_widget_name:
                     c_src = self.compObjD[ self.grid_notebook.dup_source_widget_name ]
                     
-                    for key,val in c_src.user_tkOptionD.items():
+                    for key,val in list(c_src.user_tkOptionD.items()):
                         # set all attr to source widget values, unless it's the dup_source_widget_name 
                         if val != self.grid_notebook.dup_source_widget_name:
                             c.user_tkOptionD[key] = val
@@ -820,7 +820,7 @@ class TargetTkAppDef( object ):
                 c_new = self.compObjD[ c.widget_name ]
                 #print('c_new =', c_new)
                 
-                for key, val in c.user_tkOptionD.items():
+                for key, val in list(c.user_tkOptionD.items()):
                     if key == 'tab_labels':
                         val = val.replace('\\n', '\n')
                         c_new.user_tkOptionD[key] = val
@@ -846,7 +846,7 @@ class TargetTkAppDef( object ):
         """Return a complete list of all components in add-order."""        
         
         ct = ComponentTree()
-        for widget_name, c in self.compObjD.items():
+        for widget_name, c in list(self.compObjD.items()):
             ct.add_node( CNode(widget_name, c.tab_label, c) )
                 
         cnodeL = ct.get_ordered_components()
@@ -860,7 +860,7 @@ class TargetTkAppDef( object ):
             return [] # if not a container, simply return an empty list.
         
         ct = ComponentTree()
-        for widget_name, c in self.compObjD.items():
+        for widget_name, c in list(self.compObjD.items()):
             ct.add_node( CNode(widget_name, c.tab_label, c) )
                 
         cnodeL = ct.get_ordered_components()
@@ -916,11 +916,11 @@ class TargetTkAppDef( object ):
                 #print()
                 
                 D = infoD[sec_name]
-                for key,val in D.items():
+                for key,val in list(D.items()):
                     D[key] = maybe_int( val )
                 
                 if sec_name=='app_attr':
-                    for key,val in D.items():
+                    for key,val in list(D.items()):
                         if key in ('menu', 'tablabels'):
                             val = val.replace('\\n', '\n')
                             val = val.replace('\\t', '  ')
@@ -935,7 +935,7 @@ class TargetTkAppDef( object ):
                                               tab_label=D['tab_label'], row=D['row'], col=D['col'])
                     
                     c = self.compObjD[ sec_name ]
-                    for key, val in D.items():
+                    for key, val in list(D.items()):
                         if key == 'tab_labels':
                             val = val.replace('\\n', '\n')
                             c.user_tkOptionD[key] = val
@@ -998,7 +998,7 @@ class TargetTkAppDef( object ):
                 # make an instance of ConfigInterface
                 cf = ConfigInterface( config_filename=fName )
                 
-                for key, val in self.app_attrD.items():
+                for key, val in list(self.app_attrD.items()):
                     if key == 'menu':
                         val = val.replace('\n','\\n')
                         val = val.replace('\t','\\t')
@@ -1014,7 +1014,7 @@ class TargetTkAppDef( object ):
                         cf.set(c.widget_name, a, getattr(c, a))
 
                     # save user_tkOptionD
-                    for a, val in c.user_tkOptionD.items():
+                    for a, val in list(c.user_tkOptionD.items()):
                         if a=='sticky': # only save sticky, if user input it.
                             if val:
                                 cf.set(c.widget_name, a, val)
@@ -1056,14 +1056,14 @@ if __name__ == "__main__":
                         row=1, col=2)
     #fd.saveAppDefFile()        
 
-    for obj in fd.compObjD.values():
+    for obj in list(fd.compObjD.values()):
         print( 'for "%s" object "%s"'%(obj.widget_name, obj.widget_type) )
         if obj.default_tkOptionD:
             print('...default properties')
-            for key,val in obj.default_tkOptionD.items():
+            for key,val in list(obj.default_tkOptionD.items()):
                 print( key,val )
         print('...user properties')
-        for key,val in obj.user_tkOptionD.items():
+        for key,val in list(obj.user_tkOptionD.items()):
             print( key,val )
         print()
 

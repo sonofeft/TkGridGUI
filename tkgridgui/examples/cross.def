@@ -1,0 +1,77 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = cross
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 78
+width = 345
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 55
+x = 1107
+hasstatusbar = no
+
+[Button_1]
+widget_type = Button
+tab_label = Main
+row = 2
+col = 1
+rowspan = 
+text = Button_1
+docstring = 
+width = 15
+columnspan = 
+
+[Button_2]
+widget_type = Button
+tab_label = Main
+row = 3
+col = 2
+rowspan = 
+text = Button_2
+docstring = 
+width = 15
+columnspan = 
+
+[Button_3]
+widget_type = Button
+tab_label = Main
+row = 4
+col = 3
+rowspan = 
+text = Button_3
+docstring = 
+width = 15
+columnspan = 
+
+[Entry_1]
+widget_type = Entry
+tab_label = Main
+row = 2
+col = 3
+rowspan = 
+text = Entry_1
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Entry_2]
+widget_type = Entry
+tab_label = Main
+row = 4
+col = 1
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+

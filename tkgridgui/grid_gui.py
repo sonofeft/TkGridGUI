@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import range
+from builtins import object
 r"""
 tkGridGUI builds a target python Tkinter GUI graphic user interface using 
 the grid geometry manager.
@@ -44,24 +50,18 @@ import sys
 from sys import platform
 
 if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    import tkFileDialog
-    import tkMessageBox
-    import tkColorChooser
     from tkSimpleDialog import Dialog
-    from ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 else:
-    import tkinter.filedialog as tkFileDialog
-    import tkinter.messagebox as tkMessageBox
-    import tkinter.colorchooser as tkColorChooser
     from tkinter.simpledialog import Dialog
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
 from tkinter import *
+import tkinter.messagebox
+import tkinter.filedialog
+import tkinter.colorchooser
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
 from tkgridgui.tkfontchooser import askfont
 
@@ -539,7 +539,7 @@ class GridGUI(object):
         if self.target_app.model_has_changed():
             dialog = maybe_save_dialog(self.MainWin, "Save Before Exit?")
             
-            if dialog.result['save_file'] == "yes":
+            if (dialog.result is not None) and ( dialog.result['save_file'] == "yes"):
                 self.saveasFile()
                 return
             else:
@@ -686,7 +686,7 @@ class GridGUI(object):
         
     def ColorPickButton_Select(self): #put selected color on clipboard
         self.set_status_msg('Place Selected Color on Clipboard')
-        ctup,cstr = tkColorChooser.askcolor(title='Place Selected Color on Clipboard')
+        ctup,cstr = tkinter.colorchooser.askcolor(title='Place Selected Color on Clipboard')
         if cstr != None:
             self.set_status_msg('%s is on Clipboard'%cstr)
             self.ColorPickButton.clipboard_clear()
@@ -741,12 +741,12 @@ Add Weight to row or column with "wt" control.
 Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
 """
         
-        tkMessageBox.showinfo(
+        tkinter.messagebox.showinfo(
             "Help for TkGridGUI",
             usage)
 
     def About(self):
-        tkMessageBox.showinfo(
+        tkinter.messagebox.showinfo(
             "About TkGridGUI",
             "TkGridGUI is:\n\n"+\
             "A quick approach to\n"+\
@@ -760,7 +760,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
         if self.target_app.model_has_changed():
             dialog = maybe_save_dialog(self.MainWin, "Save Current File?")
             
-            if dialog.result['save_file'] == "yes":
+            if (dialog.result is not None) and ( dialog.result['save_file'] == "yes" ):
                 self.saveasFile()
                 return
 
@@ -790,7 +790,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
         if self.target_app.model_has_changed():
             dialog = maybe_save_dialog(self.MainWin, "Save Current File?")
             
-            if dialog.result['save_file'] == "yes":
+            if (dialog.result is not None) and (dialog.result['save_file'] == "yes"):
                 self.saveasFile()
                 return
             else:
@@ -803,7 +803,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
             filetypes = [
                 ('tkGridGUI definition','*.def'),
                 ('Any File','*.*')]
-            self.pathopen = tkFileDialog.askopenfilename(parent=self.MainWin, title='Open tkGridGUI file', 
+            self.pathopen = tkinter.filedialog.askopenfilename(parent=self.MainWin, title='Open tkGridGUI file', 
                 filetypes=filetypes)
             #print('self.pathopen =',self.pathopen)
         else:
@@ -853,7 +853,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
             #for key,val in self.target_app.app_attrD.items():
             #    print('%20s %s'%(key, str(val).replace('\t','    ')))
             
-            widgetL = [(c.widget_type, widget_name, c.tab_label, c.row, c.col) for widget_name,c in self.target_app.compObjD.items()]
+            widgetL = [(c.widget_type, widget_name, c.tab_label, c.row, c.col) for widget_name,c in list(self.target_app.compObjD.items())]
             self.grid_notebook.set_complete_list_of_widgets( widgetL )
             
             if not self.PreviewWin:
@@ -916,7 +916,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
             fname = ''
                         
             
-        fsave = tkFileDialog.asksaveasfilename(parent=self.MainWin, title='Saving TkGridGUI Definition File', 
+        fsave = tkinter.filedialog.asksaveasfilename(parent=self.MainWin, title='Saving TkGridGUI Definition File', 
             initialfile=fname, filetypes=filetypes)
         
         if fsave:

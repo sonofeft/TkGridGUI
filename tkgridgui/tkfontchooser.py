@@ -16,16 +16,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import unicode_literals
 
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import range
 try:
     from tkinter import Toplevel, Listbox, StringVar, BooleanVar, TclError
     from tkinter.ttk import Checkbutton, Frame, Label, Button, Scrollbar, Style, Entry
     from tkinter.font import families, Font
 except ImportError:
-    from Tkinter import Toplevel, Listbox, StringVar, BooleanVar
-    from ttk import Checkbutton, Frame, Label, Button, Scrollbar, Style, Entry
-    from tkFont import families, Font
+    from tkinter import Toplevel, Listbox, StringVar, BooleanVar
+    from tkinter.ttk import Checkbutton, Frame, Label, Button, Scrollbar, Style, Entry
+    from tkinter.font import families, Font
 
 from locale import getdefaultlocale
 
@@ -474,7 +478,7 @@ if __name__ == "__main__":
     try:
         from tkinter import Tk
     except ImportError:
-        from Tkinter import Tk
+        from tkinter import Tk
     from sys import platform
 
     root = Tk()

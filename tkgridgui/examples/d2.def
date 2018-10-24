@@ -1,0 +1,43 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = yes
+add_menu_ctrl_keys = yes
+name = d2
+guitype = dialog
+hasstdalarm = yes
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = yes
+height = 200
+width = 300
+hasstddialcolor = yes
+col_weights = 
+row_weights = 
+hasstddialfile = yes
+y = 55
+x = 1107
+hasstatusbar = yes
+
+[Entry_1]
+widget_type = Entry
+tab_label = Main
+row = 1
+col = 2
+rowspan = 
+text = Entry_1
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Label_1]
+widget_type = Label
+tab_label = Main
+row = 1
+col = 1
+rowspan = 
+text = Label_1
+docstring = 
+width = 15
+columnspan = 
+

@@ -1,28 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import object
 import sys
 
 if sys.version_info < (3,):
     from future import standard_library
     standard_library.install_aliases()
-    import tkMessageBox
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     from tkSimpleDialog import Dialog
-    import tkColorChooser
-    from ttk import Combobox
 else:
-    import tkinter.messagebox as tkMessageBox
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     from tkinter.simpledialog import Dialog
-    import tkinter.colorchooser as tkColorChooser
-    from tkinter.ttk import Combobox
     
 from tkinter import *
+import tkinter.messagebox
+import tkinter.colorchooser
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
 
 from tkgridgui.tkfontchooser import askfont
@@ -131,7 +131,7 @@ class Edit_Properties_Dialog(_Dialog):
         
 
     def get_color(self, N):
-        ctup,cstr = tkColorChooser.askcolor(title='Selected Color')
+        ctup,cstr = tkinter.colorchooser.askcolor(title='Selected Color')
         if cstr:
             self.val_strvarL[N].set( cstr )
         
@@ -153,7 +153,7 @@ class Edit_Properties_Dialog(_Dialog):
                     sL.append( '%s\n'%name )
                 msg = msg + ''.join(sL)
             
-            really = tkMessageBox.askyesno( "Delete %s ?"%self.my_title, msg )
+            really = tkinter.messagebox.askyesno( "Delete %s ?"%self.my_title, msg )
             #print("really = ", really)
             if really:
                 self.result["DeleteWidget"] = "yes"
@@ -198,7 +198,7 @@ test_propsD = {"background"      : ("" ,"The background color"),
     "value"           : ("" ,"The initial value of the widget's variable"),
     "width"           : ("" ,"Width in pixels or characters")}
 
-class _Testdialog:
+class _Testdialog(object):
     def __init__(self, master):
         frame = Frame(master, width=300, height=300)
         frame.pack()

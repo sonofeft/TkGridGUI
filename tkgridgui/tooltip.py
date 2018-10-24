@@ -5,7 +5,9 @@
 gives a Tkinter widget a tooltip as the mouse is above the widget
 tested with Python27 and Python34  by  vegaseat  09sep2014
 '''
+from __future__ import unicode_literals
 
+from builtins import object
 import os
 import sys
 

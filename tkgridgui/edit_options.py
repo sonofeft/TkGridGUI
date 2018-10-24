@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from builtins import str
+from builtins import range
 from itertools import combinations
 """
 Collect the basic edit options for all widgets, including definitions

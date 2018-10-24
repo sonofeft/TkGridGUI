@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 """
 For PreviewWin encapsulate the standard widgets within a Frame
 since some situations require a compound object (e.g. scrolling)
@@ -12,20 +16,13 @@ and compound attributes can be handled properly.
 
 import os
 import sys
-
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    import tkMessageBox
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:
-    import tkinter.messagebox as tkMessageBox
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
     
 from tkinter import *
+import tkinter.messagebox
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
     
 from tkgridgui.edit_options import get_properties_dict, set_attribute_if_possible
 
@@ -73,7 +70,7 @@ class PW_Widget( object ):
     
     def keys(self):
         """Only get native_widget.keys()"""
-        return  self.native_widget.keys() # + self.cobj.user_tkOptionD.keys()
+        return  list(self.native_widget.keys()) # + self.cobj.user_tkOptionD.keys()
     
     def cget(self, name):
         return self.native_widget.cget( name )
@@ -405,7 +402,7 @@ class PW_Widget( object ):
         
         self.handle_scroll_logic()
         
-        for key, val in self.cobj.user_tkOptionD.items():
+        for key, val in list(self.cobj.user_tkOptionD.items()):
             if key == 'sticky':
                 # for sticky, need to set both pw_frame and native_widget
                 set_attribute_if_possible(self.pw_frame, key, val)
@@ -433,7 +430,7 @@ if __name__=="__main__":
         name = wtype + '_%i'%(i+1,  )
         return wtype, name
 
-    class TestPW:
+    class TestPW(object):
         def __init__(self, master):
             frame = Frame(master, width=300, height=300)
             frame.pack()

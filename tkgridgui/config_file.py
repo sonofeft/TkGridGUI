@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
 from __future__ import print_function
+from __future__ import unicode_literals
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import range
+from builtins import object
+from builtins import str
 
 r"""
 ConfigFile wraps a configparser file as an in-memory container with a few

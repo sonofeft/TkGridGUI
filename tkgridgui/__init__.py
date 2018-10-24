@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import os
 
 here = os.path.abspath(os.path.dirname(__file__))
