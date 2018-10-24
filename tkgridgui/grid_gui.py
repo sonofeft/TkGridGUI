@@ -63,17 +63,17 @@ from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 
-from tkfontchooser import askfont
+from tkgridgui.tkfontchooser import askfont
 
-from grid_notebook import NotebookGridDes, CONTROLS, ContainerControlsL, CONTROL_NEXT_NUMBER_D, CONTROL_COLOR_D
-from target_tk_app_def import TargetTkAppDef # used to read and save App Definition
-from preview_win import PreviewWin
+from tkgridgui.grid_notebook import NotebookGridDes, CONTROLS, ContainerControlsL, CONTROL_NEXT_NUMBER_D, CONTROL_COLOR_D
+from tkgridgui.target_tk_app_def import TargetTkAppDef # used to read and save App Definition
+from tkgridgui.preview_win import PreviewWin
 
-from menu_maker_Dialog import Menumaker
-from make_py_src import FormSource
-from make_menu_src import buildMenuSource, getMenuSource
+from tkgridgui.menu_maker_Dialog import Menumaker
+from tkgridgui.make_py_src import FormSource
+from tkgridgui.make_menu_src import buildMenuSource, getMenuSource
 
-from maybe_save_Dialog import maybe_save_dialog
+from tkgridgui.maybe_save_Dialog import maybe_save_dialog
 
 class GridGUI(object):
     """

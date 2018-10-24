@@ -15,8 +15,10 @@ if sys.version_info < (3,):
     from future import standard_library
     standard_library.install_aliases()
     from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
+    from tkSimpleDialog import Dialog
 else:
     from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
+    from tkinter.simpledialog import Dialog
 
 from tkinter import *
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
@@ -29,8 +31,6 @@ from tkinter import _setit as set_command
 # Place any user import statements here
 
 # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "top_of_init"
-
-from tkSimpleDialog import Dialog
 
 class _Dialog(Dialog):
     # use dialogOptions dictionary to set any values in the dialog

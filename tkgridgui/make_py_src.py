@@ -2,12 +2,12 @@
 # -*- coding: ascii -*-
 from __future__ import print_function
 
-from src_templates import *
-import SourceCode
-import make_menu_src
-#from src_templates import legalPythonIdentifier
-from comp_tree import CNode, ComponentTree
-from component_src_gen import CompSrcGen
+from tkgridgui.src_templates import *
+import tkgridgui.SourceCode as SourceCode
+import tkgridgui.make_menu_src as make_menu_src
+#from tkgridgui.src_templates import legalPythonIdentifier
+from tkgridgui.comp_tree import CNode, ComponentTree
+from tkgridgui.component_src_gen import CompSrcGen
 
 class FormSource( object ):
     
@@ -318,7 +318,7 @@ class FormSource( object ):
 
 if __name__ == '__main__':
     import os
-    from target_tk_app_def import TargetTkAppDef
+    from tkgridgui.target_tk_app_def import TargetTkAppDef
     
     target_app = TargetTkAppDef( 'myTestApp' )
     

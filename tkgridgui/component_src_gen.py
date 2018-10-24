@@ -2,7 +2,7 @@
 # -*- coding: ascii -*-
 from __future__ import print_function
 
-from src_templates import createWidget, gridWidget, makeStringVar, \
+from tkgridgui.src_templates import createWidget, gridWidget, makeStringVar, \
                           makeOptionString, traceStringVar, bindWidget
 
 create_callD = {} # index=widget_type: value=Tk call
@@ -444,9 +444,9 @@ class CompSrcGen( object ):
 
 if __name__ == '__main__':
     import sys
-    from target_tk_app_def import TargetTkAppDef
-    from src_templates import beginSourceFile, get_top_imports, endSourceFile
-    import SourceCode
+    from tkgridgui.target_tk_app_def import TargetTkAppDef
+    from tkgridgui.src_templates import beginSourceFile, get_top_imports, endSourceFile
+    import tkgridgui.SourceCode as SourceCode
     sourceFile = SourceCode.SourceFile( 'component_src_gen_test.py' )
     
     tkOptionD = {}

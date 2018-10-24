@@ -2,7 +2,7 @@
 # -*- coding: ascii -*-
 from __future__ import print_function
 
-from src_templates import legalPythonIdentifier, letters, digits
+from tkgridgui.src_templates import legalPythonIdentifier, letters, digits
 sampleMenuStr='''
 File
     New

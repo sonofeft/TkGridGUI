@@ -27,12 +27,12 @@ from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
     
-from edit_options import get_properties_dict, set_attribute_if_possible
+from tkgridgui.edit_options import get_properties_dict, set_attribute_if_possible
 
-from grid_notebook import intCast, CONTROL_COLOR_D
-from config_file import ConfigInterface
+from tkgridgui.grid_notebook import intCast, CONTROL_COLOR_D
+from tkgridgui.config_file import ConfigInterface
 
-from tooltip import CreateToolTip
+from tkgridgui.tooltip import CreateToolTip
 
 # see: http://effbot.org/zone/tkinter-scrollbar-patterns.htm
 SCROLL_Y_WIDGETS = set(['Canvas','Listbox','Text','Treeview']) # Treeview has .xview() and .yview() methods
@@ -422,8 +422,8 @@ PW_FRAME_ATTR = ['rowspan','columnspan','sticky']
 
 if __name__=="__main__":
     
-    from preview_win import PreviewWin
-    from target_tk_app_def import Component
+    from tkgridgui.preview_win import PreviewWin
+    from tkgridgui.target_tk_app_def import Component
     
     
     widgetL = sorted( tkWidgetsD.keys() )

@@ -25,8 +25,8 @@ from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 
 
-from tkfontchooser import askfont
-from edit_options import WidgetPropertyDefinitionsD, get_definition_optionsL
+from tkgridgui.tkfontchooser import askfont
+from tkgridgui.edit_options import WidgetPropertyDefinitionsD, get_definition_optionsL
 
 class _Dialog(Dialog):
     # use dialogOptionsD dictionary to set any values in the dialog

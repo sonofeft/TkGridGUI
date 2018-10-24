@@ -1,4 +1,6 @@
 
+*) Linux "pip install configparser"
+
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)
 

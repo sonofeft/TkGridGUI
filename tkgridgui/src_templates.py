@@ -88,7 +88,10 @@ sHideOkBtn = '''
 '''
 
 sInitDialog = '''
-from tkSimpleDialog import Dialog
+if sys.version_info < (3,):
+    from tkSimpleDialog import Dialog
+else:
+    from tkinter.simpledialog import Dialog
 
 class _Dialog(Dialog):
     # use dialogOptions dictionary to set any values in the dialog

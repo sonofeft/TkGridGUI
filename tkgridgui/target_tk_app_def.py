@@ -30,13 +30,13 @@ from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
     
-from edit_options import get_properties_dict, set_attribute_if_possible
-from edit_Dialog import Edit_Properties_Dialog
+from tkgridgui.edit_options import get_properties_dict, set_attribute_if_possible
+from tkgridgui.edit_Dialog import Edit_Properties_Dialog
 
-from grid_notebook import ContainerControlsL, intCast
-from config_file import ConfigInterface
-from comp_tree import CNode, ComponentTree
-from preview_win_widgets import PW_Widget, SCROLL_Y_WIDGETS, SCROLL_X_WIDGETS, tkWidgetsD
+from tkgridgui.grid_notebook import ContainerControlsL, intCast
+from tkgridgui.config_file import ConfigInterface
+from tkgridgui.comp_tree import CNode, ComponentTree
+from tkgridgui.preview_win_widgets import PW_Widget, SCROLL_Y_WIDGETS, SCROLL_X_WIDGETS, tkWidgetsD
 
 # the "width" property of these widgets refers to character width.
 TEXT_WIDTH_WIDGETS = set(['Button','Checkbutton','Combobox','Entry','Label',  #'Listbox',
@@ -485,7 +485,7 @@ class TargetTkAppDef( object ):
                 pass
             else:
                 val = getattr(self, key)
-                if type(val) in (int, dict, list, float, str, NoneType):
+                if type(val) in (int, dict, list, float, str, type(None)):
                     #print(key,'self crc')
                     sL.append( repr(val) )
                 
@@ -497,12 +497,15 @@ class TargetTkAppDef( object ):
                     pass
                 else:
                     val = getattr(c, key)
-                    if type(val) in (int, dict, list, float, str, NoneType):
+                    if type(val) in (int, dict, list, float, str, type(None)):
                         #print(key,'c crc')
                         sL.append( repr(val) )
         # create a single string 
         s = ''.join(sL)
-        return binascii.crc32( s ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
+        if sys.version_info < (3,):
+            return binascii.crc32( s ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
+        else:
+            return binascii.crc32( binascii.a2b_qp(s) ) & 0xffffffff # to get same value for all python platforms, use & 0xffffffff
     
     def change_notebook_tab_label(self, tab_name_inp,  tab_label_inp):
         notebook_name = self.tab_ownerD[ tab_name_inp ]

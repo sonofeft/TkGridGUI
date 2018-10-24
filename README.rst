@@ -23,7 +23,9 @@ See the Docs at: `<http://tkgridgui.readthedocs.org/en/latest/>`_
 
 See PyPI page at:`<https://pypi.python.org/pypi/tkgridgui>`_
 
+.. warning::
 
+  Still working out the multi-platform bugs.
 
 Create a fully "wired" python Tkinter GUI application in minutes with TkGridGUI.
 

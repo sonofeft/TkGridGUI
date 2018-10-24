@@ -30,7 +30,11 @@ from tkinter import _setit as set_command
 
 # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "top_of_init"
 
-from tkSimpleDialog import Dialog
+if sys.version_info < (3,):
+    from tkSimpleDialog import Dialog
+else:
+    from tkinter.simpledialog import Dialog
+
 
 class _Dialog(Dialog):
     # use dialogOptions dictionary to set any values in the dialog

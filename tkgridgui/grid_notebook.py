@@ -28,9 +28,9 @@ from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 
-from edit_Dialog import Edit_Properties_Dialog
-from wt_select_Dialog import Wt_Select_Dialog
-from comp_tree import CNode, ComponentTree
+from tkgridgui.edit_Dialog import Edit_Properties_Dialog
+from tkgridgui.wt_select_Dialog import Wt_Select_Dialog
+from tkgridgui.comp_tree import CNode, ComponentTree
 
 supportedTkWidgetSet = set( ['Button', 'Canvas', 'Checkbutton', 
     'Combobox', 'Entry', 'Frame','Label', 'LabelFrame','Listbox', 'Message', 
@@ -1417,8 +1417,8 @@ class NotebookGridDes( Frame ):
         
 if __name__ == '__main__':
     
-    from target_tk_app_def import TargetTkAppDef
-    from preview_win import PreviewWin
+    from tkgridgui.target_tk_app_def import TargetTkAppDef
+    from tkgridgui.preview_win import PreviewWin
     
     class MockGridGUI(object):
         def __init__(self, MainWin):
