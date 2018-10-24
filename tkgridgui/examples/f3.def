@@ -1,0 +1,183 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = f3
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 150
+width = 328
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 221
+x = 1101
+hasstatusbar = no
+
+[Button_3]
+widget_type = Button
+tab_label = Main
+row = 1
+col = 1
+rowspan = 
+text = Button_3
+docstring = 
+width = 15
+columnspan = 
+
+[Button_4]
+widget_type = Button
+tab_label = Main
+row = 2
+col = 1
+rowspan = 
+text = Button_4
+docstring = 
+width = 15
+columnspan = 
+
+[Checkbutton_1]
+widget_type = Checkbutton
+tab_label = Frame_1
+row = 1
+col = 1
+rowspan = 
+text = Checkbutton_1
+docstring = 
+width = 15
+columnspan = 
+
+[Checkbutton_2]
+widget_type = Checkbutton
+tab_label = Frame_1
+row = 2
+col = 1
+rowspan = 
+text = Checkbutton_2
+docstring = 
+width = 15
+columnspan = 
+
+[Checkbutton_3]
+widget_type = Checkbutton
+tab_label = Frame_1
+row = 3
+col = 1
+rowspan = 
+text = Checkbutton_3
+docstring = 
+width = 15
+columnspan = 
+
+[Entry_1]
+widget_type = Entry
+tab_label = Frame_2
+row = 1
+col = 1
+rowspan = 
+text = Entry_1
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Entry_2]
+widget_type = Entry
+tab_label = Frame_2
+row = 2
+col = 1
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Entry_3]
+widget_type = Entry
+tab_label = Frame_2
+row = 3
+col = 1
+rowspan = 
+text = Entry_3
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Frame_1]
+widget_type = Frame
+tab_label = Main
+row = 2
+col = 2
+rowspan = 
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Frame_2]
+widget_type = Frame
+tab_label = Main
+row = 1
+col = 2
+rowspan = 
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Frame_3]
+widget_type = Frame
+tab_label = Frame_2
+row = 1
+col = 2
+rowspan = 3
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Label_1]
+widget_type = Label
+tab_label = Frame_3
+row = 1
+col = 2
+rowspan = 
+text = Label_1
+docstring = 
+width = 15
+columnspan = 
+
+[Label_2]
+widget_type = Label
+tab_label = Frame_3
+row = 2
+col = 2
+rowspan = 
+text = Label_2
+docstring = 
+width = 15
+columnspan = 
+
+[Label_3]
+widget_type = Label
+tab_label = Frame_3
+row = 3
+col = 2
+rowspan = 
+text = Label_3
+docstring = 
+width = 15
+columnspan = 
+

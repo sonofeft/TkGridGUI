@@ -1,0 +1,122 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = nb
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 378
+width = 519
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 35
+x = 1107
+hasstatusbar = no
+
+[Button_1]
+widget_type = Button
+tab_label = Main
+row = 0
+col = 0
+rowspan = 
+text = Fire
+docstring = 
+width = 15
+columnspan = 
+
+[Button_2]
+widget_type = Button
+tab_label = Main
+row = 3
+col = 0
+rowspan = 
+text = Button_2
+docstring = Special Click
+width = 15
+columnspan = 
+
+[Button_3]
+widget_type = Button
+tab_label = Tab_1
+row = 3
+col = 1
+rowspan = 
+text = Lots of Action
+docstring = 
+width = 15
+columnspan = 
+
+[Button_4]
+widget_type = Button
+tab_label = Tab_1
+row = 2
+col = 2
+rowspan = 
+text = Button_4
+docstring = This is a last ditch effort at saving Tab 1
+width = 15
+columnspan = 
+
+[Entry_1]
+widget_type = Entry
+tab_label = Tab_2
+row = 2
+col = 1
+rowspan = 
+text = Entry_1
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Entry_2]
+widget_type = Entry
+tab_label = Tab_2
+row = 1
+col = 2
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Notebook_1]
+widget_type = Notebook
+tab_label = Main
+row = 1
+col = 1
+rowspan = 2
+tab_labels = Tab_1\nTab_2
+docstring = 
+row_weights = 
+width = 400
+col_weights = 
+columnspan = 
+height = 300
+
+[Tab_1]
+widget_type = Tab
+tab_label = Notebook_1
+row = 1
+col = 1
+text = Tab_1
+col_weights = 
+docstring = Button Tab
+row_weights = 
+
+[Tab_2]
+widget_type = Tab
+tab_label = Notebook_1
+row = 1
+col = 2
+text = Tab_2
+col_weights = 
+docstring = Entry Tab
+row_weights = 
+

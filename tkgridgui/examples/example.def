@@ -1,0 +1,88 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = example
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = yes
+height = 151
+width = 425
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 55
+x = 1107
+hasstatusbar = yes
+
+[Button_1]
+widget_type = Button
+tab_label = Main
+row = 2
+col = 1
+rowspan = 
+text = Push Me
+docstring = 
+width = 15
+columnspan = 
+
+[Button_2]
+widget_type = Button
+tab_label = Main
+row = 3
+col = 1
+rowspan = 
+text = Say Hello
+docstring = 
+width = 15
+columnspan = 
+
+[Entry_1]
+widget_type = Entry
+tab_label = Main
+row = 4
+col = 2
+rowspan = 
+text = Entry_1
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Entry_2]
+widget_type = Entry
+tab_label = Main
+row = 5
+col = 2
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Label_1]
+widget_type = Label
+tab_label = Main
+row = 6
+col = 3
+rowspan = 
+text = My dog has fleas
+docstring = 
+width = 15
+columnspan = 
+
+[Label_2]
+widget_type = Label
+tab_label = Main
+row = 7
+col = 3
+rowspan = 
+text = Now is not the time for barking
+docstring = 
+width = 30
+columnspan = 
+
