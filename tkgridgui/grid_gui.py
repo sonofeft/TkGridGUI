@@ -119,7 +119,7 @@ class GridGUI(object):
         frame2.pack(anchor=N, side=LEFT)
 
         self.grid_frame = Frame(topFrame) 
-        self.grid_notebook = NotebookGridDes(self, self.grid_frame, MainWin, num_cols=6, num_rows=10)
+        self.grid_notebook = NotebookGridDes(self, self.grid_frame, MainWin, num_cols=5, num_rows=8)
         self.grid_frame.pack(anchor=N, side=LEFT)
                 
         topFrame.pack(fill=BOTH, expand=Y)
@@ -160,6 +160,15 @@ class GridGUI(object):
                 
         self.grid_notebook.notebook.bind("<<NotebookTabChanged>>", self.tab_of_notebook_changed)
 
+        self.mouse_location = ''
+        self.MainWin.bind("<Enter>", self.onMainWindowEnter)
+
+    def onMainWindowEnter(self, event):
+        """Only track Enter... Want last known location."""
+        #if self.mouse_location != 'main_window':
+        #    print('mouse_location = main_window')
+        self.mouse_location = 'main_window'
+
     def refresh_preview_win(self, allow_destroy_children=True):
         """
         Place all of the widgets from grid_notebook onto PreviewWin.
@@ -167,7 +176,7 @@ class GridGUI(object):
         """
             
         if self.PreviewWin is None:
-            self.PreviewWin = PreviewWin( self.MainWin )
+            self.PreviewWin = PreviewWin( self.MainWin, grid_gui=self )
             self.target_app.set_PreviewWin( self.PreviewWin )
             self.target_app.set_Notebook( self.grid_notebook )
         else:
@@ -471,7 +480,7 @@ class GridGUI(object):
         self.Listbox_1_Click( None ) # event is not used in Listbox_1_Click
 
     def select_preview_tab(self, tab_name_inp):
-            
+        
         if not self.PreviewWin:
             self.refresh_preview_win() # make PreviewWin if not already done.
             
@@ -487,6 +496,10 @@ class GridGUI(object):
                 break
 
     def tab_of_notebook_changed(self, event):
+        
+        if self.mouse_location == 'preview_win':
+            return
+        
         nb = self.grid_notebook.notebook
         #i = nb.index(nb.select())
         text = nb.tab(nb.select(), "text")
@@ -510,8 +523,17 @@ class GridGUI(object):
             self.restore_black_listbox()
 
         # Cause PreviewWin to switch to same Tab
-        if text.startswith('Tab_'):
-            self.select_preview_tab( text ) # text is tab_name            
+        #if text.startswith('Tab_'):
+        #    self.select_preview_tab( text ) # text is tab_name
+                
+        if text in self.target_app.compObjD:
+            w = self.target_app.compObjD[ text ]
+            treeL = w.get_tab_label_tree()
+            #print('New widget tab_label_tree =', treeL )
+            for name in treeL:
+                if name.startswith('Tab_'):
+                    self.select_preview_tab( name ) # text is tab_name
+            
             
 
     def place_widget_selection_listbox(self, frame1):

@@ -1,67 +1,52 @@
 [app_attr]
 hideokbutton = no
 hasstddialmess = no
-add_menu_ctrl_keys = yes
-name = sb
+name = tree
 guitype = main
 hasstdalarm = no
 menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
 resizable = yes
 hasmenu = no
-height = 200
-width = 300
+height = 253
+width = 318
 hasstddialcolor = no
 col_weights = 
 row_weights = 
 hasstddialfile = no
-y = 55
-x = 1107
+y = 221
+x = 1101
 hasstatusbar = no
 
 [Button_1]
 widget_type = Button
 tab_label = Main
 row = 2
-col = 1
+col = 2
 rowspan = 
-text = Button_1
+text = Take Me
 docstring = 
 width = 15
 columnspan = 
 
-[Entry_1]
-widget_type = Entry
+[Button_2]
+widget_type = Button
 tab_label = Main
 row = 2
+col = 3
+rowspan = 
+text = Button_2
+docstring = 
+width = 15
+columnspan = 
+
+[Treeview_1]
+widget_type = Treeview
+tab_label = Main
+row = 3
 col = 2
 rowspan = 
-text = Entry_1
-docstring = 
+docstring = Family tree
 scrollx = no
-width = 15
+scrolly = no
 columnspan = 
-
-[Label_1]
-widget_type = Label
-tab_label = Main
-row = 4
-col = 1
-rowspan = 
-text = Label_1
-docstring = 
-width = 15
-columnspan = 
-
-[Spinbox_1]
-widget_type = Spinbox
-tab_label = Main
-row = 4
-col = 2
-rowspan = 
-width = 15
-text = Spinbox_1
-docstring = 
-to = 10
-columnspan = 
-from_ = 1
 

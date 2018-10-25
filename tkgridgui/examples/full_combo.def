@@ -1,0 +1,359 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = full_combo
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 326
+width = 519
+hasstddialcolor = no
+col_weights = 2:1
+row_weights = 1:1
+hasstddialfile = no
+y = 71
+x = 1005
+hasstatusbar = no
+
+[Button_1]
+widget_type = Button
+tab_label = Main
+row = 1
+col = 1
+rowspan = 
+text = Button_1
+docstring = 
+sticky = s
+width = 15
+columnspan = 
+
+[Button_2]
+widget_type = Button
+tab_label = Tab_3
+row = 3
+col = 1
+rowspan = 
+text = Button_2
+docstring = 
+width = 15
+columnspan = 
+
+[Canvas_1]
+widget_type = Canvas
+tab_label = Tab_1
+row = 1
+col = 3
+rowspan = 
+docstring = 
+scrollx = no
+scrolly = no
+height = 50
+width = 60
+columnspan = 
+sticky = nsew
+
+[Checkbutton_2]
+widget_type = Checkbutton
+tab_label = Frame_1
+row = 1
+col = 1
+rowspan = 
+text = Checkbutton_2
+docstring = 
+width = 15
+columnspan = 
+
+[Combobox_2]
+widget_type = Combobox
+tab_label = Frame_1
+row = 2
+col = 1
+rowspan = 
+text = Combobox_2
+docstring = 
+width = 15
+values = Mine Yours Ours
+columnspan = 
+
+[Entry_2]
+widget_type = Entry
+tab_label = Frame_1
+row = 3
+col = 1
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+width = 15
+columnspan = 
+
+[Frame_1]
+widget_type = Frame
+tab_label = Tab_1
+row = 1
+col = 2
+rowspan = 
+docstring = 
+row_weights = 
+sticky = n
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[LabelFrame_1]
+widget_type = LabelFrame
+tab_label = Tab_2
+row = 1
+col = 1
+rowspan = 
+text = Left
+docstring = 
+row_weights = 
+sticky = nsew
+width = 60
+col_weights = 1:1
+columnspan = 
+height = 50
+
+[LabelFrame_2]
+widget_type = LabelFrame
+tab_label = Tab_2
+row = 1
+col = 2
+rowspan = 
+text = Right
+docstring = 
+row_weights = 
+sticky = nsew
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Listbox_1]
+widget_type = Listbox
+tab_label = LabelFrame_1
+row = 1
+col = 1
+rowspan = 
+docstring = 
+scrollx = no
+scrolly = no
+height = 12
+width = 30
+columnspan = 
+
+[Menubutton_1]
+widget_type = Menubutton
+tab_label = LabelFrame_2
+row = 1
+col = 1
+rowspan = 
+text = Menubutton_1
+docstring = 
+width = 15
+columnspan = 
+
+[Message_1]
+widget_type = Message
+tab_label = LabelFrame_1
+row = 2
+col = 1
+rowspan = 
+text = Message_1
+docstring = 
+sticky = ew
+width = 55
+columnspan = 
+
+[Notebook_1]
+widget_type = Notebook
+tab_label = Main
+row = 1
+col = 2
+rowspan = 
+tab_labels = Small\nMedium\nLarge
+docstring = 
+row_weights = 
+sticky = nsew
+width = 400
+col_weights = 
+columnspan = 
+height = 300
+
+[Notebook_2]
+widget_type = Notebook
+tab_label = LabelFrame_2
+row = 2
+col = 1
+rowspan = 
+tab_labels = Tab_4\nTab_5
+docstring = 
+row_weights = 
+width = 400
+col_weights = 
+columnspan = 
+height = 300
+
+[RadioGroup_1]
+widget_type = RadioGroup
+tab_label = Tab_4
+row = 1
+col = 1
+rowspan = 
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Radiobutton_1]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 2
+col = 1
+rowspan = 
+text = Radiobutton_1
+docstring = 
+value = 1
+width = 15
+columnspan = 
+
+[Radiobutton_2]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 3
+col = 1
+rowspan = 
+text = Radiobutton_2
+docstring = 
+value = 2
+width = 15
+columnspan = 
+
+[Radiobutton_3]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 4
+col = 1
+rowspan = 
+text = Radiobutton_3
+docstring = 
+value = 3
+width = 15
+columnspan = 
+
+[Radiobutton_4]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 5
+col = 1
+rowspan = 
+text = Radiobutton_4
+docstring = 
+value = 4
+width = 15
+columnspan = 
+
+[Scale_1]
+widget_type = Scale
+tab_label = Tab_5
+row = 2
+col = 1
+columnspan = 
+rowspan = 
+docstring = 
+
+[Spinbox_1]
+widget_type = Spinbox
+tab_label = Tab_5
+row = 3
+col = 1
+rowspan = 
+width = 15
+text = Spinbox_1
+docstring = 
+to = 10
+columnspan = 
+from_ = 1
+
+[Tab_1]
+widget_type = Tab
+tab_label = Notebook_1
+row = 1
+col = 1
+text = Small
+col_weights = 3:1
+docstring = 
+row_weights = 1:1
+
+[Tab_2]
+widget_type = Tab
+tab_label = Notebook_1
+row = 1
+col = 2
+text = Medium
+col_weights = 1:1 2:1
+docstring = 
+row_weights = 1:1
+
+[Tab_3]
+widget_type = Tab
+tab_label = Notebook_1
+row = 1
+col = 3
+text = Large
+col_weights = 
+docstring = 
+row_weights = 
+
+[Tab_4]
+widget_type = Tab
+tab_label = Notebook_2
+row = 1
+col = 1
+text = Tab_4
+col_weights = 
+docstring = 
+row_weights = 
+
+[Tab_5]
+widget_type = Tab
+tab_label = Notebook_2
+row = 1
+col = 2
+text = Tab_5
+col_weights = 
+docstring = 
+row_weights = 
+
+[Text_1]
+widget_type = Text
+tab_label = Tab_3
+row = 2
+col = 1
+rowspan = 
+text = Text_1
+docstring = 
+scrollx = no
+scrolly = yes
+height = 12
+width = 40
+columnspan = 
+
+[Treeview_1]
+widget_type = Treeview
+tab_label = Tab_3
+row = 2
+col = 2
+rowspan = 
+docstring = 
+scrollx = no
+scrolly = no
+columnspan = 
+

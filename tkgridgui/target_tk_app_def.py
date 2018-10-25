@@ -222,12 +222,12 @@ class Component( object ):
         # ---------------------
         value = self.user_tkOptionD.get('value', '')
         if value:
-            return '%12s: '%self.widget_type + value + ' :' + loc_str
+            return '%12s: '%self.widget_type + '%s'%value + ' :' + loc_str
         
         # ---------------------
         values = self.user_tkOptionD.get('values', '')
         if values:
-            return '%12s: '%self.widget_type + values + ' :' + loc_str
+            return '%12s: '%self.widget_type + '%s'%values + ' :' + loc_str
         
         # ---------------------
         from_ = '%s'%self.user_tkOptionD.get('from_', '')
@@ -244,7 +244,7 @@ class Component( object ):
             nb_obj = self.target_app.compObjD[ notebook_name ]
             if nb_obj.pw_widget is not None:
                 nb_obj.pw_widget.pw_highlight_widget()
-                
+                print('target_app calling select_preview_tab with widget_name =', self.widget_name)
                 self.target_app.grid_notebook.grid_gui.select_preview_tab( self.widget_name )
         
         elif self.pw_widget is not None:
@@ -436,6 +436,18 @@ class Component( object ):
     def set_a_col_weight(self, col_inp, wt_inp):
         """container objects might have weights on rows and columns"""
         self.user_tkOptionD['col_weights'] = add_entry_to_weight_str( col_inp, wt_inp, self.user_tkOptionD['col_weights'])
+
+    def get_tab_label_tree(self):
+        """Return a list of parents to this Component """
+        
+        treeL = [self.widget_name]
+        
+        c = self
+        while c.tab_label in self.target_app.compObjD:
+            treeL.append( c.tab_label )
+            c = self.target_app.compObjD[ c.tab_label ]
+            
+        return treeL
 
 class TargetTkAppDef( object ):
         

@@ -31,18 +31,25 @@ class CreateToolTip(object):
         
     def enter(self, event=None):
         x = y = 0
-        x, y, cx, cy = self.widget.bbox("insert")
-        x += self.widget.winfo_rootx() + 40
-        y += self.widget.winfo_rooty() - 24
-        # creates a toplevel window
-        self.tw = Toplevel(self.widget)
-        # Leaves only the label and removes the app window
-        self.tw.wm_overrideredirect(True)
-        self.tw.wm_geometry("+%d+%d" % (x, y))
-        label = Label(self.tw, text=self.text, justify='left',
-                       background=self.background, relief='solid', borderwidth=1,
-                       font=("times", "12", "normal"))
-        label.pack(ipadx=1)
+        
+        try:
+            x_y_cx_cy = self.widget.bbox("insert")
+        except:
+            x_y_cx_cy = None
+        
+        if x_y_cx_cy is not None:
+            x, y, cx, cy = self.widget.bbox("insert")
+            x += self.widget.winfo_rootx() + 40
+            y += self.widget.winfo_rooty() - 24
+            # creates a toplevel window
+            self.tw = Toplevel(self.widget)
+            # Leaves only the label and removes the app window
+            self.tw.wm_overrideredirect(True)
+            self.tw.wm_geometry("+%d+%d" % (x, y))
+            label = Label(self.tw, text=self.text, justify='left',
+                           background=self.background, relief='solid', borderwidth=1,
+                           font=("times", "12", "normal"))
+            label.pack(ipadx=1)
         
     def close(self, event=None):
         if self.tw:

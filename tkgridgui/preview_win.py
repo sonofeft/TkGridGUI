@@ -24,12 +24,13 @@ from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Noteb
 class PreviewWin( Toplevel ):
 
 
-    def __init__(self, MainWin):
+    def __init__(self, MainWin, grid_gui=None):
         
         Toplevel.__init__(self, MainWin)#, bg='#ADD8E6') #'lightblue': '#ADD8E6',
         self.title('Preview Window')
         
         self.MainWin = MainWin
+        self.grid_gui = grid_gui
         
         self.widget_ijD = {} # index=(i,j) grid position: value=widget
         
@@ -78,6 +79,14 @@ class PreviewWin( Toplevel ):
     #    # position over to the upper right
     #    self.geometry( '+%i+%i'%(x,y))
     
+        self.bind("<Enter>", self.onPreviewWindowEnter)
+
+    def onPreviewWindowEnter(self, event):
+        """Only track Enter... Want last known location."""
+        #if self.grid_gui.mouse_location != 'preview_window':
+        #    print('mouse_location = preview_window')
+        self.grid_gui.mouse_location = 'preview_window'
+
     def destroy_all_children(self):
         """
         Delete all widgets directly attached to prevFrame.

@@ -1,0 +1,119 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = buttons
+guitype = main
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 208
+width = 805
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 151
+x = 1129
+hasstatusbar = no
+
+[Button_10]
+widget_type = Button
+tab_label = Main
+row = 7
+col = 1
+rowspan = 
+text = Button_10
+docstring = 
+width = 15
+columnspan = 
+
+[Button_11]
+widget_type = Button
+tab_label = Main
+row = 0
+col = 6
+rowspan = 
+text = Button_11
+docstring = 
+width = 15
+columnspan = 
+
+[Button_3]
+widget_type = Button
+tab_label = Main
+row = 1
+col = 6
+rowspan = 
+text = Button_3
+docstring = 
+width = 15
+columnspan = 
+
+[Button_4]
+widget_type = Button
+tab_label = Main
+row = 1
+col = 5
+rowspan = 
+text = Button_4
+docstring = 
+width = 15
+columnspan = 
+
+[Button_5]
+widget_type = Button
+tab_label = Main
+row = 2
+col = 4
+rowspan = 
+text = Button_5
+docstring = 
+width = 15
+columnspan = 
+
+[Button_6]
+widget_type = Button
+tab_label = Main
+row = 3
+col = 3
+rowspan = 
+text = Button_6
+docstring = 
+width = 15
+columnspan = 
+
+[Button_7]
+widget_type = Button
+tab_label = Main
+row = 4
+col = 2
+rowspan = 
+text = Button_7
+docstring = 
+width = 15
+columnspan = 
+
+[Button_8]
+widget_type = Button
+tab_label = Main
+row = 5
+col = 1
+rowspan = 
+text = Button_8
+docstring = 
+width = 15
+columnspan = 
+
+[Button_9]
+widget_type = Button
+tab_label = Main
+row = 6
+col = 0
+rowspan = 
+text = Button_9
+docstring = 
+width = 15
+columnspan = 
+

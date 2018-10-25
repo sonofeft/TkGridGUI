@@ -9,19 +9,21 @@ from __future__ import print_function
 
 # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "imports"
 
-import sys
 
-if sys.version_info < (3,):
-    from future import standard_library
-    standard_library.install_aliases()
-    from ttk import Combobox, Progressbar, Separator, Treeview, Notebook
-else:
-    from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import range
+from builtins import object
+
+from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Notebook
 
 from tkinter import *
 from tkinter import Button, Canvas, Checkbutton, Entry, Frame, Label, LabelFrame
 from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu
+import tkinter.filedialog
 from tkinter import _setit as set_command
 
 
@@ -37,14 +39,18 @@ class _tree:
         grid_frame.pack(expand=1, fill=BOTH)
         self.master = master
         
-        self.x, self.y, self.w, self.h = 10, 10, 318, 253
+        self.x, self.y, self.w, self.h = 10, 10, 164, 174
 
+        self.master.geometry("300x200")
         self.master.title("tree")
 
         self.make_Button_1( self.grid_frame )          #      Button: Take Me : at Main(2,2)
         self.make_Button_2( self.grid_frame )          #      Button:  at Main(2,3)
         self.make_Treeview_1( self.grid_frame )        #    Treeview: Family tree : at Main(3,2)
 
+        self.grid_frame.rowconfigure(3, weight=1)
+        self.grid_frame.columnconfigure(2, weight=1)
+        self.grid_frame.columnconfigure(3, weight=1)
 
         # >>>>>>insert any user code below this comment for section "top_of_init"
 
@@ -53,7 +59,7 @@ class _tree:
     def make_Button_1(self, frame):
         """      Button: Take Me : at Main(2,2)"""
         self.Button_1 = Button( frame , text="Take Me", width="15")
-        self.Button_1.grid(row=2, column=2)
+        self.Button_1.grid(row=2, column=2, sticky="ew")
 
         # >>>>>>insert any user code below this comment for section "make_Button_1"
 
@@ -63,7 +69,7 @@ class _tree:
     def make_Button_2(self, frame):
         """      Button:  at Main(2,3)"""
         self.Button_2 = Button( frame , text="Button_2", width="15")
-        self.Button_2.grid(row=2, column=3)
+        self.Button_2.grid(row=2, column=3, sticky="ew")
 
         # >>>>>>insert any user code below this comment for section "make_Button_2"
 
@@ -73,7 +79,7 @@ class _tree:
     def make_Treeview_1(self, frame):
         """    Treeview: Family tree : at Main(3,2)"""
         self.Treeview_1 = Treeview( frame )
-        self.Treeview_1.grid(row=3, column=2)
+        self.Treeview_1.grid(row=3, column=2, sticky="nsew", columnspan="2")
 
         # >>>>>>insert any user code below this comment for section "make_Treeview_1"
 

@@ -86,7 +86,7 @@ class NotebookGridDes( Frame ):
     """A ttk.Notebook used to design grid geometry manager layouts"""
     
 
-    def __init__(self, grid_gui, mainFrame,  MainWin,  name='grid_notebook', num_cols=6, num_rows=10):
+    def __init__(self, grid_gui, mainFrame,  MainWin,  name='grid_notebook', num_cols=5, num_rows=8):
         """Create ttk.Notebook used to design grid geometry manager layouts"""
         
         self.grid_gui = grid_gui
@@ -1252,6 +1252,15 @@ class NotebookGridDes( Frame ):
                 self.grid_gui.refresh_preview_win()
                 self.repaint_all_labels()
                 
+                if widget_name in self.grid_gui.target_app.compObjD:
+                    w = self.grid_gui.target_app.compObjD[ widget_name ]
+                    treeL = w.get_tab_label_tree()
+                    #print('New widget tab_label_tree =', treeL )
+                    for name in treeL:
+                        if name.startswith('Tab_'):
+                            self.grid_gui.select_preview_tab( name ) # text is tab_name
+
+                
             else:
                 self.set_status_msg("Widget "+placementWidgetType+" NOT Recognized", also_print=True)
 
@@ -1340,6 +1349,13 @@ class NotebookGridDes( Frame ):
                     unhighlight_edited_widget()
                     
                     _, _, _, widget_type, _ = self.label_obj_from_nameD.get( widget_name, '' )
+                
+                    # get tab_label tree so PreviewWin can be restored
+                    if widget_name in self.grid_gui.target_app.compObjD:
+                        w = self.grid_gui.target_app.compObjD[ widget_name ]
+                        treeL = w.get_tab_label_tree()
+                    else:
+                        treeL = []
                     
                     if widget_type in ContainerControlsL:
                         
@@ -1349,6 +1365,12 @@ class NotebookGridDes( Frame ):
                         #print("Deleting ",widget_name)
                         self.delete_widget_by_name( widget_name )
                         self.grid_gui.target_app.delComponentByName( widget_name )
+                        
+                    # Restore PreviewWin
+                    for name in treeL:
+                        if name.startswith('Tab_') and (name in self.grid_gui.target_app.compObjD):
+                            self.grid_gui.select_preview_tab( name ) # text is tab_name
+                    
                                         
                 else: # not deleting, so update user_tkOptionD for widget
                     self.master.after( 500, unhighlight_edited_widget ) # give user half a sectond to see highlight

@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+<title>preview_win.py</title>
+
+<style type="text/css">
+@media print { body { -webkit-print-color-adjust: exact; font-size: 9pt; } }
+</style>
+
+<style type="text/css">
+
+pre
+{
+    font-face: verdana, arial, helvetica, sans-serif;
+    font-size: 1.2em;
+    
+    word-break: break-all; /* webkit /
+    white-space: pre;
+    white-space: pre\9; / IE7+ */   
+
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+}
+.token_number
+{
+    color: #0077b3;
+    font-weight:500;
+}
+.token_op
+{
+    color: #000000;
+    font-weight:bold;
+}
+.token_string
+{
+    color: #cc0000;
+    font-weight:500;
+}
+.token_comment
+{
+    color: #007F00;
+    font-weight:500;
+}
+.token_name
+{
+    color: #000000;
+    font-weight:500;
+}
+.token_error
+{
+    color: #e40000;
+    font-weight:500;
+}
+.keyword
+{
+    color: blue;
+    font-weight:bold;
+}
+.text
+{
+    color: #000000;
+    font-weight:500;
+}
+
+</style>
+<body><h2>preview_win.py</h2>
+<pre><font face="Lucida,Courier New">
+directory : D:\2018_py_proj\TkGridGUI\tkgridgui
+Line Count : 245
+Line Clip Size : No Clipping
+
+<strong style="background-color:#ffe0e0">tab_of_notebook_changed</strong>  <strong style="background-color:#b4ffb2">Word</strong> <strong style="background-color:#b4ffb2">MatchCase</strong> <strong style="background-color:yellow">(0)</strong> <BR>
+<a name="line1"><span class="token_number">  1 </span></a><span class="token_comment">#!/usr/bin/env python</span>
+<a name="line2"><span class="token_number">  2 </span></a><span class="token_comment"># -*- coding: ascii -*-</span>
+<a name="line3"><span class="token_number">  3 </span></a><span class="keyword">from</span> <span class="token_name">__future__</span> <span class="keyword">import</span> <span class="token_name">print_function</span>
+<a name="line4"><span class="token_number">  4 </span></a><span class="keyword">from</span> <span class="token_name">__future__</span> <span class="keyword">import</span> <span class="token_name">unicode_literals</span>
+<a name="line5"><span class="token_number">  5 </span></a>
+<a name="line6"><span class="token_number">  6 </span></a><span class="keyword">from</span> <span class="token_name">future</span> <span class="keyword">import</span> <span class="token_name">standard_library</span>
+<a name="line7"><span class="token_number">  7 </span></a><span class="token_name">standard_library</span><span class="token_op">.</span><span class="token_name">install_aliases</span><span class="token_op">()</span>
+<a name="line8"><span class="token_number">  8 </span></a><span class="token_string">"""</span>
+<a name="line9"><span class="token_number">  9 </span></a><span class="token_string">Provide a Toplevel window to display widgets as they will look </span>
+<a name="line10"><span class="token_number"> 10 </span></a><span class="token_string">in the target application.</span>
+<a name="line11"><span class="token_number"> 11 </span></a>
+<a name="line12"><span class="token_number"> 12 </span></a><span class="token_string">Apply any new attributes that come from an EditWin.</span>
+<a name="line13"><span class="token_number"> 13 </span></a><span class="token_string">"""</span>
+<a name="line14"><span class="token_number"> 14 </span></a>
+<a name="line15"><span class="token_number"> 15 </span></a><span class="keyword">import</span> <span class="token_name">sys</span>
+<a name="line16"><span class="token_number"> 16 </span></a>    
+<a name="line17"><span class="token_number"> 17 </span></a><span class="keyword">from</span> <span class="token_name">tkinter</span> <span class="keyword">import</span> <span class="token_op">*</span>
+<a name="line18"><span class="token_number"> 18 </span></a><span class="keyword">import</span> <span class="token_name">tkinter</span><span class="token_op">.</span><span class="token_name">messagebox</span>
+<a name="line19"><span class="token_number"> 19 </span></a><span class="keyword">from</span> <span class="token_name">tkinter</span> <span class="keyword">import</span> <span class="token_name">Button</span><span class="token_op">,</span> <span class="token_name">Canvas</span><span class="token_op">,</span> <span class="token_name">Checkbutton</span><span class="token_op">,</span> <span class="token_name">Entry</span><span class="token_op">,</span> <span class="token_name">Frame</span><span class="token_op">,</span> <span class="token_name">Label</span><span class="token_op">,</span> <span class="token_name">LabelFrame</span>
+<a name="line20"><span class="token_number"> 20 </span></a><span class="keyword">from</span> <span class="token_name">tkinter</span> <span class="keyword">import</span> <span class="token_name">Listbox</span><span class="token_op">,</span> <span class="token_name">Message</span><span class="token_op">,</span> <span class="token_name">Radiobutton</span><span class="token_op">,</span> <span class="token_name">Spinbox</span><span class="token_op">,</span> <span class="token_name">Text</span>
+<a name="line21"><span class="token_number"> 21 </span></a><span class="keyword">from</span> <span class="token_name">tkinter</span> <span class="keyword">import</span> <span class="token_name">OptionMenu</span> <span class="token_comment"># ttk OptionMenu seems to be broken</span>
+<a name="line22"><span class="token_number"> 22 </span></a><span class="keyword">from</span> <span class="token_name">tkinter</span><span class="token_op">.</span><span class="token_name">ttk</span> <span class="keyword">import</span> <span class="token_name">Combobox</span><span class="token_op">,</span> <span class="token_name">Progressbar</span><span class="token_op">,</span> <span class="token_name">Separator</span><span class="token_op">,</span> <span class="token_name">Treeview</span><span class="token_op">,</span> <span class="token_name">Style</span><span class="token_op">,</span> <span class="token_name">Notebook</span>
+<a name="line23"><span class="token_number"> 23 </span></a>
+<a name="line24"><span class="token_number"> 24 </span></a><span class="keyword">class</span> <span class="token_name">PreviewWin</span><span class="token_op">(</span> <span class="token_name">Toplevel</span> <span class="token_op">):</span>
+<a name="line25"><span class="token_number"> 25 </span></a>
+<a name="line26"><span class="token_number"> 26 </span></a>
+<a name="line27"><span class="token_number"> 27 </span></a><span class="text">    </span><span class="keyword">def</span> <span class="token_name">__init__</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">MainWin</span><span class="token_op">,</span> <span class="token_name">grid_gui</span><span class="token_op">=</span><span class="token_name">None</span><span class="token_op">):</span>
+<a name="line28"><span class="token_number"> 28 </span></a>        
+<a name="line29"><span class="token_number"> 29 </span></a><span class="text">        </span><span class="token_name">Toplevel</span><span class="token_op">.</span><span class="token_name">__init__</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">MainWin</span><span class="token_op">)</span><span class="token_comment">#, bg='#ADD8E6') #'lightblue': '#ADD8E6',</span>
+<a name="line30"><span class="token_number"> 30 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">title</span><span class="token_op">(</span><span class="token_string">'Preview Window'</span><span class="token_op">)</span>
+<a name="line31"><span class="token_number"> 31 </span></a>        
+<a name="line32"><span class="token_number"> 32 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">MainWin</span> <span class="token_op">=</span> <span class="token_name">MainWin</span>
+<a name="line33"><span class="token_number"> 33 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">grid_gui</span> <span class="token_op">=</span> <span class="token_name">grid_gui</span>
+<a name="line34"><span class="token_number"> 34 </span></a>        
+<a name="line35"><span class="token_number"> 35 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">widget_ijD</span> <span class="token_op">=</span> <span class="token_op">{}</span> <span class="token_comment"># index=(i,j) grid position: value=widget</span>
+<a name="line36"><span class="token_number"> 36 </span></a>        
+<a name="line37"><span class="token_number"> 37 </span></a>        <span class="token_comment"># only main window can close this window</span>
+<a name="line38"><span class="token_number"> 38 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">protocol</span><span class="token_op">(</span><span class="token_string">'WM_DELETE_WINDOW'</span><span class="token_op">,</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">cleanupOnQuit</span><span class="token_op">)</span>
+<a name="line39"><span class="token_number"> 39 </span></a>        
+<a name="line40"><span class="token_number"> 40 </span></a>        <span class="token_name">screen_width</span> <span class="token_op">=</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">winfo_screenwidth</span><span class="token_op">()</span>
+<a name="line41"><span class="token_number"> 41 </span></a>        <span class="token_name">screen_height</span> <span class="token_op">=</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">winfo_screenheight</span><span class="token_op">()</span>
+<a name="line42"><span class="token_number"> 42 </span></a>        
+<a name="line43"><span class="token_number"> 43 </span></a>        <span class="keyword">if</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">state</span><span class="token_op">()</span> <span class="token_op">==</span> <span class="token_string">"zoomed"</span><span class="token_op">:</span>
+<a name="line44"><span class="token_number"> 44 </span></a><span class="text">            </span><span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">state</span><span class="token_op">(</span><span class="token_string">"normal"</span><span class="token_op">)</span>
+<a name="line45"><span class="token_number"> 45 </span></a>        
+<a name="line46"><span class="token_number"> 46 </span></a>        <span class="token_name">x_main</span> <span class="token_op">=</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">winfo_x</span><span class="token_op">()</span>
+<a name="line47"><span class="token_number"> 47 </span></a>        <span class="token_name">y_main</span> <span class="token_op">=</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">winfo_y</span><span class="token_op">()</span>
+<a name="line48"><span class="token_number"> 48 </span></a>        <span class="token_comment">#print('MainWin (x,y) = (%s,%s)'%(x_main, y_main), '  MainWin.state()=',MainWin.state())</span>
+<a name="line49"><span class="token_number"> 49 </span></a>
+<a name="line50"><span class="token_number"> 50 </span></a>        <span class="token_comment"># try to place PreviewWin right next to grid_notebook</span>
+<a name="line51"><span class="token_number"> 51 </span></a>        <span class="token_comment">#    ... position to the upper right</span>
+<a name="line52"><span class="token_number"> 52 </span></a>        <span class="token_name">x</span> <span class="token_op">=</span> <span class="token_name">x_main</span> <span class="token_op">+</span> <span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">winfo_width</span><span class="token_op">()</span>  <span class="token_op">+</span> <span class="token_number">10</span>
+<a name="line53"><span class="token_number"> 53 </span></a>        <span class="token_name">y</span> <span class="token_op">=</span> <span class="token_name">y_main</span> <span class="token_op">+</span> <span class="token_number">25</span> <span class="token_comment"># if row added to GridGUI, can still see close "x" of MainWin</span>
+<a name="line54"><span class="token_number"> 54 </span></a>
+<a name="line55"><span class="token_number"> 55 </span></a>        <span class="token_comment"># when launched from CLI, winfo_x and winfo_y are == 0</span>
+<a name="line56"><span class="token_number"> 56 </span></a>        <span class="token_comment"># check for bad placement and try to make the best of it </span>
+<a name="line57"><span class="token_number"> 57 </span></a>        <span class="keyword">if</span> <span class="token_op">(</span><span class="token_name">x</span> <span class="token_op">&gt;</span> <span class="token_name">screen_width</span> <span class="token_op">-</span> <span class="token_number">310</span><span class="token_op">)</span> <span class="keyword">or</span> <span class="token_op">(</span><span class="token_name">x</span> <span class="token_op">&lt;</span> <span class="token_number">340</span><span class="token_op">):</span>
+<a name="line58"><span class="token_number"> 58 </span></a><span class="text">            </span><span class="token_name">x</span><span class="token_op">=</span><span class="token_name">screen_width</span> <span class="token_op">-</span> <span class="token_number">310</span>
+<a name="line59"><span class="token_number"> 59 </span></a>        
+<a name="line60"><span class="token_number"> 60 </span></a>        <span class="keyword">if</span> <span class="token_op">(</span><span class="token_name">y</span> <span class="token_op">&gt;</span> <span class="token_name">screen_height</span> <span class="token_op">-</span> <span class="token_number">210</span><span class="token_op">):</span>
+<a name="line61"><span class="token_number"> 61 </span></a><span class="text">            </span><span class="token_name">y</span> <span class="token_op">=</span> <span class="token_name">screen_height</span> <span class="token_op">-</span> <span class="token_number">210</span>
+<a name="line62"><span class="token_number"> 62 </span></a>        
+<a name="line63"><span class="token_number"> 63 </span></a>        <span class="token_comment">#print('setting PreviewWin geometry to:',(300,200,x,y))</span>
+<a name="line64"><span class="token_number"> 64 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">geometry</span><span class="token_op">(</span> <span class="token_string">'%ix%i+%i+%i'</span><span class="token_op">%(</span><span class="token_number">300</span><span class="token_op">,</span><span class="token_number">200</span><span class="token_op">,</span><span class="token_name">x</span><span class="token_op">,</span><span class="token_name">y</span><span class="token_op">))</span>
+<a name="line65"><span class="token_number"> 65 </span></a>        <span class="token_comment">#self.geometry( '+%i+%i'%(10,10))  # &lt;-- sets x,y only.  w,h fill for widgets</span>
+<a name="line66"><span class="token_number"> 66 </span></a>        
+<a name="line67"><span class="token_number"> 67 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">prevFrame</span> <span class="token_op">=</span> <span class="token_name">Frame</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">)</span>
+<a name="line68"><span class="token_number"> 68 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">prevFrame</span><span class="token_op">.</span><span class="token_name">pack</span><span class="token_op">(</span><span class="token_name">fill</span><span class="token_op">=</span><span class="token_name">BOTH</span><span class="token_op">,</span> <span class="token_name">expand</span><span class="token_op">=</span><span class="token_name">True</span><span class="token_op">)</span>
+<a name="line69"><span class="token_number"> 69 </span></a>        
+<a name="line70"><span class="token_number"> 70 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">menuBar</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line71"><span class="token_number"> 71 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line72"><span class="token_number"> 72 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line73"><span class="token_number"> 73 </span></a>    
+<a name="line74"><span class="token_number"> 74 </span></a>    <span class="token_comment">#def position_next_to_main(self):</span>
+<a name="line75"><span class="token_number"> 75 </span></a>    <span class="token_comment">#    x = self.MainWin.winfo_x() + self.MainWin.winfo_width()  + 10</span>
+<a name="line76"><span class="token_number"> 76 </span></a>    <span class="token_comment">#    y = self.MainWin.winfo_y() + 25 # if row added to GridGUI, can still see close "x" of MainWin</span>
+<a name="line77"><span class="token_number"> 77 </span></a>    <span class="token_comment">#    if x&lt;340: x=340</span>
+<a name="line78"><span class="token_number"> 78 </span></a>    <span class="token_comment">#    if y&lt;10: y=10</span>
+<a name="line79"><span class="token_number"> 79 </span></a>    <span class="token_comment">#    # position over to the upper right</span>
+<a name="line80"><span class="token_number"> 80 </span></a>    <span class="token_comment">#    self.geometry( '+%i+%i'%(x,y))</span>
+<a name="line81"><span class="token_number"> 81 </span></a>    
+<a name="line82"><span class="token_number"> 82 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">bind</span><span class="token_op">(</span><span class="token_string">"&lt;Enter&gt;"</span><span class="token_op">,</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">onPreviewWindowEnter</span><span class="token_op">)</span>
+<a name="line83"><span class="token_number"> 83 </span></a>
+<a name="line84"><span class="token_number"> 84 </span></a>    <span class="keyword">def</span> <span class="token_name">onPreviewWindowEnter</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">event</span><span class="token_op">):</span>
+<a name="line85"><span class="token_number"> 85 </span></a><span class="text">        </span><span class="token_string">"""Only track Enter... Want last known location."""</span>
+<a name="line86"><span class="token_number"> 86 </span></a>        <span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">grid_gui</span><span class="token_op">.</span><span class="token_name">mouse_location</span> <span class="token_op">!=</span> <span class="token_string">'preview_window'</span><span class="token_op">:</span>
+<a name="line87"><span class="token_number"> 87 </span></a><span class="text">            </span><span class="keyword">print</span><span class="token_op">(</span><span class="token_string">'mouse_location = preview_window'</span><span class="token_op">)</span>
+<a name="line88"><span class="token_number"> 88 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">grid_gui</span><span class="token_op">.</span><span class="token_name">mouse_location</span> <span class="token_op">=</span> <span class="token_string">'preview_window'</span>
+<a name="line89"><span class="token_number"> 89 </span></a>
+<a name="line90"><span class="token_number"> 90 </span></a>    <span class="keyword">def</span> <span class="token_name">destroy_all_children</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line91"><span class="token_number"> 91 </span></a><span class="text">        </span><span class="token_string">"""</span>
+<a name="line92"><span class="token_number"> 92 </span></a><span class="token_string">        Delete all widgets directly attached to prevFrame.</span>
+<a name="line93"><span class="token_number"> 93 </span></a><span class="token_string">        Some could be compound widgets like Frame or Notebook objects.</span>
+<a name="line94"><span class="token_number"> 94 </span></a><span class="token_string">        """</span>
+<a name="line95"><span class="token_number"> 95 </span></a>        <span class="token_comment"># should be the same as self.prevFrame.winfo_children()</span>
+<a name="line96"><span class="token_number"> 96 </span></a>
+<a name="line97"><span class="token_number"> 97 </span></a>        <span class="keyword">for</span> <span class="token_name">ij</span><span class="token_op">,</span> <span class="token_name">child</span> <span class="keyword">in</span> <span class="token_name">list</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">widget_ijD</span><span class="token_op">.</span><span class="token_name">items</span><span class="token_op">()):</span>
+<a name="line98"><span class="token_number"> 98 </span></a><span class="text">            </span><span class="token_name">child</span><span class="token_op">.</span><span class="token_name">destroy</span><span class="token_op">()</span>
+<a name="line99"><span class="token_number"> 99 </span></a>            
+<a name="line100"><span class="token_number">100 </span></a>        <span class="keyword">for</span> <span class="token_name">child</span> <span class="keyword">in</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">prevFrame</span><span class="token_op">.</span><span class="token_name">winfo_children</span><span class="token_op">():</span>
+<a name="line101"><span class="token_number">101 </span></a><span class="text">            </span><span class="token_name">child</span><span class="token_op">.</span><span class="token_name">destroy</span><span class="token_op">()</span>
+<a name="line102"><span class="token_number">102 </span></a>            
+<a name="line103"><span class="token_number">103 </span></a>    
+<a name="line104"><span class="token_number">104 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">widget_ijD</span> <span class="token_op">=</span> <span class="token_op">{}</span> <span class="token_comment"># index=(i,j) grid position: value=widget</span>
+<a name="line105"><span class="token_number">105 </span></a>        
+<a name="line106"><span class="token_number">106 </span></a>    <span class="token_comment">#def setActive(self):</span>
+<a name="line107"><span class="token_number">107 </span></a>    <span class="token_comment">#    self.lift()</span>
+<a name="line108"><span class="token_number">108 </span></a>    <span class="token_comment">#    self.focus_force()</span>
+<a name="line109"><span class="token_number">109 </span></a>    <span class="token_comment">#    self.grab_set()</span>
+<a name="line110"><span class="token_number">110 </span></a>    <span class="token_comment">#    self.grab_release()</span>
+<a name="line111"><span class="token_number">111 </span></a>    
+<a name="line112"><span class="token_number">112 </span></a>    <span class="keyword">def</span> <span class="token_name">remove_mock_statusbar</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line113"><span class="token_number">113 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span><span class="token_op">:</span>
+<a name="line114"><span class="token_number">114 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span><span class="token_op">.</span><span class="token_name">destroy</span><span class="token_op">()</span>
+<a name="line115"><span class="token_number">115 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line116"><span class="token_number">116 </span></a>            <span class="token_comment">#print('Status Bar Deleted from PreviewWin')</span>
+<a name="line117"><span class="token_number">117 </span></a>    
+<a name="line118"><span class="token_number">118 </span></a>    <span class="keyword">def</span> <span class="token_name">add_mock_statusbar</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line119"><span class="token_number">119 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span><span class="token_op">:</span>
+<a name="line120"><span class="token_number">120 </span></a><span class="text">            </span><span class="token_name">need_to_replace_OK_Cancel</span> <span class="token_op">=</span> <span class="token_name">True</span>
+<a name="line121"><span class="token_number">121 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">remove_mock_OK_Cancel_Buttons</span><span class="token_op">()</span>
+<a name="line122"><span class="token_number">122 </span></a>        <span class="keyword">else</span><span class="token_op">:</span>
+<a name="line123"><span class="token_number">123 </span></a><span class="text">            </span><span class="token_name">need_to_replace_OK_Cancel</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line124"><span class="token_number">124 </span></a>        
+<a name="line125"><span class="token_number">125 </span></a>        
+<a name="line126"><span class="token_number">126 </span></a>        <span class="keyword">if</span> <span class="keyword">not</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span><span class="token_op">:</span>
+<a name="line127"><span class="token_number">127 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span> <span class="token_op">=</span> <span class="token_name">Label</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">text</span><span class="token_op">=</span><span class="token_string">'Status Bar'</span><span class="token_op">,</span> <span class="token_name">bd</span><span class="token_op">=</span><span class="token_number">1</span><span class="token_op">,</span> <span class="token_name">relief</span><span class="token_op">=</span><span class="token_name">SUNKEN</span><span class="token_op">)</span>
+<a name="line128"><span class="token_number">128 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">statusbar</span><span class="token_op">.</span><span class="token_name">pack</span><span class="token_op">(</span><span class="token_name">anchor</span><span class="token_op">=</span><span class="token_name">SW</span><span class="token_op">,</span> <span class="token_name">fill</span><span class="token_op">=</span><span class="token_name">X</span><span class="token_op">,</span> <span class="token_name">side</span><span class="token_op">=</span><span class="token_name">BOTTOM</span><span class="token_op">)</span>
+<a name="line129"><span class="token_number">129 </span></a>            <span class="token_comment">#print('Status Bar Added to PreviewWin')</span>
+<a name="line130"><span class="token_number">130 </span></a>    
+<a name="line131"><span class="token_number">131 </span></a>        <span class="keyword">if</span> <span class="token_name">need_to_replace_OK_Cancel</span><span class="token_op">:</span>
+<a name="line132"><span class="token_number">132 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">add_mock_OK_Cancel_Buttons</span><span class="token_op">()</span>
+<a name="line133"><span class="token_number">133 </span></a>
+<a name="line134"><span class="token_number">134 </span></a>    
+<a name="line135"><span class="token_number">135 </span></a>    <span class="keyword">def</span> <span class="token_name">remove_mock_OK_Cancel_Buttons</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line136"><span class="token_number">136 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span><span class="token_op">:</span>
+<a name="line137"><span class="token_number">137 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span><span class="token_op">.</span><span class="token_name">destroy</span><span class="token_op">()</span>
+<a name="line138"><span class="token_number">138 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line139"><span class="token_number">139 </span></a>            <span class="token_comment">#print("OK Cancel Buttons Deleted from PreviewWin")</span>
+<a name="line140"><span class="token_number">140 </span></a>        
+<a name="line141"><span class="token_number">141 </span></a>        
+<a name="line142"><span class="token_number">142 </span></a>    <span class="keyword">def</span> <span class="token_name">add_mock_OK_Cancel_Buttons</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line143"><span class="token_number">143 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="keyword">not</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span><span class="token_op">:</span>
+<a name="line144"><span class="token_number">144 </span></a>        
+<a name="line145"><span class="token_number">145 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span> <span class="token_op">=</span> <span class="token_name">Frame</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">)</span>
+<a name="line146"><span class="token_number">146 </span></a>            <span class="token_name">frame</span> <span class="token_op">=</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">OK_Cancel_Frame</span>
+<a name="line147"><span class="token_number">147 </span></a>            
+<a name="line148"><span class="token_number">148 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Button_1</span> <span class="token_op">=</span> <span class="token_name">Button</span><span class="token_op">(</span> <span class="token_name">frame</span> <span class="token_op">,</span> <span class="token_name">width</span><span class="token_op">=</span><span class="token_string">"12"</span><span class="token_op">,</span> <span class="token_name">text</span><span class="token_op">=</span><span class="token_string">"OK"</span><span class="token_op">)</span>
+<a name="line149"><span class="token_number">149 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Button_2</span> <span class="token_op">=</span> <span class="token_name">Button</span><span class="token_op">(</span> <span class="token_name">frame</span> <span class="token_op">,</span> <span class="token_name">width</span><span class="token_op">=</span><span class="token_string">"12"</span><span class="token_op">,</span> <span class="token_name">text</span><span class="token_op">=</span><span class="token_string">"Cancel"</span><span class="token_op">)</span>
+<a name="line150"><span class="token_number">150 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Label_1</span> <span class="token_op">=</span> <span class="token_name">Label</span><span class="token_op">(</span> <span class="token_name">frame</span> <span class="token_op">,</span> <span class="token_name">width</span><span class="token_op">=</span><span class="token_string">"2"</span><span class="token_op">,</span> <span class="token_name">text</span><span class="token_op">=</span><span class="token_string">""</span><span class="token_op">)</span>
+<a name="line151"><span class="token_number">151 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Label_2</span> <span class="token_op">=</span> <span class="token_name">Label</span><span class="token_op">(</span> <span class="token_name">frame</span> <span class="token_op">,</span> <span class="token_name">width</span><span class="token_op">=</span><span class="token_string">"2"</span><span class="token_op">,</span> <span class="token_name">text</span><span class="token_op">=</span><span class="token_string">""</span><span class="token_op">)</span>
+<a name="line152"><span class="token_number">152 </span></a>            
+<a name="line153"><span class="token_number">153 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Label_1</span><span class="token_op">.</span><span class="token_name">grid</span><span class="token_op">(</span> <span class="token_name">row</span><span class="token_op">=</span><span class="token_number">2</span><span class="token_op">,</span> <span class="token_name">column</span><span class="token_op">=</span><span class="token_number">1</span><span class="token_op">,</span> <span class="token_name">sticky</span><span class="token_op">=</span><span class="token_string">'ew'</span><span class="token_op">)</span>
+<a name="line154"><span class="token_number">154 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Button_1</span><span class="token_op">.</span><span class="token_name">grid</span><span class="token_op">(</span><span class="token_name">row</span><span class="token_op">=</span><span class="token_number">2</span><span class="token_op">,</span> <span class="token_name">column</span><span class="token_op">=</span><span class="token_number">2</span><span class="token_op">,</span> <span class="token_name">pady</span><span class="token_op">=</span><span class="token_string">"5"</span><span class="token_op">,</span> <span class="token_name">padx</span><span class="token_op">=</span><span class="token_string">"5"</span><span class="token_op">)</span>
+<a name="line155"><span class="token_number">155 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Button_2</span><span class="token_op">.</span><span class="token_name">grid</span><span class="token_op">(</span><span class="token_name">row</span><span class="token_op">=</span><span class="token_number">2</span><span class="token_op">,</span> <span class="token_name">column</span><span class="token_op">=</span><span class="token_number">4</span><span class="token_op">,</span> <span class="token_name">pady</span><span class="token_op">=</span><span class="token_string">"5"</span><span class="token_op">,</span> <span class="token_name">padx</span><span class="token_op">=</span><span class="token_string">"5"</span><span class="token_op">)</span>
+<a name="line156"><span class="token_number">156 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">Label_2</span><span class="token_op">.</span><span class="token_name">grid</span><span class="token_op">(</span> <span class="token_name">row</span><span class="token_op">=</span><span class="token_number">2</span><span class="token_op">,</span> <span class="token_name">column</span><span class="token_op">=</span><span class="token_number">5</span><span class="token_op">,</span> <span class="token_name">sticky</span><span class="token_op">=</span><span class="token_string">'ew'</span><span class="token_op">)</span>
+<a name="line157"><span class="token_number">157 </span></a>            
+<a name="line158"><span class="token_number">158 </span></a>            <span class="token_name">frame</span><span class="token_op">.</span><span class="token_name">columnconfigure</span><span class="token_op">(</span><span class="token_number">1</span><span class="token_op">,</span> <span class="token_name">weight</span><span class="token_op">=</span><span class="token_number">1</span><span class="token_op">)</span>
+<a name="line159"><span class="token_number">159 </span></a>            <span class="token_name">frame</span><span class="token_op">.</span><span class="token_name">columnconfigure</span><span class="token_op">(</span><span class="token_number">5</span><span class="token_op">,</span> <span class="token_name">weight</span><span class="token_op">=</span><span class="token_number">1</span><span class="token_op">)</span>
+<a name="line160"><span class="token_number">160 </span></a>            
+<a name="line161"><span class="token_number">161 </span></a>            <span class="token_name">frame</span><span class="token_op">.</span><span class="token_name">pack</span><span class="token_op">(</span><span class="token_name">anchor</span><span class="token_op">=</span><span class="token_name">SW</span><span class="token_op">,</span> <span class="token_name">fill</span><span class="token_op">=</span><span class="token_name">X</span><span class="token_op">,</span> <span class="token_name">side</span><span class="token_op">=</span><span class="token_name">BOTTOM</span><span class="token_op">)</span>
+<a name="line162"><span class="token_number">162 </span></a>    
+<a name="line163"><span class="token_number">163 </span></a>    <span class="keyword">def</span> <span class="token_name">delete_menu</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line164"><span class="token_number">164 </span></a>        <span class="token_comment">#print('Deleting Menu')</span>
+<a name="line165"><span class="token_number">165 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">menuBar</span><span class="token_op">:</span>
+<a name="line166"><span class="token_number">166 </span></a>            <span class="token_comment">#if hasattr(self, 'menuBar'):</span>
+<a name="line167"><span class="token_number">167 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">menuBar</span><span class="token_op">.</span><span class="token_name">delete</span><span class="token_op">(</span><span class="token_number">0</span><span class="token_op">,</span><span class="token_number">1000</span><span class="token_op">)</span>
+<a name="line168"><span class="token_number">168 </span></a>            <span class="token_comment">#self.config(menu=None)</span>
+<a name="line169"><span class="token_number">169 </span></a>            <span class="token_comment">#print('... Deleted Menu')</span>
+<a name="line170"><span class="token_number">170 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">menuBar</span> <span class="token_op">=</span> <span class="token_name">False</span>
+<a name="line171"><span class="token_number">171 </span></a>    
+<a name="line172"><span class="token_number">172 </span></a>    <span class="keyword">def</span> <span class="token_name">add_menu</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">menuSrcL</span><span class="token_op">):</span>
+<a name="line173"><span class="token_number">173 </span></a><span class="text">        </span><span class="token_string">"""add a menu to PreviewWin using user-input menuStr"""</span>
+<a name="line174"><span class="token_number">174 </span></a>        <span class="keyword">if</span> <span class="keyword">not</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">menuBar</span><span class="token_op">:</span>
+<a name="line175"><span class="token_number">175 </span></a>        
+<a name="line176"><span class="token_number">176 </span></a><span class="text">            </span><span class="keyword">for</span> <span class="token_name">line</span> <span class="keyword">in</span> <span class="token_name">menuSrcL</span><span class="token_op">:</span>
+<a name="line177"><span class="token_number">177 </span></a>                <span class="token_comment">#print('====&gt;',line.strip(), end='\n')</span>
+<a name="line178"><span class="token_number">178 </span></a><span class="text">                </span><span class="keyword">if</span> <span class="token_name">line</span><span class="token_op">.</span><span class="token_name">find</span><span class="token_op">(</span><span class="token_string">', command'</span><span class="token_op">)&gt;=</span><span class="token_number">0</span><span class="token_op">:</span>
+<a name="line179"><span class="token_number">179 </span></a><span class="text">                    </span><span class="token_name">line</span> <span class="token_op">=</span> <span class="token_name">line</span><span class="token_op">.</span><span class="token_name">split</span><span class="token_op">(</span><span class="token_string">', command'</span><span class="token_op">)[</span><span class="token_number">0</span><span class="token_op">]</span> <span class="token_op">+</span> <span class="token_string">')'</span>
+<a name="line180"><span class="token_number">180 </span></a>                    <span class="token_comment">#print('========&gt;',line.strip(), end='\n')</span>
+<a name="line181"><span class="token_number">181 </span></a>                <span class="keyword">exec</span><span class="token_op">(</span> <span class="token_name">line</span><span class="token_op">.</span><span class="token_name">strip</span><span class="token_op">()</span> <span class="token_op">)</span> <span class="token_comment"># should create self.menuBar</span>
+<a name="line182"><span class="token_number">182 </span></a>    
+<a name="line183"><span class="token_number">183 </span></a>    <span class="keyword">def</span> <span class="token_name">add_widget</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">,</span> <span class="token_name">i</span><span class="token_op">,</span><span class="token_name">j</span><span class="token_op">,</span> <span class="token_name">pw_widget</span><span class="token_op">):</span>
+<a name="line184"><span class="token_number">184 </span></a>        
+<a name="line185"><span class="token_number">185 </span></a><span class="text">        </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">widget_ijD</span><span class="token_op">[(</span><span class="token_name">i</span><span class="token_op">,</span><span class="token_name">j</span><span class="token_op">)]</span> <span class="token_op">=</span> <span class="token_name">pw_widget</span>
+<a name="line186"><span class="token_number">186 </span></a>        
+<a name="line187"><span class="token_number">187 </span></a>        <span class="keyword">if</span> <span class="token_name">pw_widget</span><span class="token_op">.</span><span class="token_name">cobj</span><span class="token_op">.</span><span class="token_name">widget_type</span> <span class="token_op">==</span> <span class="token_string">'Tab'</span><span class="token_op">:</span>
+<a name="line188"><span class="token_number">188 </span></a>            <span class="token_comment">#print('Skipping the .grid for Tab ',pw_widget.cobj.widget_name)</span>
+<a name="line189"><span class="token_number">189 </span></a><span class="text">            </span><span class="keyword">pass</span>
+<a name="line190"><span class="token_number">190 </span></a>        <span class="keyword">else</span><span class="token_op">:</span>
+<a name="line191"><span class="token_number">191 </span></a>            <span class="token_comment">#print('Doing the .grid for ',pw_widget.cobj.widget_name)</span>
+<a name="line192"><span class="token_number">192 </span></a><span class="text">            </span><span class="token_name">pw_widget</span><span class="token_op">.</span><span class="token_name">grid</span><span class="token_op">(</span><span class="token_name">row</span><span class="token_op">=</span><span class="token_name">i</span><span class="token_op">,</span> <span class="token_name">column</span><span class="token_op">=</span><span class="token_name">j</span><span class="token_op">)</span>
+<a name="line193"><span class="token_number">193 </span></a>        
+<a name="line194"><span class="token_number">194 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">maybe_resize_preview_win</span><span class="token_op">()</span>
+<a name="line195"><span class="token_number">195 </span></a>    
+<a name="line196"><span class="token_number">196 </span></a>    <span class="keyword">def</span> <span class="token_name">maybe_resize_preview_win</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line197"><span class="token_number">197 </span></a>        
+<a name="line198"><span class="token_number">198 </span></a><span class="text">        </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">update_idletasks</span><span class="token_op">()</span>
+<a name="line199"><span class="token_number">199 </span></a>    
+<a name="line200"><span class="token_number">200 </span></a>        <span class="token_name">wprev</span> <span class="token_op">=</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">prevFrame</span><span class="token_op">.</span><span class="token_name">winfo_reqwidth</span><span class="token_op">()</span>
+<a name="line201"><span class="token_number">201 </span></a>        <span class="token_name">hprev</span> <span class="token_op">=</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">prevFrame</span><span class="token_op">.</span><span class="token_name">winfo_reqheight</span><span class="token_op">()</span>
+<a name="line202"><span class="token_number">202 </span></a>        <span class="token_comment">#print("PreviewWin Req: w=%s, h=%s"%(wprev, hprev))</span>
+<a name="line203"><span class="token_number">203 </span></a>        
+<a name="line204"><span class="token_number">204 </span></a>        <span class="keyword">if</span> <span class="token_name">wprev</span><span class="token_op">&gt;</span><span class="token_number">300</span> <span class="keyword">or</span> <span class="token_name">hprev</span><span class="token_op">&gt;</span><span class="token_number">200</span><span class="token_op">:</span>
+<a name="line205"><span class="token_number">205 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">geometry</span><span class="token_op">(</span><span class="token_string">""</span><span class="token_op">)</span>
+<a name="line206"><span class="token_number">206 </span></a>        <span class="keyword">return</span>
+<a name="line207"><span class="token_number">207 </span></a>        
+<a name="line208"><span class="token_number">208 </span></a>        <span class="token_comment">#xmax_widget = pw_widget.winfo_x() + pw_widget.winfo_width()  + 20</span>
+<a name="line209"><span class="token_number">209 </span></a>        <span class="token_comment">#ymax_widget = pw_widget.winfo_y() + pw_widget.winfo_height() + 60</span>
+<a name="line210"><span class="token_number">210 </span></a>        
+<a name="line211"><span class="token_number">211 </span></a>        <span class="token_comment">#if self.statusbar:</span>
+<a name="line212"><span class="token_number">212 </span></a>        <span class="token_comment">#    ymax_widget += 20</span>
+<a name="line213"><span class="token_number">213 </span></a>            
+<a name="line214"><span class="token_number">214 </span></a>        
+<a name="line215"><span class="token_number">215 </span></a>        <span class="token_comment">#if len(self.widget_ijD) &gt;= 3:</span>
+<a name="line216"><span class="token_number">216 </span></a>        <span class="token_comment">#    self.geometry("")</span>
+<a name="line217"><span class="token_number">217 </span></a>            
+<a name="line218"><span class="token_number">218 </span></a>        <span class="token_comment">#elif xmax_widget &gt; wprev:</span>
+<a name="line219"><span class="token_number">219 </span></a>        <span class="token_comment">#    #print('Expanding Preview Window Width to:',xmax_widget)</span>
+<a name="line220"><span class="token_number">220 </span></a>        <span class="token_comment">#    #self.MainWin.statusMessage.set( 'Expanding Preview Window Width to: %s'%xmax_widget )</span>
+<a name="line221"><span class="token_number">221 </span></a>        <span class="token_comment">#    #self.config( width=xmax_widget )</span>
+<a name="line222"><span class="token_number">222 </span></a>        <span class="token_comment">#    self.geometry("")</span>
+<a name="line223"><span class="token_number">223 </span></a>        <span class="token_comment">#    #self.update()</span>
+<a name="line224"><span class="token_number">224 </span></a>
+<a name="line225"><span class="token_number">225 </span></a>        <span class="token_comment">#elif ymax_widget &gt; hprev:</span>
+<a name="line226"><span class="token_number">226 </span></a>        <span class="token_comment">#    #print('Expanding Preview Window Height to:',ymax_widget)</span>
+<a name="line227"><span class="token_number">227 </span></a>        <span class="token_comment">#    #self.MainWin.statusMessage.set( 'Expanding Preview Window Height to: %s'%ymax_widget  )</span>
+<a name="line228"><span class="token_number">228 </span></a>        <span class="token_comment">#    self.geometry("")</span>
+<a name="line229"><span class="token_number">229 </span></a>        <span class="token_comment">#    #self.config( height=ymax_widget )</span>
+<a name="line230"><span class="token_number">230 </span></a>        <span class="token_comment">#    #self.update()</span>
+<a name="line231"><span class="token_number">231 </span></a>        
+<a name="line232"><span class="token_number">232 </span></a>        
+<a name="line233"><span class="token_number">233 </span></a>    <span class="keyword">def</span> <span class="token_name">cleanupOnQuit</span><span class="token_op">(</span><span class="token_name">self</span><span class="token_op">):</span>
+<a name="line234"><span class="token_number">234 </span></a><span class="text">        </span><span class="keyword">if</span> <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">allow_subWindows_to_close</span><span class="token_op">:</span>
+<a name="line235"><span class="token_number">235 </span></a>            <span class="token_comment"># I'm not sure that transient windows need this, but I'm trying to be careful</span>
+<a name="line236"><span class="token_number">236 </span></a><span class="text">            </span><span class="token_name">self</span><span class="token_op">.</span><span class="token_name">parent</span><span class="token_op">.</span><span class="token_name">focus_set</span><span class="token_op">()</span>
+<a name="line237"><span class="token_number">237 </span></a>            <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">destroy</span><span class="token_op">()</span>
+<a name="line238"><span class="token_number">238 </span></a>        
+<a name="line239"><span class="token_number">239 </span></a>        <span class="keyword">print</span><span class="token_op">(</span> <span class="token_string">'To Exit Applicaton, Use Main Window.'</span> <span class="token_op">)</span>
+<a name="line240"><span class="token_number">240 </span></a>        <span class="token_name">self</span><span class="token_op">.</span><span class="token_name">MainWin</span><span class="token_op">.</span><span class="token_name">statusMessage</span><span class="token_op">.</span><span class="token_name">set</span><span class="token_op">(</span><span class="token_string">'To Exit Applicaton, Use Main Window.'</span><span class="token_op">)</span>
+<a name="line241"><span class="token_number">241 </span></a>    
+<a name="line242"><span class="token_number">242 </span></a>        <span class="token_name">tkinter</span><span class="token_op">.</span><span class="token_name">messagebox</span><span class="token_op">.</span><span class="token_name">showinfo</span><span class="token_op">(</span>
+<a name="line243"><span class="token_number">243 </span></a>            <span class="token_string">"Use Main Window to Exit"</span><span class="token_op">,</span>
+<a name="line244"><span class="token_number">244 </span></a>            <span class="token_string">"\n\n"</span><span class="token_op">+</span>\
+<a name="line245"><span class="token_number">245 </span></a>            <span class="token_string">"Please Use Main Window to Exit\n"</span><span class="token_op">)</span>
+<a name="line246"><span class="token_number">246 </span></a>    </pre></body>
+</html>
