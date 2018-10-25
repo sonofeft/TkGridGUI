@@ -1,4 +1,4 @@
-.. commit signature, "date_str author_str sha_str"
+.. 2018-10-25 sonofeft 98c16999e4509ea17dea397c807dc5caa4da46e6
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -7,7 +7,17 @@ History
 GitHub Log
 ----------
 
-* TBD
+* Oct 25, 2018
+    - (by: sonofeft) 
+        - Fixed some coordination betweenPreviewWin and GridNotebook
+* Oct 24, 2018
+    - (by: sonofeft) 
+        - removed warning for pre-alpha
+        - passed basic Linux and Windows for py 2.7 and 3.x
+        - working out multi-platform bugs
+        - First Commit to GitHub
+    - (by: Charlie Taylor) 
+        - Initial commit
 
 Mercurial Log
 -------------
@@ -141,4 +151,3 @@ Mercurial Log
 * Sep 24, 2018
     - (by: sonofeft)
         - First Created TkGridGUI with PyHatch
-
