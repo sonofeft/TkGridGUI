@@ -24,9 +24,10 @@ from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
-
 from tkgridgui.tkfontchooser import askfont
 from tkgridgui.edit_options import WidgetPropertyDefinitionsD, get_definition_optionsL
+
+from color_picker_Dialog import fg_bg_color_picker
 
 class _Dialog(Dialog):
     # use dialogOptionsD dictionary to set any values in the dialog
@@ -34,6 +35,7 @@ class _Dialog(Dialog):
         
         self.dialogOptionsD = dialogOptionsD
         self.my_title = title
+        self.parent = parent
         Dialog.__init__(self, parent, title)
 
 OMIT_ATTR = ('row_weights','col_weights', 'tab_labels', 'child_widget_list') # private attr.
@@ -43,7 +45,7 @@ class Edit_Properties_Dialog(_Dialog):
     def body(self, master):
         dialogframe = Frame(master, width=439, height=428)
         dialogframe.pack()
-
+        self.dialogframe = dialogframe
 
         self.Delete_Checkbutton = Checkbutton(dialogframe,text="Check Here to Delete Widget", width="15")
         
@@ -64,6 +66,7 @@ class Edit_Properties_Dialog(_Dialog):
         keyL = sorted( self.dialogOptionsD.keys() )
         
         keyL = [k for k in keyL if k not in OMIT_ATTR]
+        self.val_strvarD = {} # index=key: value=StringVar
         
         for i,key in enumerate( keyL ):
             row = 3 + i
@@ -75,6 +78,7 @@ class Edit_Properties_Dialog(_Dialog):
             self.val_strvarL.append( StringVar() )
             self.val_entryL[-1].configure(textvariable=self.val_strvarL[-1])
             self.val_strvarL[-1].set( val )
+            self.val_strvarD[key] = self.val_strvarL[-1] # build xref by key to StringVar
             
             self.def_labelL.append( Label(dialogframe,text=desc) )
         
@@ -110,6 +114,17 @@ class Edit_Properties_Dialog(_Dialog):
                     self.cboxD[i].bind("<<ComboboxSelected>>", self.get_option )
 
         #self.resizable(0,0) # Linux may not respect this
+        if 'background' in self.dialogOptionsD and 'foreground' in self.dialogOptionsD:
+            btn = Button(dialogframe, text="Set Both bg and fg Colors", command=self.Get_fg_bg_Click )
+            btn.grid(row=row+1, column=0, sticky=E, columnspan=3)
+            
+    def Get_fg_bg_Click(self):
+        dialog = fg_bg_color_picker(self.parent, title="Get Foreground and Background Colors")
+        if dialog.result is not None:
+            (_, _, _, _, _, _, cstrbg, namebg) = dialog.result["bg_color"]
+            (_, _, _, _, _, _, cstrfg, namefg) = dialog.result["fg_color"]
+            self.val_strvarD['foreground'].set( cstrfg )
+            self.val_strvarD['background'].set( cstrbg )
 
     def get_option(self, event):
         i = self.val_crossrefD[ event.widget ]

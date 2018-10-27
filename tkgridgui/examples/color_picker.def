@@ -1,0 +1,134 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = color_picker
+guitype = dialog
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 225
+width = 536
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 55
+x = 989
+hasstatusbar = no
+
+[LabelFrame_1]
+widget_type = LabelFrame
+tab_label = Main
+row = 5
+col = 1
+rowspan = 
+text = Colors
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Label_1]
+widget_type = Label
+tab_label = Main
+row = 2
+col = 1
+rowspan = 
+text = Left Click Background
+docstring = 
+sticky = ew
+width = 30
+columnspan = 
+font = Times\ New\ Roman 20 bold roman
+
+[Label_2]
+widget_type = Label
+tab_label = Main
+row = 3
+col = 1
+rowspan = 
+text = Right Click Foreground
+docstring = 
+sticky = ew
+width = 30
+columnspan = 
+font = Times\ New\ Roman 20 bold roman
+
+[Label_3]
+widget_type = Label
+tab_label = Main
+row = 4
+col = 1
+rowspan = 
+text = Luminance and Contrast Ratio shown above
+docstring = 
+sticky = e
+width = 45
+columnspan = 
+
+[RadioGroup_1]
+widget_type = RadioGroup
+tab_label = Main
+row = 1
+col = 1
+rowspan = 
+text = Sort By:
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Radiobutton_1]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 1
+rowspan = 
+text = HSV hue
+docstring = 
+value = 1
+width = 15
+columnspan = 
+
+[Radiobutton_2]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 2
+rowspan = 
+text = W3 Luminance
+docstring = 
+value = 2
+width = 15
+columnspan = 
+
+[Radiobutton_3]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 3
+rowspan = 
+text = HEX String
+docstring = 
+value = 3
+width = 15
+columnspan = 
+
+[Radiobutton_4]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 4
+rowspan = 
+text = Color Name
+docstring = 
+value = 4
+width = 15
+columnspan = 
+
