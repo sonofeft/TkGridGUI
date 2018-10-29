@@ -16,7 +16,7 @@ GitHub Log
 
 * Oct 25, 2018
     - (by: sonofeft) 
-        - Fixed some coordination betweenPreviewWin and GridNotebook
+        - Fixed some coordination between PreviewWin and GridNotebook
 * Oct 24, 2018
     - (by: sonofeft) 
         - removed warning for pre-alpha

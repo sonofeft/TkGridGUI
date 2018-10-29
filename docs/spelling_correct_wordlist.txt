@@ -3,6 +3,9 @@ tkGridGUI
 topFrame
 listbox
 dup
+pre
+fg
+bg
 MainWin
 newForm
 docstring
