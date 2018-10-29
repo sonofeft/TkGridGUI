@@ -29,6 +29,7 @@ docstring =
 sticky = s
 width = 15
 columnspan = 
+anchor = e
 
 [Button_2]
 widget_type = Button
@@ -65,6 +66,7 @@ text = Checkbutton_2
 docstring = 
 width = 15
 columnspan = 
+anchor = e
 
 [Combobox_2]
 widget_type = Combobox
@@ -157,6 +159,7 @@ text = Menubutton_1
 docstring = 
 width = 15
 columnspan = 
+anchor = e
 
 [Message_1]
 widget_type = Message
@@ -169,6 +172,7 @@ docstring =
 sticky = ew
 width = 55
 columnspan = 
+anchor = e
 
 [Notebook_1]
 widget_type = Notebook
@@ -223,6 +227,7 @@ docstring =
 value = 1
 width = 15
 columnspan = 
+anchor = e
 
 [Radiobutton_2]
 widget_type = Radiobutton

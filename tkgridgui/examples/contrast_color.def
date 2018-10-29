@@ -1,0 +1,321 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = contrast_color
+guitype = dialog
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 321
+width = 584
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 42
+x = 1258
+hasstatusbar = no
+
+[Button_1]
+widget_type = Button
+tab_label = Frame_1
+row = 1
+col = 1
+rowspan = 
+text = Select Generic BG Color
+docstring = 
+sticky = ew
+width = 30
+columnspan = 
+
+[Button_2]
+widget_type = Button
+tab_label = Frame_1
+row = 2
+col = 1
+rowspan = 
+text = Select Named BG Color
+docstring = 
+sticky = ew
+width = 30
+columnspan = 
+
+[Canvas_1]
+widget_type = Canvas
+tab_label = Main
+row = 2
+col = 2
+rowspan = 
+docstring = 
+scrollx = no
+scrolly = no
+height = 160
+width = 160
+columnspan = 
+sticky = n
+
+[Frame_1]
+widget_type = Frame
+tab_label = Main
+row = 2
+col = 1
+rowspan = 2
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+relief = flat
+height = 50
+borderwidth = 6
+
+[Label_1]
+widget_type = Label
+tab_label = Main
+row = 2
+col = 3
+rowspan = 
+text = 
+docstring = 
+width = 2
+columnspan = 
+
+[Label_10]
+widget_type = Label
+tab_label = Frame_1
+row = 10
+col = 1
+rowspan = 
+text = CR = Contrast Ratio
+docstring = 
+width = 30
+columnspan = 
+
+[Label_11]
+widget_type = Label
+tab_label = Main
+row = 3
+col = 4
+rowspan = 
+text = dark
+docstring = 
+sticky = ne
+width = 5
+columnspan = 
+
+[Label_12]
+widget_type = Label
+tab_label = Main
+row = 3
+col = 5
+rowspan = 
+text = light
+docstring = 
+sticky = ne
+width = 5
+columnspan = 
+
+[Label_2]
+widget_type = Label
+tab_label = Frame_1
+row = 4
+col = 1
+foreground = #000000
+rowspan = 
+text = #ffffff
+docstring = 
+sticky = ew
+width = 15
+columnspan = 
+background = #ffffff
+font = Times\ New\ Roman 16 bold roman
+
+[Label_3]
+widget_type = Label
+tab_label = Frame_1
+row = 3
+col = 1
+rowspan = 
+text = background color
+docstring = 
+width = 15
+columnspan = 
+
+[Label_4]
+widget_type = Label
+tab_label = Frame_1
+row = 6
+col = 1
+rowspan = 
+text = contrasting foreground color
+docstring = 
+width = 25
+columnspan = 
+
+[Label_5]
+widget_type = Label
+tab_label = Frame_1
+row = 7
+col = 1
+foreground = #000000
+rowspan = 
+text = #000000
+docstring = 
+sticky = ew
+width = 15
+columnspan = 
+background = #ffffff
+font = Times\ New\ Roman 16 bold roman
+
+[Label_6]
+widget_type = Label
+tab_label = Main
+row = 2
+col = 6
+rowspan = 
+text = 
+docstring = 
+width = 2
+columnspan = 
+
+[Label_7]
+widget_type = Label
+tab_label = Frame_1
+row = 9
+col = 1
+rowspan = 
+text = 
+docstring = 
+width = 15
+columnspan = 
+
+[Label_8]
+widget_type = Label
+tab_label = Frame_1
+row = 5
+col = 1
+rowspan = 
+text = 
+docstring = 
+width = 15
+columnspan = 
+
+[Label_9]
+widget_type = Label
+tab_label = Frame_1
+row = 8
+col = 1
+rowspan = 
+text = click color chart to select
+docstring = 
+width = 30
+columnspan = 
+font = Times\ New\ Roman 12 bold roman
+
+[RadioGroup_1]
+widget_type = RadioGroup
+tab_label = Main
+row = 3
+col = 2
+rowspan = 
+text = Select Nominal Contrast Ratio
+docstring = 
+row_weights = 
+sticky = new
+width = 60
+col_weights = 1:1
+columnspan = 2
+height = 50
+
+[Radiobutton_1]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 1
+rowspan = 
+text = AA CR=4.5:1 normal text
+docstring = 
+value = 1
+sticky = w
+width = 20
+columnspan = 
+anchor = w
+justify = left
+
+[Radiobutton_2]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 2
+col = 1
+rowspan = 
+text = AA CR=3:1 large text
+docstring = 
+value = 2
+sticky = w
+width = 16
+columnspan = 
+anchor = w
+justify = left
+
+[Radiobutton_3]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 3
+col = 1
+rowspan = 
+text = AAA CR=7:1 for normal text
+docstring = 
+value = 3
+sticky = w
+width = 20
+columnspan = 
+anchor = w
+justify = left
+
+[Radiobutton_4]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 4
+col = 1
+rowspan = 
+text = AAA CR=4.5:1 for large text
+docstring = 
+value = 4
+sticky = w
+width = 20
+columnspan = 
+anchor = w
+justify = left
+
+[Scale_1]
+widget_type = Scale
+tab_label = Main
+row = 2
+col = 4
+rowspan = 
+to = 100
+docstring = 
+sticky = n
+width = 16
+length = 160
+columnspan = 
+borderwidth = 1
+label = 
+
+[Scale_2]
+widget_type = Scale
+tab_label = Main
+row = 2
+col = 5
+rowspan = 
+width = 16
+docstring = 
+sticky = n
+to = 100
+length = 160
+columnspan = 
+borderwidth = 1
+label = 
+

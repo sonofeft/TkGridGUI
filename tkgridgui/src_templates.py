@@ -141,7 +141,8 @@ def endSourceFile(className):
 sEndDialog = '''
 
     def apply(self):
-        print( 'apply called' )
+        pass
+        #print( 'apply called' )
 
 class _Testdialog:
     def __init__(self, master):

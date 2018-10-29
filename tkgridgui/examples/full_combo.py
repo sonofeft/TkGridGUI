@@ -91,7 +91,7 @@ class _full_combo:
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Button_1"
     def make_Button_1(self, frame):
         """      Button:  at Main(1,1)"""
-        self.Button_1 = Button( frame , text="Button_1", width="15")
+        self.Button_1 = Button( frame , text="Button_1", width="15", anchor="e")
         self.Button_1.grid(row=1, column=1, sticky="s")
 
         # >>>>>>insert any user code below this comment for section "make_Button_1"
@@ -154,7 +154,7 @@ class _full_combo:
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Checkbutton_2"
     def make_Checkbutton_2(self, frame):
         """ Checkbutton:  at Frame_1(1,1)"""
-        self.Checkbutton_2 = Checkbutton( frame , text="Checkbutton_2", width="15")
+        self.Checkbutton_2 = Checkbutton( frame , text="Checkbutton_2", width="15", anchor="e")
         self.Checkbutton_2.grid(row=1, column=1)
         self.Checkbutton_2_StringVar = StringVar()
 
@@ -226,7 +226,7 @@ class _full_combo:
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Message_1"
     def make_Message_1(self, frame):
         """     Message:  at LabelFrame_1(2,1)"""
-        self.Message_1 = Message( frame , text="Message_1", width="55")
+        self.Message_1 = Message( frame , text="Message_1", width="55", anchor="e")
         self.Message_1.grid(row=2, column=1, sticky="ew")
 
         # >>>>>>insert any user code below this comment for section "make_Message_1"
@@ -235,7 +235,7 @@ class _full_combo:
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Menubutton_1"
     def make_Menubutton_1(self, frame):
         """  Menubutton:  at LabelFrame_2(1,1)"""
-        self.Menubutton_1 = Menubutton( frame , text="Menubutton_1", width="15")
+        self.Menubutton_1 = Menubutton( frame , text="Menubutton_1", width="15", anchor="e")
         self.Menubutton_1.grid(row=1, column=1)
         self.Menubutton_1_StringVar = StringVar()
 
@@ -282,7 +282,7 @@ class _full_combo:
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Radiobutton_1"
     def make_Radiobutton_1(self, frame):
         """ Radiobutton: 1 : at RadioGroup_1(2,1)"""
-        self.Radiobutton_1 = Radiobutton( frame , text="Radiobutton_1", value="1", width="15")
+        self.Radiobutton_1 = Radiobutton( frame , text="Radiobutton_1", value="1", width="15", anchor="e")
         self.Radiobutton_1.grid(row=2, column=1)
 
         # >>>>>>insert any user code below this comment for section "make_Radiobutton_1"

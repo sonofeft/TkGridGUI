@@ -310,6 +310,8 @@ class PW_Widget( object ):
         self.native_widget.grid(row=0, column=0)
         
         cobj.default_tkOptionD = get_properties_dict( self.native_widget )
+        #if 'from' in cobj.default_tkOptionD:
+        #    cobj.default_tkOptionD['from_'] = cobj.default_tkOptionD['from']
         
         self.set_native_widget_attr()
 

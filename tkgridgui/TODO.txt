@@ -1,9 +1,16 @@
 
+*) check that anchor attritute on all widgets that might apply
+
+*) add "from_" to edit_Dialog for Scale widget
+
+*) Save message should include both def and py file names.
+
 *) get rid of mouse_location prints
 
 *) double check how to insure requirements.txt modules are installed.
 
 *) Save after Open does not go to Open directory
+   (i.e. doesn't remember directory of opened file)
 
 *) Linux "pip install configparser"
 
@@ -176,3 +183,5 @@
 *) Help screen needs to call out Left Click, Drag and Drop, Right Click.
    Click on listbox for generic widget
    Left Click on widget to place a duplicate
+
+*) get rid of "print( 'apply called' )"

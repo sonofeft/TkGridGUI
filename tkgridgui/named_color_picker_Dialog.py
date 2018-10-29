@@ -29,8 +29,8 @@ from tkinter import _setit as set_command
 
 # >>>>>>insert any user code below this comment for section "imports"
 # Place any user import statements here
-from color_lists import h_sorted_colorL, lum_sorted_colorL, cstr_sorted_colorL, name_sorted_colorL
-COL_COUNT = 39
+from tkgridgui.color_lists import h_sorted_colorL, lum_sorted_colorL, cstr_sorted_colorL, name_sorted_colorL
+COL_COUNT = 54
 
 # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "top_of_init"
 
@@ -46,7 +46,7 @@ class _Dialog(Dialog):
         self.dialogOptions = dialogOptions
         Dialog.__init__(self, parent, title)
 
-class fg_bg_color_picker(_Dialog):
+class named_color_picker(_Dialog):
 
     def body(self, master):
         dialogframe = Frame(master, width=536, height=225)
@@ -57,8 +57,7 @@ class fg_bg_color_picker(_Dialog):
         self.RadioGroup_1_StringVar = StringVar()
 
         self.make_LabelFrame_1( self.dialogframe )     #  LabelFrame: Colors : at Main(5,1)
-        self.make_Label_1( self.dialogframe )          #       Label: Left Click Background : at Main(2,1)
-        self.make_Label_2( self.dialogframe )          #       Label: Right Click Foreground : at Main(3,1)
+        self.make_Label_1( self.dialogframe )          #       Label: Left Click Color : at Main(2,1)
         self.make_Label_3( self.dialogframe )          #       Label: Luminance and Contrast Ratio shown above : at Main(4,1)
         self.make_RadioGroup_1( self.dialogframe )     #  RadioGroup: Sort By: : at Main(1,1)
         self.make_Radiobutton_1( self.RadioGroup_1 )   # Radiobutton: HSV hue : at RadioGroup_1(1,1)
@@ -67,15 +66,16 @@ class fg_bg_color_picker(_Dialog):
         self.make_Radiobutton_4( self.RadioGroup_1 )   # Radiobutton: Color Name : at RadioGroup_1(1,4)
 
 
-        self.RadioGroup_1_StringVar.set("2")
+        self.RadioGroup_1_StringVar.set("1")
         self.RadioGroup_1_StringVar_traceName = self.RadioGroup_1_StringVar.trace_variable("w", self.RadioGroup_1_StringVar_Callback)
         # >>>>>>insert any user code below this comment for section "top_of_init"
         
         self.labelD = {} # index=(row,col): value=Label object
         row = 0
         col = 0
-        for (lum, lum_p05, h, r, g, b, cstr, name) in lum_sorted_colorL:
-            lab = Label( self.LabelFrame_1 , text="  ", width="3", padx=0, pady=0)
+        for (lum, lum_p05, h, r, g, b, cstr, name) in h_sorted_colorL:
+            lab = Label( self.LabelFrame_1 , text="  ", width="3", padx=0, pady=0,
+                         font=("times", "6", "normal"))
             lab.grid(row=row, column=col)
             self.labelD[ (row,col) ] = lab
             lab.configure( background=cstr, relief="raised" )
@@ -83,7 +83,6 @@ class fg_bg_color_picker(_Dialog):
             lab.bind("<Enter>", self.label_enter)
             lab.bind("<Leave>", self.label_leave)
             lab.bind("<ButtonRelease-1>", self.ColorPickLabel_LeftClick)
-            lab.bind("<ButtonRelease-3>", self.ColorPickLabel_RightClick)
 
             col += 1
             if col>=COL_COUNT:
@@ -91,11 +90,9 @@ class fg_bg_color_picker(_Dialog):
                 row += 1
 
         self.tw = None
-        self.bg_selectionT = lum_sorted_colorL[-1]# set selection to white
-        self.fg_selectionT = lum_sorted_colorL[0] # set selection to black
+        self.named_selectionT = lum_sorted_colorL[-1]# set selection to white
         
-        self.bg_label = None
-        self.fg_label = None
+        self.named_label = None
     
     def get_info_for_row_col(self, row, col):
         
@@ -137,41 +134,14 @@ class fg_bg_color_picker(_Dialog):
             else:
                 label.configure(fg='#ffffff')
 
-    
-    def ColorPickLabel_RightClick(self, event):
-        """Pick the Foreground color."""
-        
-        self.unhighlight_label( self.fg_label )
-        self.fg_label = event.widget
-        self.highlight_label( self.fg_label, text=" F" )
-        
-        info = event.widget.grid_info()
-        row = int( info["row"] )
-        col = int( info["column"] )
-        #print((info["row"], info["column"]))
-        
-        (lumfg, lum_p05fg, hfg, rfg, gfg, bfg, cstrfg, namefg) = self.get_info_for_row_col( row, col)
-        self.fg_selectionT = (lumfg, lum_p05fg, hfg, rfg, gfg, bfg, cstrfg, namefg)
-        
-        (lumbg, lum_p05bg, _, _, _, _, cstrbg, namebg) = self.bg_selectionT
-
-        if lum_p05fg > lum_p05bg:
-            CR = lum_p05fg / lum_p05bg
-        else:
-            CR = lum_p05bg / lum_p05fg
-
-        text = 'Foreground: '+namefg+" "+cstrfg.upper()+" lum=%.3f,"%lumfg + " CR=%.2f"%CR
-
-        self.Label_2.configure( fg=self.fg_selectionT[-2] )
-        self.Label_2.configure(background=self.bg_selectionT[-2], text=text)
 
     def ColorPickLabel_LeftClick(self, event):
-        """Pick the Background color"""
+        """Pick the Named color"""
         
         
-        self.unhighlight_label( self.bg_label )
-        self.bg_label = event.widget
-        self.highlight_label( self.bg_label, text=" B" )
+        self.unhighlight_label( self.named_label )
+        self.named_label = event.widget
+        self.highlight_label( self.named_label, text=" X" )
         
         # show selection
         info = event.widget.grid_info()
@@ -180,41 +150,30 @@ class fg_bg_color_picker(_Dialog):
         #print((info["row"], info["column"]))
         
         (lumbg, lum_p05bg, hbg, rbg, gbg, bbg, cstrbg, namebg) = self.get_info_for_row_col( row, col)
-        self.bg_selectionT = (lumbg, lum_p05bg, hbg, rbg, gbg, bbg, cstrbg, namebg)
+        self.named_selectionT = (lumbg, lum_p05bg, hbg, rbg, gbg, bbg, cstrbg, namebg)
 
 
         if lum_p05bg>0.229: # gives Contrast Ratio of 4.5 or better with best of white or black
             local_fg_selectionT = lum_sorted_colorL[0] # black
-            msg = ' (w black)'
+            msg = ' (w black)'            
+            self.Label_3.configure( text="Luminance and Contrast Ratio with black shown above")
         else:
             local_fg_selectionT = lum_sorted_colorL[-1] # white
             msg = ' (w white)'
-            
+            self.Label_3.configure( text="Luminance and Contrast Ratio with white shown above")
+
+
         (lumfg, lum_p05fg, hfg, rfg, gfg, bfg, cstrfg, namefg) = local_fg_selectionT
-        if self.fg_label is None:
-            self.fg_selectionT = local_fg_selectionT
 
         if lum_p05fg > lum_p05bg:
             CR = lum_p05fg / lum_p05bg
         else:
             CR = lum_p05bg / lum_p05fg
         
-        text = 'Background: '+namebg+" "+cstrbg.upper()+" lum=%.3f,"%lumbg + " CR=%.2f"%CR + msg
+        text = 'Color: '+namebg+" "+cstrbg.upper()+" lum=%.3f,"%lumbg + " CR=%.2f"%CR + msg
 
         self.Label_1.configure( fg=local_fg_selectionT[-2] )
         self.Label_1.configure(background=cstrbg, text=text)
-
-        # local foreground may not be global foreground
-        (lumfg, lum_p05fg, hfg, rfg, gfg, bfg, cstrfg, namefg) = self.fg_selectionT
-
-        if lum_p05fg > lum_p05bg:
-            CR = lum_p05fg / lum_p05bg
-        else:
-            CR = lum_p05bg / lum_p05fg
-        text = 'Foreground: '+namefg+" "+cstrfg.upper()+" lum=%.3f,"%lumfg + " CR=%.2f"%CR
-
-        self.Label_2.configure( fg=self.fg_selectionT[-2] )
-        self.Label_2.configure(background=self.bg_selectionT[-2], text=text)
 
 
     def label_enter(self, event=None):
@@ -267,21 +226,11 @@ class fg_bg_color_picker(_Dialog):
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Label_1"
     def make_Label_1(self, frame):
-        """       Label: Left Click Background : at Main(2,1)"""
-        self.Label_1 = Label( frame , text="Left Click Background", width="30", font="Times\ New\ Roman 18 bold roman")
+        """       Label: Left Click Color : at Main(2,1)"""
+        self.Label_1 = Label( frame , text="Left Click Color", width="30", font="Times\ New\ Roman 18 bold roman")
         self.Label_1.grid(row=2, column=1, sticky="ew")
 
         # >>>>>>insert any user code below this comment for section "make_Label_1"
-
-
-    # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Label_2"
-    def make_Label_2(self, frame):
-        """       Label: Right Click Foreground : at Main(3,1)"""
-        self.Label_2 = Label( frame , text="Right Click Foreground", width="30", font="Times\ New\ Roman 18 bold roman")
-        self.Label_2.grid(row=3, column=1, sticky="ew")
-
-        # >>>>>>insert any user code below this comment for section "make_Label_2"
-
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Label_3"
     def make_Label_3(self, frame):
@@ -290,7 +239,6 @@ class fg_bg_color_picker(_Dialog):
         self.Label_3.grid(row=4, column=1, sticky="e")
 
         # >>>>>>insert any user code below this comment for section "make_Label_3"
-
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_RadioGroup_1"
     def make_RadioGroup_1(self, frame):
@@ -352,11 +300,8 @@ class fg_bg_color_picker(_Dialog):
         #print( "    new StringVar value =",self.RadioGroup_1_StringVar.get() )
         
         # handle label highlights
-        self.unhighlight_label( self.fg_label )
-        self.fg_label = None
-        
-        self.unhighlight_label( self.bg_label )
-        self.bg_label = None
+        self.unhighlight_label( self.named_label )
+        self.named_label = None
 
         # show resorting
         val = self.RadioGroup_1_StringVar.get()
@@ -375,15 +320,10 @@ class fg_bg_color_picker(_Dialog):
             lab = self.labelD[ (row,col) ]
             lab.configure( background=cstr )
 
-            if self.bg_selectionT[-1] == name:
-                self.highlight_label( lab, text=" B" )
-                self.bg_label = lab
+            if self.named_selectionT[-1] == name:
+                self.highlight_label( lab, text=" X" )
+                self.named_label = lab
                 
-            if self.fg_selectionT[-1] == name:
-                self.highlight_label( lab, text=" F" )
-                self.fg_label = lab
-
-
             col += 1
             if col>=COL_COUNT:
                 col = 0
@@ -402,8 +342,7 @@ class fg_bg_color_picker(_Dialog):
         # self.result["age"] = self.Entry_2_StringVar.get() 
 
 
-        self.result["bg_color"] = self.bg_selectionT
-        self.result["fg_color"] = self.fg_selectionT
+        self.result["named_color"] = self.named_selectionT
         return 1
 # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "end"
 
@@ -424,7 +363,7 @@ class _Testdialog:
         self.Button_1.bind("<ButtonRelease-1>", self.Button_1_Click)
 
     def Button_1_Click(self, event): #click method for component ID=1
-        dialog = fg_bg_color_picker(self.master, "Test Dialog")
+        dialog = named_color_picker(self.master, "Test Dialog")
         print( '===============Result from Dialog====================' )
         print( dialog.result )
         print( '=====================================================' )

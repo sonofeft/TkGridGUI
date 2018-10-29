@@ -1,4 +1,4 @@
-.. 2018-10-25 sonofeft 98c16999e4509ea17dea397c807dc5caa4da46e6
+.. 2018-10-27 sonofeft e964e0c3c1a8cd9b2b519778d7fcea1b1d494239
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,13 @@ History
 
 GitHub Log
 ----------
+
+* Oct 27, 2018
+    - (by: sonofeft) 
+        - Added fg+bg color selector
+* Oct 25, 2018
+    - (by: sonofeft) 
+        - history update
 
 * Oct 25, 2018
     - (by: sonofeft) 

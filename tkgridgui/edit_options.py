@@ -57,11 +57,11 @@ def get_definition_optionsL( attr_name ):
 
 def set_attribute_if_possible(widget, attr_name, value):
     prop_set = set( widget.keys() )
+
     #print('prop_set = ', sorted(prop_set))
     if attr_name in prop_set:
         widget[ attr_name ] = value
         #print("Setting: ",attr_name,' to ',value)
-        
     elif attr_name in grid_option_set:
         # ignore rowspan and columnspan if not an integer
         if attr_name in ('rowspan','columnspan'):
@@ -80,6 +80,7 @@ def get_properties_dict( widget ):
         if name in prop_set:
             val = str( widget.cget( name ) )
             resultD[name] = val
+            
     return resultD
     
 def get_properties_for_editing( widget ):
@@ -94,7 +95,8 @@ def get_properties_for_editing( widget ):
             
     return resultL
 
-buttonStr = '''background #The background color
+buttonStr = '''anchor #Postion of text. NW N NE W CENTER E SW S SE
+background #The background color
 borderwidth # The size of the border in pixels. usually 1 or 2 pixels.
 foreground #Color to use for text and bitmap content
 image #Image to display (requires tk.PhotoImage)

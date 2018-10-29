@@ -27,7 +27,9 @@ from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Noteb
 from tkgridgui.tkfontchooser import askfont
 from tkgridgui.edit_options import WidgetPropertyDefinitionsD, get_definition_optionsL
 
-from color_picker_Dialog import fg_bg_color_picker
+from tkgridgui.fg_bg_color_picker_Dialog import fg_bg_color_picker
+from tkgridgui.named_color_picker_Dialog import named_color_picker
+from tkgridgui.contrast_color_Dialog import contrast_color_picker
 
 class _Dialog(Dialog):
     # use dialogOptionsD dictionary to set any values in the dialog
@@ -87,8 +89,12 @@ class Edit_Properties_Dialog(_Dialog):
             self.val_entryL[-1].grid(row=row, column=2)
             
             if key.lower().endswith("ground"): # i.e. a color 
-                btn = Button(dialogframe, text="Color", command=lambda N=i: self.get_color( N ) )
-                btn.grid(row=row, column=0, sticky=E)
+                f = Frame(dialogframe)
+                btn = Button(f, text="Color", command=lambda N=i: self.get_color( N ) )
+                btn.grid(row=0, column=1)
+                btn = Button(f, text="Name", command=lambda N=i: self.get_named_color( N ) )
+                btn.grid(row=0, column=0)
+                f.grid(row=row, column=0, sticky=E)
                 
             elif key.lower()=="font":
                 btn = Button(dialogframe, text="Font ", command=lambda N=i: self.get_font( N ) )
@@ -115,8 +121,20 @@ class Edit_Properties_Dialog(_Dialog):
 
         #self.resizable(0,0) # Linux may not respect this
         if 'background' in self.dialogOptionsD and 'foreground' in self.dialogOptionsD:
-            btn = Button(dialogframe, text="Set Both bg and fg Colors", command=self.Get_fg_bg_Click )
+            
+            btn = Button(dialogframe, text="Set Both bg and fg Named Colors", command=self.Get_fg_bg_Click )
             btn.grid(row=row+1, column=0, sticky=E, columnspan=3)
+            
+            btn = Button(dialogframe, text="Set Both bg and fg by Contrast", command=self.Get_fg_bg_CR_Click )
+            btn.grid(row=row+2, column=0, sticky=E, columnspan=3)
+            
+    def Get_fg_bg_CR_Click(self):
+        dialog = contrast_color_picker(self.parent, title="Get Foreground and Background Colors")
+        if dialog.result is not None:
+            cstrbg = dialog.result["bg_color_str"]
+            cstrfg = dialog.result["fg_color_str"]
+            self.val_strvarD['foreground'].set( cstrfg )
+            self.val_strvarD['background'].set( cstrbg )
             
     def Get_fg_bg_Click(self):
         dialog = fg_bg_color_picker(self.parent, title="Get Foreground and Background Colors")
@@ -144,6 +162,11 @@ class Edit_Properties_Dialog(_Dialog):
                 
             self.val_strvarL[N].set( font_str )
         
+    def get_named_color(self, N):
+        dialog = named_color_picker(self.parent, title="Get Named Color")
+        if dialog.result is not None:
+            (_, _, _, _, _, _, cstr, name) = dialog.result["named_color"]
+            self.val_strvarL[N].set( cstr )
 
     def get_color(self, N):
         ctup,cstr = tkinter.colorchooser.askcolor(title='Selected Color')
