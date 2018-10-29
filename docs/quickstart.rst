@@ -161,6 +161,20 @@ Many of the options have drop-down selections for enumerated inputs like relief,
     
 `Click Image to View Fill Size`
 
+Contrast Ratio
+--------------
+
+For widgets with a foreground and background color, a color selection control is present that
+helps select colors that comply with  WCAG 2 Contrast Ratio guidance.
+
+Contrast Ratio WCAG 2 see: https://en.wikipedia.org/wiki/Template:Color_contrast_ratio
+
+
+.. image:: ./_static/fg_bg_contrast_editor.jpg
+    :width: 80%
+    
+`Click Image to View Fill Size`
+
 Save Tkinter Application
 ------------------------
 

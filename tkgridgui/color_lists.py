@@ -8,6 +8,9 @@ For ease of use in complying with WCAG 2 Contrast Ratio guidance.
 Relative Luminance    see: https://www.w3.org/WAI/GL/wiki/Relative_luminance
 Contrast Ratio WCAG 2 see: https://www.w3.org/WAI/GL/wiki/Contrast_ratio
 
+Contrast Ratio WCAG 2 see: https://en.wikipedia.org/wiki/Template:Color_contrast_ratio
+
+
 """
 
 # lum_sorted_colorL are the colors in order of their luminance.
