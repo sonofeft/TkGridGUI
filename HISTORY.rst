@@ -1,4 +1,4 @@
-.. 2018-10-27 sonofeft e964e0c3c1a8cd9b2b519778d7fcea1b1d494239
+.. 2018-10-30 sonofeft 2c91eb66125e24d55c894a33d923ce1c7261d09d
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,15 @@ History
 
 GitHub Log
 ----------
+
+* Oct 30, 2018
+    - (by: sonofeft) 
+        - Replaced tkfontchooser with cross_platform_fonts_Dialog
+* Oct 29, 2018
+    - (by: sonofeft) 
+        - updated quickstart documentation
+        - update history and readme
+        - added color picker options
 
 * Oct 27, 2018
     - (by: sonofeft) 
