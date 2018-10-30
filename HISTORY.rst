@@ -1,4 +1,4 @@
-.. 2018-10-30 sonofeft 2c91eb66125e24d55c894a33d923ce1c7261d09d
+.. 2018-10-30 sonofeft 4ceb180d688098a078a9b3c7761808fca1fbb07d
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,12 @@ History
 
 GitHub Log
 ----------
+
+* Oct 30, 2018
+    - (by: sonofeft) 
+        - added named color to clipboard options, added accelerator keys
+        - added examples page to docs
+        - history update
 
 * Oct 30, 2018
     - (by: sonofeft) 
