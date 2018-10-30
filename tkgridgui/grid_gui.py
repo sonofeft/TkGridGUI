@@ -74,6 +74,7 @@ from tkgridgui.make_py_src import FormSource
 from tkgridgui.make_menu_src import buildMenuSource, getMenuSource
 
 from tkgridgui.maybe_save_Dialog import maybe_save_dialog
+from tkgridgui.named_color_picker_Dialog import named_color_picker
 
 class GridGUI(object):
     """
@@ -219,6 +220,7 @@ class GridGUI(object):
         optMenu = Menu(self.menuBar, tearoff=0)
         optMenu.add('command', label = 'Font to Clipboard', command =self.FontPickButton_Select, underline=0,accelerator="Ctrl+F")
         optMenu.add('command', label = 'Color to Clipboard', command = self.ColorPickButton_Select, underline=0,accelerator="Ctrl+C")
+        optMenu.add('command', label = 'Named Color to Clipboard', command = self.NamedColorPickButton_Select, underline=0,accelerator="Ctrl+K")
         self.menuBar.add('cascade', label="Options", menu=optMenu)
         
         # bind accelerator keys (need lambda since functions don't have "event" parameter)
@@ -233,6 +235,16 @@ class GridGUI(object):
         
         self.root.bind("<Control-X>", lambda event: self.cleanupOnQuit())
         self.root.bind("<Control-x>", lambda event: self.cleanupOnQuit())
+            
+            
+        self.root.bind("<Control-F>", self.FontPickButton_Click)
+        self.root.bind("<Control-f>", self.FontPickButton_Click)
+        
+        self.root.bind("<Control-C>", self.ColorPickButton_Click)
+        self.root.bind("<Control-c>", self.ColorPickButton_Click)
+        
+        self.root.bind("<Control-K>", self.NamedColorPickButton_Click)
+        self.root.bind("<Control-k>", self.NamedColorPickButton_Click)
 
         # create About menu
         self.menuBar.add('command', label="About", command = self.About)
@@ -334,6 +346,11 @@ class GridGUI(object):
         self.ColorPickButton = Button(frame2, text="Put Color on Clipboard", width=18)
         self.ColorPickButton.pack(anchor=W, side=TOP)
         self.ColorPickButton.bind("<ButtonRelease-1>", self.ColorPickButton_Click)
+        
+        # put color picker button
+        self.ColorPickButton = Button(frame2, text="   --> Named Color", width=18)
+        self.ColorPickButton.pack(anchor=W, side=TOP)
+        self.ColorPickButton.bind("<ButtonRelease-1>", self.NamedColorPickButton_Click)
         
         # put Font picker button
         self.FontPickButton = Button(frame2, text="Put Font on Clipboard", width=18)
@@ -715,7 +732,21 @@ class GridGUI(object):
             self.ColorPickButton.clipboard_append(cstr)
             
             #print( 'color chosen=',cstr, end="\n")
-    
+                
+    def NamedColorPickButton_Click(self, event): #put selected color on clipboard
+        self.NamedColorPickButton_Select()
+        
+    def NamedColorPickButton_Select(self): #put selected color on clipboard
+        self.set_status_msg('Place Named Color on Clipboard')
+        
+        dialog = named_color_picker(self.MainWin, title="Place Named Color on Clipboard")
+        if dialog.result is not None:
+            (_, _, _, _, _, _, cstr, name) = dialog.result["named_color"]
+            
+            self.set_status_msg('%s %s is on Clipboard'%(name, cstr) )
+            self.ColorPickButton.clipboard_clear()
+            self.ColorPickButton.clipboard_append(cstr)
+            
     def FontPickButton_Click(self, event):
         self.FontPickButton_Select()
     
@@ -765,8 +796,8 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
 
     def About(self):
         tkinter.messagebox.showinfo(
-            "About TkGridGUI",
-            "TkGridGUI is:\n\n"+\
+            "About TkGridGUI v(%s)"%__version__,
+            "TkGridGUI v(%s) is:\n\n"%__version__+\
             "A quick approach to\n"+\
             "building Tkinter applications.\n"+\
             "Written by Charlie Taylor\n"
