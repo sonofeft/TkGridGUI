@@ -1,5 +1,5 @@
 
-*) check that anchor attritute on all widgets that might apply
+*) Menu editor self-closes on my Linux laptop
 
 *) add "from_" to edit_Dialog for Scale widget
 
@@ -185,3 +185,6 @@
    Left Click on widget to place a duplicate
 
 *) get rid of "print( 'apply called' )"
+
+*) check that anchor attritute on all widgets that might apply
+

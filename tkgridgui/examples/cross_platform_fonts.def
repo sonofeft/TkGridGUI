@@ -1,0 +1,288 @@
+[app_attr]
+hideokbutton = no
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = cross_platform_fonts
+guitype = dialog
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 346
+width = 523
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 39
+x = 1211
+hasstatusbar = no
+
+[Checkbutton_1]
+widget_type = Checkbutton
+tab_label = LabelFrame_1
+row = 1
+col = 1
+rowspan = 
+text = Bold
+docstring = 
+width = 15
+columnspan = 
+anchor = w
+
+[Checkbutton_2]
+widget_type = Checkbutton
+tab_label = LabelFrame_1
+row = 2
+col = 1
+rowspan = 
+text = Italic
+docstring = 
+width = 15
+columnspan = 
+anchor = w
+
+[Checkbutton_3]
+widget_type = Checkbutton
+tab_label = LabelFrame_1
+row = 3
+col = 1
+rowspan = 
+text = Underline
+docstring = 
+width = 15
+columnspan = 
+anchor = w
+
+[Checkbutton_4]
+widget_type = Checkbutton
+tab_label = LabelFrame_1
+row = 4
+col = 1
+rowspan = 
+text = Overstrike
+docstring = 
+width = 15
+columnspan = 
+anchor = w
+
+[Entry_2]
+widget_type = Entry
+tab_label = Main
+row = 1
+col = 2
+rowspan = 
+text = Entry_2
+docstring = 
+scrollx = no
+sticky = w
+width = 4
+columnspan = 
+
+[LabelFrame_1]
+widget_type = LabelFrame
+tab_label = Main
+row = 2
+col = 4
+rowspan = 2
+text = Attributes
+docstring = 
+row_weights = 
+sticky = n
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Label_2]
+widget_type = Label
+tab_label = Main
+row = 4
+col = 1
+rowspan = 
+text = 
+docstring = 
+width = 15
+columnspan = 
+
+[Label_3]
+widget_type = Label
+tab_label = Main
+row = 9
+col = 1
+rowspan = 
+text = (see sample text above)
+docstring = 
+width = 30
+columnspan = 5
+
+[Label_4]
+widget_type = Label
+tab_label = Main
+row = 8
+col = 1
+rowspan = 
+text = ABCD efg 123.0
+docstring = 
+sticky = ew
+width = 14
+columnspan = 5
+
+[Label_6]
+widget_type = Label
+tab_label = Main
+row = 0
+col = 1
+rowspan = 
+text = Courier 10 normal italic underline overstrike
+docstring = 
+sticky = ew
+width = 30
+columnspan = 4
+font = TkDefaultFont 12
+
+[Label_7]
+widget_type = Label
+tab_label = Main
+row = 2
+col = 3
+rowspan = 
+text = 
+docstring = 
+width = 3
+columnspan = 
+
+[Label_8]
+widget_type = Label
+tab_label = Main
+row = 0
+col = 5
+rowspan = 
+text = System Fonts
+docstring = 
+sticky = s
+width = 15
+columnspan = 
+
+[Listbox_1]
+widget_type = Listbox
+tab_label = Main
+row = 2
+col = 2
+rowspan = 
+docstring = 
+scrollx = no
+scrolly = yes
+height = 10
+width = 4
+columnspan = 
+borderwidth = 4
+sticky = nsw
+
+[Listbox_2]
+widget_type = Listbox
+tab_label = Main
+row = 1
+col = 5
+rowspan = 7
+docstring = 
+scrollx = no
+scrolly = yes
+height = 15
+width = 25
+columnspan = 
+sticky = ns
+
+[RadioGroup_1]
+widget_type = RadioGroup
+tab_label = Main
+row = 2
+col = 1
+rowspan = 2
+text = Cross Platform Fonts
+docstring = 
+row_weights = 
+sticky = n
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Radiobutton_1]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 1
+col = 0
+rowspan = 
+text = Courier
+docstring = 
+value = 1
+width = 15
+columnspan = 
+anchor = w
+
+[Radiobutton_2]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 2
+col = 0
+rowspan = 
+text = Helvetica
+docstring = 
+value = 2
+width = 15
+columnspan = 
+anchor = w
+
+[Radiobutton_3]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 3
+col = 0
+rowspan = 
+text = Times
+docstring = 
+value = 3
+width = 15
+columnspan = 
+anchor = w
+
+[Radiobutton_4]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 4
+col = 0
+rowspan = 
+text = TkDefaultFont
+docstring = 
+value = 4
+width = 15
+columnspan = 
+anchor = w
+
+[Radiobutton_5]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 6
+col = 0
+rowspan = 
+text = Platform Specific
+docstring = 
+value = 6
+width = 15
+columnspan = 
+anchor = e
+
+[Radiobutton_6]
+widget_type = Radiobutton
+tab_label = RadioGroup_1
+row = 5
+col = 0
+rowspan = 
+text = Symbol
+docstring = 
+value = 5
+width = 15
+columnspan = 
+anchor = w
+

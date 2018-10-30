@@ -63,7 +63,7 @@ from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
-from tkgridgui.tkfontchooser import askfont
+from tkgridgui.cross_platform_fonts_Dialog import get_cross_platform_font
 
 from tkgridgui.grid_notebook import NotebookGridDes, CONTROLS, ContainerControlsL, CONTROL_NEXT_NUMBER_D, CONTROL_COLOR_D
 from tkgridgui.target_tk_app_def import TargetTkAppDef # used to read and save App Definition
@@ -721,15 +721,11 @@ class GridGUI(object):
     
     def FontPickButton_Select(self):
         self.set_status_msg('Place Selected Font on Clipboard')
-        font = askfont(self.root)
-        if font:
-            # spaces in the family name need to be escaped
-            font['family'] = font['family'].replace(' ', '\ ')
-            font_str = "%(family)s %(size)i %(weight)s %(slant)s" % font
-            if font['underline']:
-                font_str += ' underline'
-            if font['overstrike']:
-                font_str += ' overstrike'
+        dialog = get_cross_platform_font(self.MainWin, title="Get Font")
+        if dialog.result is not None:
+            font_str = dialog.result['full_font_str']
+            
+            # for example:    Comic\ Sans\ MS 20 bold roman
                 
             self.set_status_msg('%s is on Clipboard'%font_str)
             self.ColorPickButton.clipboard_clear()

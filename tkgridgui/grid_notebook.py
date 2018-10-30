@@ -1341,7 +1341,7 @@ class NotebookGridDes( Frame ):
             
             # use dialog results to set properties
             if dialog.result is None:
-                self.master.after( 500, unhighlight_edited_widget ) # give user half a sectond to see highlight
+                self.master.after( 300, unhighlight_edited_widget ) # give user a little time to see highlight
             else:
                 # check for delete widget command
                 if ("DeleteWidget" in dialog.result) and (dialog.result["DeleteWidget"]=="yes"):

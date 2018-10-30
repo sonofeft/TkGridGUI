@@ -24,7 +24,7 @@ from tkinter import Listbox, Message, Radiobutton, Spinbox, Text
 from tkinter import OptionMenu # ttk OptionMenu seems to be broken
 from tkinter.ttk import Combobox, Progressbar, Separator, Treeview, Style, Notebook
 
-from tkgridgui.tkfontchooser import askfont
+from tkgridgui.cross_platform_fonts_Dialog import get_cross_platform_font
 from tkgridgui.edit_options import WidgetPropertyDefinitionsD, get_definition_optionsL
 
 from tkgridgui.fg_bg_color_picker_Dialog import fg_bg_color_picker
@@ -150,15 +150,9 @@ class Edit_Properties_Dialog(_Dialog):
         self.val_strvarL[i].set( self.cbox_svarD[ event.widget ].get() )
 
     def get_font(self, N):
-        font = askfont(self)
-        if font:
-            # spaces in the family name need to be escaped
-            font['family'] = font['family'].replace(' ', '\ ')
-            font_str = "%(family)s %(size)i %(weight)s %(slant)s" % font
-            if font['underline']:
-                font_str += ' underline'
-            if font['overstrike']:
-                font_str += ' overstrike'
+        dialog = get_cross_platform_font(self.parent, title="Get Font")
+        if dialog.result is not None:
+            font_str = dialog.result['full_font_str']
                 
             self.val_strvarL[N].set( font_str )
         
