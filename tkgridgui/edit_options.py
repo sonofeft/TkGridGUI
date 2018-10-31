@@ -58,6 +58,13 @@ def get_definition_optionsL( attr_name ):
 def set_attribute_if_possible(widget, attr_name, value):
     prop_set = set( widget.keys() )
 
+    # Scale seems to be missing many defaults
+    if str(widget.__class__).endswith('.Scale'):
+        prop_set.add('from_')
+        prop_set.add('digits')
+        prop_set.add('resolution')
+        prop_set.add('tickinterval')
+
     #print('prop_set = ', sorted(prop_set))
     if attr_name in prop_set:
         widget[ attr_name ] = value
@@ -80,7 +87,14 @@ def get_properties_dict( widget ):
         if name in prop_set:
             val = str( widget.cget( name ) )
             resultD[name] = val
-            
+
+    # Scale seems to be missing many defaults
+    if str(widget.__class__).endswith('.Scale'):
+        resultD['from_'] = 0
+        resultD['digits'] = 0
+        resultD['resolution'] = 1
+        resultD['tickinterval'] = 0
+
     return resultD
     
 def get_properties_for_editing( widget ):
@@ -115,10 +129,13 @@ cursor #The shape of the cursor when the cursor is over the widget."""
 
 add_definition( commonPropertiesStr )
 
-specialtyPropertiesStr = """from_ #Constrain the values to a numeric range. For example, from_=-10 and to=10
+specialtyPropertiesStr = """digits # number of digits displayed
+resolution # numeric resolution
+tickinterval # numeric interval between displayed numbers (should be >= resolution)
+from_ #Constrain the values to a numeric range. For example, from_=-10 and to=10
 to #Value that defines one end of the scale's range
 value #The initial value of the widget's variable
-length #Number of pixels for the x dimension if the scale is horizontal, or the y dimension if vertical
+length #Number of pixels for the x dimension if horizontal, or the y dimension if vertical
 label #An optional text label
 orient #Orientation options HORIZONTAL VERTICAL
 padx #Additional padding left and right of the text.

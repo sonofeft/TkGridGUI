@@ -134,7 +134,8 @@ class _contrast_color(_Dialog):
         #else:
         #    max_cr_val = max(1.05/self.ref_lum_p05, self.CR_request)
         
-        self.Scale_1.configure(tickinterval=0.1, from_=min_cr_val, to=max_cr_val, resolution=0.1, digits=3)
+        self.Scale_1.configure(tickinterval=0.1, from_=min_cr_val, to=max_cr_val, 
+                               resolution=0.1, digits=3)
 
         self.Scale_1_StringVar.set( self.CR_request )
         

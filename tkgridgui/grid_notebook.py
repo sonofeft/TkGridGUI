@@ -478,6 +478,8 @@ class NotebookGridDes( Frame ):
         label.grid(row=row_weight_controls, column=col_interface)
         
         label.bind("<Button-1>", self.onSetColumnWeightClicked)
+        label.bind("<Enter>", self.onSetRowColumnWeightEnter)
+        label.bind("<Leave>", self.onSetRowColumnWeightLeave)
         
         
     
@@ -518,6 +520,8 @@ class NotebookGridDes( Frame ):
         label.grid(row=row_interface, column=col_weight_controls)
         
         label.bind("<Button-1>", self.onSetRowWeightClicked)
+        label.bind("<Enter>", self.onSetRowColumnWeightEnter)
+        label.bind("<Leave>", self.onSetRowColumnWeightLeave)
 
 
     def target_grid_is_empty(self, tab_label, row_target, col_target):
@@ -1036,6 +1040,11 @@ class NotebookGridDes( Frame ):
         else:
             self.set_status_msg("")
 
+    def onSetRowColumnWeightEnter(self, event):
+        event.widget.config(cursor='rtl_logo')
+    def onSetRowColumnWeightLeave(self, event):
+        event.widget.config(cursor='arrow')
+
     def onRowControlMove(self, event):
         """Movement inside a Row Control.  Changes cursor for Insert and Delete."""
         y = int( event.y )
@@ -1320,6 +1329,8 @@ class NotebookGridDes( Frame ):
                 target_comp.highlight_pw_widget() # onGridBoxLeave tries to override this when Edit_Properties_Dialog is called.
                 
                 #self.grid_gui.PreviewWin.update()
+                #print('default_tkOptionD =',target_comp.default_tkOptionD)
+                #print('user_tkOptionD =',   target_comp.user_tkOptionD)
                     
             #else:
             #    dialogOptionsD = None

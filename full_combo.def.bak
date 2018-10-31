@@ -270,14 +270,9 @@ widget_type = Scale
 tab_label = Tab_5
 row = 2
 col = 1
-digits = 3
-rowspan = 
-resolution = .5
-docstring = 
-to = 7.5
 columnspan = 
-from_ = 2.5
-tickinterval = 1
+rowspan = 
+docstring = 
 
 [Spinbox_1]
 widget_type = Spinbox

@@ -1,25 +1,4 @@
 
-*) Menu editor self-closes on my Linux laptop
-
-*) add "from_" to edit_Dialog for Scale widget
-
-*) Save message should include both def and py file names.
-
-*) get rid of mouse_location prints
-
-*) double check how to insure requirements.txt modules are installed.
-
-*) Save after Open does not go to Open directory
-   (i.e. doesn't remember directory of opened file)
-
-*) Linux "pip install configparser"
-
-*) remove tkMessageBox, tkColorChooser, tkFileDialog from generated source code.
-
-    make tkinter.ttk outside of sys.version (i.e. remove sys.version)
-
-*) str vs. unicode using key=str.lower in sorted.
-
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)
 
@@ -188,3 +167,30 @@
 
 *) check that anchor attritute on all widgets that might apply
 
+*) Menu editor self-closes on my Linux laptop
+    (machine needed update)
+
+*) Save message should include both def and py file names.
+
+*) get rid of mouse_location prints
+
+*) double check how to insure requirements.txt modules are installed.
+
+*) Save after Open does not go to Open directory
+   (i.e. doesn't remember directory of opened file)
+
+*) Linux "pip install configparser"
+
+*) str vs. unicode using key=str.lower in sorted.
+
+*) make tkinter.ttk outside of sys.version (i.e. remove sys.version)
+    (NO... needed for Dialog)
+    if sys.version_info < (3,):
+        from tkSimpleDialog import Dialog
+    else:
+        from tkinter.simpledialog import Dialog
+
+*) remove tkMessageBox, tkColorChooser, tkFileDialog from generated source code.
+
+*) add "from_" to edit_Dialog for Scale widget (Spinbox has it correct)
+    

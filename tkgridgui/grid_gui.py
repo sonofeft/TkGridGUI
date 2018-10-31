@@ -849,11 +849,17 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
         
         self.in_reading_mode = True # when True, suppresses some automatic trace actions.
         if fName is None:
+            
+            if self.current_filePath:
+                initialdir = self.current_filePath
+            else:
+                initialdir = '.'
+            
             filetypes = [
                 ('tkGridGUI definition','*.def'),
                 ('Any File','*.*')]
             self.pathopen = tkinter.filedialog.askopenfilename(parent=self.MainWin, title='Open tkGridGUI file', 
-                filetypes=filetypes)
+                filetypes=filetypes, initialdir=initialdir)
             #print('self.pathopen =',self.pathopen)
         else:
             self.pathopen = os.path.abspath(fName)
@@ -964,9 +970,13 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
         else:
             fname = ''
                         
+        if self.current_filePath:
+            initialdir = self.current_filePath
+        else:
+            initialdir = '.'
             
         fsave = tkinter.filedialog.asksaveasfilename(parent=self.MainWin, title='Saving TkGridGUI Definition File', 
-            initialfile=fname, filetypes=filetypes)
+            initialfile=fname, filetypes=filetypes, initialdir=initialdir)
         
         if fsave:
             if not fsave.lower().endswith('.def'):
@@ -1017,8 +1027,8 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
                 sf = FormSource( self.target_app, self.MainWin, self )
                 sf.saveToFile() # save *.py file
                 
-
-                self.set_status_msg('Saved File: "%s"'%self.current_fileName)
+                head, tail = os.path.split( sf.sourceFile.pathopen )
+                self.set_status_msg('Saved File: "%s" and "%s" in "%s"'%(self.current_fileName, tail, head) )
                 
                 self.target_app.reset_crc_reference() # for detecting changes to model
                 

@@ -160,7 +160,10 @@ class Component( object ):
             pass
             
         elif widget_type == "Scale":
-            pass
+            self.user_tkOptionD['from_'] = 0
+            self.user_tkOptionD['digits'] = 0
+            self.user_tkOptionD['resolution'] = 1
+            self.user_tkOptionD['tickinterval'] = 0
             
         elif widget_type == "Notebook":
             self.width_type  = "pixel"

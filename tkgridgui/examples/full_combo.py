@@ -68,7 +68,7 @@ class _full_combo:
         self.make_Radiobutton_2( self.RadioGroup_1 )   # Radiobutton: 2 : at RadioGroup_1(3,1)
         self.make_Radiobutton_3( self.RadioGroup_1 )   # Radiobutton: 3 : at RadioGroup_1(4,1)
         self.make_Radiobutton_4( self.RadioGroup_1 )   # Radiobutton: 4 : at RadioGroup_1(5,1)
-        self.make_Scale_1( self.Tab_5 )                #       Scale:  at Tab_5(2,1)
+        self.make_Scale_1( self.Tab_5 )                #       Scale: 2.5 to 7.5 : at Tab_5(2,1)
         self.make_Spinbox_1( self.Tab_5 )              #     Spinbox: 1 to 10 : at Tab_5(3,1)
         self.make_Button_2( self.Tab_3 )               #      Button:  at Tab_3(3,1)
         self.make_Text_1( self.Tab_3 )                 #        Text:  at Tab_3(2,1)
@@ -321,8 +321,8 @@ class _full_combo:
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Scale_1"
     def make_Scale_1(self, frame):
-        """       Scale:  at Tab_5(2,1)"""
-        self.Scale_1 = Scale( frame )
+        """       Scale: 2.5 to 7.5 : at Tab_5(2,1)"""
+        self.Scale_1 = Scale( frame , digits="3", tickinterval="1", to="7.5", from_="2.5", resolution=".5")
         self.Scale_1.grid(row=2, column=1)
         self.Scale_1_StringVar = StringVar()
 
@@ -526,7 +526,7 @@ class _full_combo:
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "Scale_1_StringVar_traceName"
     def Scale_1_StringVar_Callback(self, varName, index, mode):
-        """       Scale:  at Tab_5(2,1)"""
+        """       Scale: 2.5 to 7.5 : at Tab_5(2,1)"""
         pass
 
         # >>>>>>insert any user code below this comment for section "Scale_1_StringVar_traceName"
