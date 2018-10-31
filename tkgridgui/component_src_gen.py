@@ -221,6 +221,7 @@ class CompSrcGen( object ):
         if self.widget_type == "Listbox":
             wn, wt = self.widget_name, self.widget_type
             ansL.extend(['\n','        # Edit the Listbox Entries\n',
+            '''        self.%s.configure( exportselection=False ) # stay highlighted after focus leaves\n'''%wn,
             '''        self.%s.insert(END, "apples")\n'''%wn,
             '''        self.%s.insert(END, "oranges")\n'''%wn,
             '''        self.%s.insert(END, "grapes")\n'''%wn,   '\n'] )

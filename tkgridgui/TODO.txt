@@ -1,16 +1,17 @@
 
+*) New needs to reset all numberint to start at 1 for widget names.
+
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)
 
 *) The choice to duplicate a widget on one tab is lost when another tab is selected.
 
 *) sample *.def files in def_samples subdirectory.
+   Provide some basic library layouts.
 
 *) clean up #print ...
 
 *) Add listbox current selection to dialog automatic result dictionary.
-
-*) add onEnter and onLeave with cursor change for weight controls
 
 *) Two Debug buttons... both need to be result of DEBUG flag.
 
@@ -36,27 +37,18 @@
    DEF and py files as well as directory of save.
    After Save, offer option to launch py file.
 
-*) add in user area of generated code things like listbox and menubutton initialization
-   (add comment next to widget creation)
-   *** Worry about statusbar added after 1st save??? not put in user area???
-   *** Worry about anything added after 1st save that puts things into user area
-
 *) Drop scrolling onto main window and widgets like Text
    (i.e. allow main window to scroll)
 
-*) Provide some basic library layouts.
-
 *) Provide Sroll Left/Right/Up/Down controls... (i.e. change starting row/col)
    (need to limit display to some number of rows and columns)
-
-*) ctrl or alt keys for menu commands
 
 *) combine common parts of right-click PreviewWin and grid_notebook.
 
 *) Consider only including user-defined OK and Cancel buttons in dialog
    (i.e. they call self.ok and self.cancel by default)
 
-# - - - - - - Low Priority - - - - - - - -
+# ========================= Low Priority =========================
 *) Save hangs when no file name given... need a warning.
 
 *) switch to Style definitions (see: https://docs.python.org/3/library/tkinter.ttk.html )
@@ -194,3 +186,15 @@
 
 *) add "from_" to edit_Dialog for Scale widget (Spinbox has it correct)
     
+
+*) add exportselection to default Listbox settings.
+   self.Listbox_2.configure( exportselection=False ) # stay highlighted after focus leaves
+
+*) add onEnter and onLeave with cursor change for weight controls
+
+*) add in user area of generated code things like listbox and menubutton initialization
+   (add comment next to widget creation)
+   *** Worry about statusbar added after 1st save??? not put in user area???
+   *** Worry about anything added after 1st save that puts things into user area
+
+*) ctrl or alt keys for menu commands

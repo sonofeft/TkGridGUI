@@ -139,11 +139,13 @@ class GridGUI(object):
         self.current_fileFullName = '' # no file for now
         self.current_filePath = '' # no file for now
         self.current_fileName = '' # no file for now
+        
+        self.last_user_placement_selection = 'Button' # either a widget_type or a widget_name (Button vs Button_1)
 
         self.target_app = TargetTkAppDef( name='myApp')
         self.PreviewWin = None # need to initialize later
         
-        self.Listbox_1_Click( None ) # execute selection logic
+        self.Listbox_1_Click( 'FromInit' ) # execute selection logic
 
         
         self.in_reading_mode = False # when True, suppresses some automatic trace actions.
@@ -403,7 +405,7 @@ class GridGUI(object):
         
 
     def PlaceAllWidgetsButton_Click(self, event):
-        """As debug tool, show all widgets in Notebook"""
+        """As DEBUG TOOL, show all widgets in Notebook"""
         
         saved_sel = self.MainWin.placementWidgetType_svar.get()
         saved_tab = self.grid_notebook.current_tab_label()
@@ -479,7 +481,7 @@ class GridGUI(object):
             
         if n >= 0:
             self.Listbox_1.selection_set(n)
-            self.Listbox_1_Click( None ) # event is not used in Listbox_1_Click
+            self.Listbox_1_Click( 'FromGrayOut' ) # event is not used in Listbox_1_Click
     
     def restore_black_listbox(self):
         """Make sure all listbox options show up for all other tabs."""
@@ -494,7 +496,7 @@ class GridGUI(object):
             self.Listbox_1.selection_clear(index)
             
         self.Listbox_1.selection_set(n)
-        self.Listbox_1_Click( None ) # event is not used in Listbox_1_Click
+        self.Listbox_1_Click( 'FromRestoreBlack' ) # event is not used in Listbox_1_Click
 
     def select_preview_tab(self, tab_name_inp):
         
@@ -596,6 +598,10 @@ class GridGUI(object):
         self.dup_widget_label["text"      ] = label_obj["text"]
         self.dup_widget_label["background"] = label_obj["background"]
         self.dup_widget_label_desc["text"      ] = "\nduplicate widget\nand its properties"
+        
+        # set to widget name (e.g. Button_1)
+        self.last_user_placement_selection = label_obj["text"].split('\n')[1] # either a widget_type or a widget_name (Button vs Button_1)
+
     
     def set_placement_widget_label(self, widget_type):
         """Sets dup_widget_label for a simple Place of widget_type."""
@@ -613,7 +619,8 @@ class GridGUI(object):
         val = 'Button'
         for i in self.Listbox_1.curselection():
             val = self.Listbox_1.get(i)# .lower()
-            self.set_status_msg("Selected Widget: "+self.Listbox_1.get(i) )
+        
+        self.set_status_msg("Selected Widget: "+ val )
                 
         self.MainWin.placementWidgetType_svar.set(val)
 
@@ -814,7 +821,7 @@ Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
                 return
 
         self.current_fileFullName = '' # no file for now
-        self.current_filePath = '' # no file for now
+        # leave path alone... self.current_filePath = '' # no file for now
         self.current_fileName = '' # no file for now
 
         self.MainWin.title( 'TkGridGUI: ' + self.current_fileName )

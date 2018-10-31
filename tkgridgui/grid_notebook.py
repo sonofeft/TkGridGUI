@@ -104,6 +104,11 @@ class NotebookGridDes( Frame ):
         self.initialize_NotebookGridDes()
     
     def initialize_NotebookGridDes(self):
+        
+        for widget_type, color in CONTROLS:
+            CONTROL_NEXT_NUMBER_D[widget_type] = 1 # all start with 1
+        
+        
         self.tabLabelL = [] # list of notebook tabs in order of addition
         self.nbFrameL = [] # list of Frame objects for each tab in notebook
         
@@ -128,6 +133,7 @@ class NotebookGridDes( Frame ):
         
         self.current_label_being_edited = None # used as flag in onGridBoxLeave to maintain hightlight
         
+        self.dup_source_widget_name = '' # No current dup widget
         
         self.must_confirm_box_h = True
         self.box_h = 46  # initial guesstimate of widget height
