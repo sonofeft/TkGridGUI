@@ -139,8 +139,6 @@ class GridGUI(object):
         self.current_fileFullName = '' # no file for now
         self.current_filePath = '' # no file for now
         self.current_fileName = '' # no file for now
-        
-        self.last_user_placement_selection = 'Button' # either a widget_type or a widget_name (Button vs Button_1)
 
         self.target_app = TargetTkAppDef( name='myApp')
         self.PreviewWin = None # need to initialize later
@@ -519,18 +517,27 @@ class GridGUI(object):
         if self.mouse_location == 'preview_win':
             return
         
+        # look at the dup widget to see if it's a full widget duplication
+        s_dup = self.dup_widget_label["text"].strip()
+        if s_dup and s_dup.startswith('('): # i.e. widget has a (row,col) position
+            saved_dup_text_on_tab_change = self.dup_widget_label["text"]        
+            saved_dup_bg_on_tab_change   = self.dup_widget_label["background"]
+        else:
+            saved_dup_text_on_tab_change = ''
+            saved_dup_bg_on_tab_change   = ''
+        
         nb = self.grid_notebook.notebook
         #i = nb.index(nb.select())
-        text = nb.tab(nb.select(), "text")
-        #print("GridGUI Notebook Tab Set to:", text )
+        nb_tab_label = nb.tab(nb.select(), "text")
+        #print("GridGUI Notebook Tab Set to:", nb_tab_label )
 
         self.Listbox_1.config( state=NORMAL )
 
         # gray out some listbox options for RadioGroup
-        if text.startswith('RadioGroup'):
+        if nb_tab_label.startswith('RadioGroup'):
             self.gray_out_listbox( omit_list=("Radiobutton","Label") )
                         
-        elif text.startswith('Notebook'):
+        elif nb_tab_label.startswith('Notebook'):
             #print('=========>  Need to add Notebook logic.')
             
             self.gray_out_listbox( omit_list=None )
@@ -540,18 +547,21 @@ class GridGUI(object):
         else:
             # Make sure all listbox options show up for all other tabs.
             self.restore_black_listbox()
+            
+            if saved_dup_text_on_tab_change:
+                self.dup_widget_label["text"      ] = saved_dup_text_on_tab_change
+                self.dup_widget_label["background"] = saved_dup_bg_on_tab_change
+                self.dup_widget_label_desc["text"      ] = "\nduplicate widget\nand its properties"
+                
 
         # Cause PreviewWin to switch to same Tab
-        #if text.startswith('Tab_'):
-        #    self.select_preview_tab( text ) # text is tab_name
-                
-        if text in self.target_app.compObjD:
-            w = self.target_app.compObjD[ text ]
+        if nb_tab_label in self.target_app.compObjD: # i.e. the tab is in the TargetTkAppDef
+            w = self.target_app.compObjD[ nb_tab_label ]
             treeL = w.get_tab_label_tree()
             #print('New widget tab_label_tree =', treeL )
             for name in treeL:
                 if name.startswith('Tab_'):
-                    self.select_preview_tab( name ) # text is tab_name
+                    self.select_preview_tab( name ) # nb_tab_label is tab_name
             
             
 
@@ -599,9 +609,6 @@ class GridGUI(object):
         self.dup_widget_label["background"] = label_obj["background"]
         self.dup_widget_label_desc["text"      ] = "\nduplicate widget\nand its properties"
         
-        # set to widget name (e.g. Button_1)
-        self.last_user_placement_selection = label_obj["text"].split('\n')[1] # either a widget_type or a widget_name (Button vs Button_1)
-
     
     def set_placement_widget_label(self, widget_type):
         """Sets dup_widget_label for a simple Place of widget_type."""
