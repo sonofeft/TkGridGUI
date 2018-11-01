@@ -1,12 +1,5 @@
 
 
-*) The choice to duplicate a widget on one tab is lost when another tab is selected.
-   Menu for last duplicated widget. (all widgets)
-   Freeze option on placement widget.
-   If changing tab with a dup widget, save it and restore it.
-
-*) New needs to reset all numberint to start at 1 for widget names.
-
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)
 
@@ -202,3 +195,8 @@
    *** Worry about anything added after 1st save that puts things into user area
 
 *) ctrl or alt keys for menu commands
+
+*) The choice to duplicate a widget on one tab is lost when another tab is selected.
+   If changing tab with a dup widget, save it and restore it.
+
+*) New needs to reset all numbering to start at 1 for widget names.

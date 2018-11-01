@@ -4,7 +4,7 @@
 Examples
 ========
 
-Named Color Picker
+Named Color Dialog
 ------------------
 
 The dialog for picking named colors within TkGridGUI was created by TkGridGUI.
@@ -166,4 +166,134 @@ it captures one of the main ideas behind TDD that development
 **relies on the repetition of a very short development cycle**.
 
 Each change to the GUI under development can be incremental and can be tested incrementally.
+
+Cross-Platform Font Dialog
+--------------------------
+
+
+The dialog for picking fonts within TkGridGUI was created by TkGridGUI.
+
+The two images below show the dialog with a cross-platform font selected (Times) and
+with a platform-specific font selected (Chiller).
+
+The objective of the dialog is to present several cross-platform fonts to the 
+user for selection using the Radiobuttons along the upper left, or any of the 
+detectted system fonts in the Listbox along the upper right.  Additional attributes
+of the font can be set with the Checkbutton controls labeled Bold, Italic, Underline
+and Overstrike.  The font size can be selected from the numeric Listbox or set
+manually in the Entry control just above that Listbox.
+
+Once selected, the Label at the top of the dialog describes the choice
+(Times 28 bold roman) and (Chiller 48 bold roman) in the examples below.
+
+The label spanning the width of the dialog just above the OK and Cancel buttons
+show the font as it displayed by a **label.configure(font=selected_font)** command.
+
+.. image:: ./_static/font_dialog_times.jpg
+    :width: 48%
+
+.. image:: ./_static/font_dialog_chiller.jpg
+    :width: 44.5%
+    
+`Click Image to View Fill Size`
+
+
+TkGridGUI Layout
+~~~~~~~~~~~~~~~~
+
+The TkGridGUI layout for this project is shown below. Many of the widgets on the Main
+tab use rowspan and columnspan to achieve the desired layout (see impage marked in red 
+below).
+
+Rowspan and columnspan are applied by Right-Clicking a widget on the grid after it is 
+placed and entering the desired integer value for the number of rows or columns to be
+spanned.
+
+
+.. image:: ./_static/font_main_grid_notebook.jpg
+    :width: 80%
+
+
+.. image:: ./_static/font_main_grid_notebook_markup.jpg
+    :width: 80%
+
+RadioGroup_1 holds the Cross-Platform Font selections and is designed as shown below.
+
+Note that when the mouse is over a widget on the grid interface 
+(see Radiobutton at (2,0) below)
+that the same widget is highlighted in the preview window 
+(see the red Helvetica Radiobutton in the preview window below).
+
+The Checkbuttons are placed into LabelFrame_1 for the font Attributes in a very similar
+manner.
+
+.. image:: ./_static/radiogroup_1_grid.jpg
+    :width: 30%
+
+
+.. image:: ./_static/radiogroup_1_preview.jpg
+    :width: 65%
+
+
+User Code
+~~~~~~~~~
+
+User code is inserted below the **# >>>>>>insert any user code** comment lines
+in each of the generated methods.
+
+For example, some initialization was done in the fonts dialog to set the default font to
+Helvetica size 10.
+
+.. code-block:: python
+
+        # >>>>>>insert any user code below this comment for section "top_of_init"
+
+        self.RadioGroup_1_StringVar.set("2") # make Helvetica the default
+        self.current_font_name = 'Helvetica'
+        self.Entry_2_StringVar.set( '10' )
+
+
+In the `validate` method, the dialog returns the user selection in the `result` dictionary.
+
+The selected font is returned both in string form and in tuple form.
+
+.. code-block:: python
+
+    def validate(self):
+        self.result = {} # return a dictionary of results
+
+        # >>>>>>insert any user code below this comment for section "dialog_validate"
+        
+        t = self.full_font_desc
+        self.result["full_font_desc"] = t # return the tuple
+        self.result["full_font_str"] = t[0].replace(' ','\ ') + ' %i '%t[1] + ' '.join(t[2:])
+        
+        return 1
+
+
+
+Test Dialog
+~~~~~~~~~~~
+
+Note that every dialog created by TkGridGUI automatically includes a `Testdialog` feature
+that runs when the python file is run `stand-alone`.
+
+.. image:: ./_static/test_dialog.jpg
+    :width: 40%
+
+
+WorkFlow
+--------
+
+The workflow for the font dialog is exactly the same as it was for the 
+named color dialog above and
+consists of::
+
+    * Position Widget in TkGridGUI
+    * Edit Widget Properties in TkGridGUI
+    * Save to Generated Python File
+    * In Source Code Editor, Modify User Code
+    * Run Python File Stand-Alone
+    * Refactor/Make Corrections
+    * Repeat Cycle
 

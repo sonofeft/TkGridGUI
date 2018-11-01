@@ -57,7 +57,6 @@ class _cross_platform_fonts(_Dialog):
 
         self.make_Entry_2( self.dialogframe )          #       Entry:  at Main(1,2)
         self.make_LabelFrame_1( self.dialogframe )     #  LabelFrame: Attributes : at Main(2,4)
-        self.make_Label_2( self.dialogframe )          #       Label:  at Main(4,1)
         self.make_Label_3( self.dialogframe )          #       Label: (see sample text above) : at Main(9,1)
         self.make_Label_4( self.dialogframe )          #       Label: ABCD efg 123.0 : at Main(8,1)
         self.make_Label_6( self.dialogframe )          #       Label: Courier 10 normal italic underline overstrike : at Main(0,1)
@@ -143,15 +142,6 @@ class _cross_platform_fonts(_Dialog):
         self.LabelFrame_1.grid(row=2, column=4, sticky="n", rowspan="2")
 
         # >>>>>>insert any user code below this comment for section "make_LabelFrame_1"
-
-
-    # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Label_2"
-    def make_Label_2(self, frame):
-        """       Label:  at Main(4,1)"""
-        self.Label_2 = Label( frame , text="", width="15")
-        self.Label_2.grid(row=4, column=1)
-
-        # >>>>>>insert any user code below this comment for section "make_Label_2"
 
 
     # TkGridGUI generated code. DO NOT EDIT THE FOLLOWING. section "make_Label_3"

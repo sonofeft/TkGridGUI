@@ -14,8 +14,8 @@ hasstddialcolor = no
 col_weights = 
 row_weights = 
 hasstddialfile = no
-y = 39
-x = 1211
+y = 29
+x = 1123
 hasstatusbar = no
 
 [Checkbutton_1]
@@ -93,17 +93,6 @@ width = 60
 col_weights = 
 columnspan = 
 height = 50
-
-[Label_2]
-widget_type = Label
-tab_label = Main
-row = 4
-col = 1
-rowspan = 
-text = 
-docstring = 
-width = 15
-columnspan = 
 
 [Label_3]
 widget_type = Label
