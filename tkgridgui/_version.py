@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-__version__ = '0.0.18'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.0.19'  # METADATA_RESET:__version__ = '<<version>>'
 
 """
 The ``_version.py`` file can be executed with execfile to create a local variable __version__::

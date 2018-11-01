@@ -1,0 +1,57 @@
+[app_attr]
+hideokbutton = yes
+hasstddialmess = no
+add_menu_ctrl_keys = yes
+name = info
+guitype = dialog
+hasstdalarm = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+resizable = yes
+hasmenu = no
+height = 200
+width = 300
+hasstddialcolor = no
+col_weights = 
+row_weights = 
+hasstddialfile = no
+y = 55
+x = 989
+hasstatusbar = no
+
+[Button_1]
+widget_type = Button
+tab_label = Main
+row = 5
+col = 1
+rowspan = 
+text = OK
+docstring = 
+width = 15
+columnspan = 
+
+[Frame_1]
+widget_type = Frame
+tab_label = Main
+row = 2
+col = 1
+rowspan = 
+docstring = 
+row_weights = 
+width = 60
+col_weights = 
+columnspan = 
+height = 50
+
+[Label_1]
+widget_type = Label
+tab_label = Main
+row = 1
+col = 1
+rowspan = 
+text = Title
+docstring = 
+sticky = ew
+width = 15
+columnspan = 
+font = Helvetica 20 bold roman
+

@@ -1,4 +1,9 @@
 
+*) Read *.def file to make a Qt app.
+
+*) Button to open *.py file in editor
+
+*) Button to run *.py file.
 
 *) Make controls on edit page more friendly (spinboxes, dropdowns)
 *) add validators (like int() on weight)

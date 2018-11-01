@@ -75,6 +75,7 @@ from tkgridgui.make_menu_src import buildMenuSource, getMenuSource
 
 from tkgridgui.maybe_save_Dialog import maybe_save_dialog
 from tkgridgui.named_color_picker_Dialog import named_color_picker
+from tkgridgui.showinfo_Dialog import myshowinfo
 
 class GridGUI(object):
     """
@@ -797,16 +798,18 @@ Duplicate Widget:
   Left Click Widget in Grid.
   Left Click in grid to place the duplicate.
 
-Insert Row or Column with Left Click on "+" control.
+Insert Row or Column 
+    Left Click on "+" control.
 
-Add Weight to row or column with "wt" control.
+Add Weight to row or column 
+    Left Click "wt" control.
 
-Select Corresponding Tab for Widgets in Frames, RadioGroups etc.
+Container Widgets
+    Select Grid Tab for Main, Frames, RadioGroups etc.
 """
         
-        tkinter.messagebox.showinfo(
-            "Help for TkGridGUI",
-            usage)
+        myshowinfo(self.MainWin, title="Help for TkGridGUI",
+                   dialogOptions={'info':usage, 'bg':'#EAFFFE'})
 
     def About(self):
         tkinter.messagebox.showinfo(
