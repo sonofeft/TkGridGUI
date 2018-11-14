@@ -1,4 +1,14 @@
 
+*) ERROR... Canvas "wrap"
+    File "clip_canvas.py", line 124, in make_Canvas_1
+        self.Canvas_1.config( wrap=NONE ) # x scroll implies no wrap
+
+*) Font dialog should show entire printable set as option.
+
+*) in Dialog self-test area, have user setup "protected" area.
+
+*) When reading a file, delay PreviewWin update until the very end.
+
 *) Read *.def file to make a Qt app.
 
 *) Button to open *.py file in editor

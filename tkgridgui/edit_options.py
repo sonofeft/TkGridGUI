@@ -147,6 +147,7 @@ row_weights #Weight values used in rowconfigure on resize
 col_weights #Weight values used in columnconfigure on resize
 scrolly #Enable scrolling in y direction YES NO
 scrollx #Enable scrolling in x direction YES NO
+selectmode #Listbox selection mode SINGLE BROWSE EXTENDED MULTIPLE
 style #TTK style"""
 
 add_definition( specialtyPropertiesStr )

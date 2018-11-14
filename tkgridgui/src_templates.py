@@ -209,7 +209,6 @@ sCreateWidgetWScroll_X='''
         hbar=Scrollbar(lbframe, orient=HORIZONTAL)
         self.{wName} = {widget_type}(lbframe, {opStr} xscrollcommand=hbar.set)
         hbar.config(command=self.{wName}.xview)
-        self.{wName}.config( wrap=NONE ) # x scroll implies no wrap
         
         hbar.grid(row=1, column=0, sticky='ew')        
         self.{wName}.grid(row=0, column=0)
@@ -224,7 +223,6 @@ sCreateWidgetWScroll_XY='''
         self.{wName} = {widget_type}(lbframe, {opStr} xscrollcommand=hbar.set, yscrollcommand=vbar.set)
         hbar.config(command=self.{wName}.xview)
         vbar.config(command=self.{wName}.yview)
-        self.{wName}.config( wrap=NONE ) # x scroll implies no wrap
         
         hbar.grid(row=1, column=0, sticky='ew')  
         vbar.grid(row=0, column=1, sticky='ns')                
@@ -274,9 +272,15 @@ def createWidgetwName(wName, widget_type, guiType, parent_frame, opDict=None):
         if doscroll == 1:
             return sCreateWidgetWScroll_Y.format(master=master,wName=wName, widget_type=widget_type, opStr=opStr)
         elif doscroll == 2:
-            return sCreateWidgetWScroll_X.format(master=master,wName=wName, widget_type=widget_type, opStr=opStr)
+            rtn_str = sCreateWidgetWScroll_X.format(master=master,wName=wName, widget_type=widget_type, opStr=opStr)
+            if widget_type=='Text':
+                rtn_str += "\n        self.%s.config( wrap=NONE ) # x scroll implies no wrap\n\n"%wName
+            return rtn_str
         else:
-            return sCreateWidgetWScroll_XY.format(master=master,wName=wName, widget_type=widget_type, opStr=opStr)
+            rtn_str = sCreateWidgetWScroll_XY.format(master=master,wName=wName, widget_type=widget_type, opStr=opStr)
+            if widget_type=='Text':
+                rtn_str += "\n        self.%s.config( wrap=NONE ) # x scroll implies no wrap\n\n"%wName
+            return rtn_str
         
     else:
         return sCreateWidgetWOScroll%( wName, widget_type, master, opStr)

@@ -1,4 +1,4 @@
-.. 2018-10-30 sonofeft 4ceb180d688098a078a9b3c7761808fca1fbb07d
+.. 2018-11-01 sonofeft 21951a12029fa7ac753b45552886f8aea75f1666
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,21 @@ History
 
 GitHub Log
 ----------
+
+
+* Nov 01, 2018
+    - (by: sonofeft) 
+        - removed xrange from support file
+        - added myshowinfo to improve Help display on Linux
+        - Added font dialog example
+* Oct 31, 2018
+    - (by: sonofeft) 
+        - remember duplicated widget with tab change.
+        - added exportselection to Listbox source gen, fixed component numbering in New command
+        - fixed Scale edit settings, remember path of last open file, save message
+* Oct 30, 2018
+    - (by: sonofeft) 
+        - Updated History.rst
 
 * Oct 30, 2018
     - (by: sonofeft) 

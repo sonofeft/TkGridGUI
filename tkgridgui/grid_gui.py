@@ -197,7 +197,7 @@ class GridGUI(object):
                                                  widget_name=widget_name, 
                                                  tab_label=tab_label, 
                                                  row=row_target, col=col_target)
-            self.target_app.show_preview()
+        self.target_app.show_preview()
         #print("="*55)
         #print('ref crc_reference =',self.target_app.crc_reference, 'current =', self.target_app.get_model_crc() )
             
