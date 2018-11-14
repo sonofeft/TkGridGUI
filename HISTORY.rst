@@ -1,4 +1,4 @@
-.. 2018-11-01 sonofeft 21951a12029fa7ac753b45552886f8aea75f1666
+.. 2018-11-14 sonofeft 39bfed158fe84a6b0c7331a8968e97aedc25bdaf
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,10 @@ History
 
 GitHub Log
 ----------
+
+* Nov 14, 2018
+    - (by: sonofeft) 
+        - Fixed erroneous wrap option for Canvas with scrollx
 
 
 * Nov 01, 2018
