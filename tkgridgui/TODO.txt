@@ -1,7 +1,19 @@
 
-*) ERROR... Canvas "wrap"
-    File "clip_canvas.py", line 124, in make_Canvas_1
-        self.Canvas_1.config( wrap=NONE ) # x scroll implies no wrap
+*) When setting Button background color, also set activebackground color
+
+*) in Button Click methods, include button text in print statement
+    print( "executed method Button_5_Click (Grab to Clipboard)" )
+
+*) Add sticky to Canvas_1 (only does Canvas_1_frame right now)
+        self.Canvas_1.grid(row=0, column=0, sticky="nsew")
+        
+        *) also need canvas frame to match any weight settings.
+        self.Canvas_1_frame.rowconfigure(0, weight=1)
+        self.Canvas_1_frame.columnconfigure(0, weight=1)
+
+
+*) need canvas scrollregion setting if scrollx and scrolly
+   self.Canvas_1.config( scrollregion=(0,0, 1920,1080) )
 
 *) Font dialog should show entire printable set as option.
 
@@ -215,3 +227,7 @@
    If changing tab with a dup widget, save it and restore it.
 
 *) New needs to reset all numbering to start at 1 for widget names.
+
+*) ERROR... Canvas "wrap"
+    File "clip_canvas.py", line 124, in make_Canvas_1
+        self.Canvas_1.config( wrap=NONE ) # x scroll implies no wrap

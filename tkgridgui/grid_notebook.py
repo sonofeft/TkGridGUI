@@ -173,6 +173,7 @@ class NotebookGridDes( Frame ):
             Labelobj["text"      ] = "(%d,%d)\n%s\n" % (row_target, col_target, widget_name)
         else:
             def fitted_line3( s ):
+                s = '%s'%s
                 if len(s)<15:
                     return s
                 return s[:12] + '...'
