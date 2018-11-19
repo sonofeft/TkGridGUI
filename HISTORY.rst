@@ -1,4 +1,4 @@
-.. 2018-11-14 sonofeft 39bfed158fe84a6b0c7331a8968e97aedc25bdaf
+.. 2018-11-19 sonofeft 3e652f78ffd746f36236dab8314c17dfe3f96f40
    Maintain spacing of "History" and "GitHub Log" titles
 
 History
@@ -6,6 +6,13 @@ History
 
 GitHub Log
 ----------
+
+* Nov 19, 2018
+    - (by: sonofeft) 
+        - Fixed integer text labels error
+* Nov 14, 2018
+    - (by: sonofeft) 
+        - history update
 
 * Nov 14, 2018
     - (by: sonofeft) 
