@@ -216,7 +216,7 @@ class Component( object ):
             return '%12s: '%self.widget_type + self.user_tkOptionD['docstring'] + ' :' + loc_str
         
         # ---------------------
-        text = self.user_tkOptionD.get('text', '')
+        text = '%s'%self.user_tkOptionD.get('text', '')
         if text == self.widget_name:
             text = ''
         if text:
