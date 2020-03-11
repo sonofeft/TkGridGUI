@@ -200,7 +200,10 @@ sCreateWidgetWScroll_Y='''
         vbar.config(command=self.{wName}.yview)
         
         vbar.grid(row=0, column=1, sticky='ns')        
-        self.{wName}.grid(row=0, column=0)
+        self.{wName}.grid(row=0, column=0, sticky="nsew")
+        lbframe.rowconfigure(0, weight=1)
+        lbframe.columnconfigure(0, weight=1)
+        
 '''
 
 sCreateWidgetWScroll_X='''
@@ -211,7 +214,9 @@ sCreateWidgetWScroll_X='''
         hbar.config(command=self.{wName}.xview)
         
         hbar.grid(row=1, column=0, sticky='ew')        
-        self.{wName}.grid(row=0, column=0)
+        self.{wName}.grid(row=0, column=0, sticky="nsew")
+        lbframe.rowconfigure(0, weight=1)
+        lbframe.columnconfigure(0, weight=1)
 '''
 
 sCreateWidgetWScroll_XY='''
@@ -226,7 +231,9 @@ sCreateWidgetWScroll_XY='''
         
         hbar.grid(row=1, column=0, sticky='ew')  
         vbar.grid(row=0, column=1, sticky='ns')                
-        self.{wName}.grid(row=0, column=0)
+        self.{wName}.grid(row=0, column=0, sticky="nsew")
+        lbframe.rowconfigure(0, weight=1)
+        lbframe.columnconfigure(0, weight=1)
 '''
 
 sCreateWidgetWOScroll='''

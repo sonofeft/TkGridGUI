@@ -1,4 +1,11 @@
 
+*) deleting "anchor" or "sticky" entries still saves those options to def file as ""
+   ERROR... results
+   
+*) OptionMenu with "anchor" results in ERROR...
+
+*) Editing Label "anchor" property does not show up in python source.
+
 *) When setting Button background color, also set activebackground color
 
 *) in Button Click methods, include button text in print statement
