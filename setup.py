@@ -16,10 +16,10 @@ This will execute the setup.py file and insure that its pip-specific commands ar
 
 
 # Always prefer setuptools over distutils
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from distutils.core import setup, find_packages
+#try:
+from setuptools import setup, find_packages
+#except ImportError:
+#    from distutils.core import setup, find_packages
 
 # To use a consistent encoding
 from codecs import open
@@ -44,6 +44,7 @@ setup(
     version = __version__,  # METADATA_RESET:    version = '<<version>>',
 
     description = 'tkGridGUI builds a python Tkinter GUI graphic user interface using the grid geometry manager.',
+    long_description_content_type = 'text/x-rst',
     long_description = long_description,
 
     # The project's main homepage.

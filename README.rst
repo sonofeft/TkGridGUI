@@ -1,21 +1,24 @@
 
 
-.. image:: https://travis-ci.org/sonofeft/TkGridGUI.svg?branch=master
-    :target: https://travis-ci.org/sonofeft/TkGridGUI
+|Image1Link|_ |Image2Link|_ |Image3Link|_ |Image4Link|_
 
-.. image:: https://img.shields.io/pypi/v/TkGridGUI.svg
-    :target: https://pypi.python.org/pypi/tkgridgui
+.. |Image1Link| image:: https://img.shields.io/travis/sonofeft/TkGridGUI.svg
+.. _Image1Link: https://travis-ci.org/sonofeft/TkGridGUI
+
+.. |Image2Link| image:: https://img.shields.io/pypi/v/TkGridGUI.svg
+.. _Image2Link: https://pypi.python.org/pypi/tkgridgui
         
-.. image:: https://img.shields.io/pypi/pyversions/TkGridGUI.svg
-    :target: https://wiki.python.org/moin/Python2orPython3
+.. |Image3Link| image:: https://img.shields.io/pypi/pyversions/TkGridGUI.svg
+.. _Image3Link: https://wiki.python.org/moin/Python2orPython3
 
-.. image:: https://img.shields.io/pypi/l/TkGridGUI.svg
-    :target: https://pypi.python.org/pypi/tkgridgui
+.. |Image4Link| image:: https://img.shields.io/pypi/l/TkGridGUI.svg
+.. _Image4Link: https://pypi.python.org/pypi/tkgridgui
 
+.. _internal_index:
 
-TkGridGUI Builds A Python Tkinter Gui Graphic User Interface Using The Grid Geometry Manager.
-=============================================================================================
+**TkGridGUI**
 
+**Builds A Python Tkinter Gui Graphic User Interface Using The Grid Geometry Manager.**
 
 See the Code at: `<https://github.com/sonofeft/TkGridGUI>`_
 
