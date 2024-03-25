@@ -215,8 +215,13 @@ def getMenuSource( menuL, rootName='MainWin', add_ctrl_keys=True, imADialog=Fals
         else:
             name = 'menu_%s'%(legalPythonIdentifier( m.label ))
             if m.ctrl_char:
-                sTopItem= '        self.menuBar.add("command", label = "%s", command=self.%s, underline=%i, accelerator="Ctrl+%s")\n'
-                srcList.append( sTopItem%( m.label, name, m.underline, m.ctrl_char) )
+                try:
+                    s_underline = ', underline=%i'%m.underline
+                except:
+                    s_underline = ''
+                sTopItem= '        self.menuBar.add("command", label = "%s", command=self.%s %s, accelerator="Ctrl+%s")\n'
+                #print('m.label, name, m.underline, m.ctrl_char', m.label, name, s_underline, m.ctrl_char)
+                srcList.append( sTopItem%( m.label, name, s_underline, m.ctrl_char) )
                 bindL.append('        self.master.bind("<Control-%s>", lambda event: self.%s())\n'%(m.ctrl_char, name) )
                 bindL.append('        self.master.bind("<Control-%s>", lambda event: self.%s())\n'%(m.ctrl_char.lower(), name) )
             else:

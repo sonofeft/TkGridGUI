@@ -29,6 +29,7 @@ from tkinter import _setit as set_command
 
 # >>>>>>insert any user code below this comment for section "imports"
 # Place any user import statements here
+import sys
 from tkgridgui.color_lists import h_sorted_colorL, lum_sorted_colorL, cstr_sorted_colorL, name_sorted_colorL
 COL_COUNT = 54
 
